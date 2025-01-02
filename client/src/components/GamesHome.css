@@ -1,0 +1,115 @@
+* {
+  margin: 0;
+  box-sizing: border-box;
+}
+
+#root {
+  --green: #53a548;
+  --quizHover: #3baf2c;
+  --blue: #4059ad;
+  --cardHover: #335ed4;
+  --orange: #ff951d;
+  --yellow: #f7ce5b;
+}
+
+h1 {
+  font-family: "Poppins", "Arial", sans-serif;
+}
+
+p {
+  font-family: "Fredoka", "Arial", sans-serif;
+}
+
+#statsBar {
+  display: flex;
+  justify-content: space-around;
+  color: white;
+  background-color: var(--blue);
+  padding: 1rem;
+  font-weight: bold;
+}
+
+#title {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-top: 3rem;
+  margin-bottom: 6rem;
+  margin-left: auto;
+  margin-right: auto;
+  background-color: rgb(247, 247, 247);
+  width: 90%;
+  padding: 1.5rem;
+  border-radius: 20px;
+}
+
+#gamesList {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 3rem;
+}
+
+.gameCard {
+  background-color: var(--blue);
+  font-size: 20px;
+  color: white;
+  padding: 2rem;
+  width: 70%;
+  text-align: center;
+  border-radius: 20px;
+  font-weight: bold;
+  transition: 0.5s;
+}
+
+#dailyQuiz {
+  display: flex;
+  margin-top: 3rem;
+  flex-direction: column;
+  align-items: center;
+  background-color: var(--green);
+  color: white;
+  font-size: 20px;
+  width: 80%;
+  padding: 2rem;
+  border-radius: 20px;
+  font-weight: bold;
+  transition: 0.5s;
+}
+
+/* RESPONSIVE DESKTOP */
+
+@media (min-width: 992px) {
+  #statsBar {
+    font-size: 20px;
+    padding: 1.5rem;
+  }
+
+  #title {
+    font-size: 22px;
+    padding: 2.5rem;
+    width: 40%;
+  }
+
+  .gameCard {
+    font-size: 22px;
+    padding: 3.5rem;
+    width: 30%;
+  }
+
+  .gameCard:hover {
+    cursor: pointer;
+    background-color: var(--cardHover);
+  }
+
+  #dailyQuiz {
+    font-size: 22px;
+    width: 40%;
+    padding: 3rem;
+  }
+
+  #dailyQuiz:hover {
+    cursor: pointer;
+    background-color: var(--quizHover);
+  }
+}
