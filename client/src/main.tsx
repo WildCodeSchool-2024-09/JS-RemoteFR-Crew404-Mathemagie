@@ -14,6 +14,8 @@ import App from "./App";
 // import About from "./pages/About";
 // import Contact from "./pages/Contact";
 
+import Avatar from "./pages/Avatar/Avatar";
+
 /* ************************************************************************* */
 
 // Create router configuration with routes
@@ -24,6 +26,10 @@ const router = createBrowserRouter([
     element: <App />, // Renders the App component for the home page
   },
   // Try adding a new route! For example, "/about" with an About component
+  {
+    path: "/avatar", // Nouvelle route pour la page Avatar
+    element: <Avatar />, // Rendu de la page Avatar
+  },
 ]);
 
 /* ************************************************************************* */
