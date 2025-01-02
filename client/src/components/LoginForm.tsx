@@ -1,46 +1,48 @@
 import "./LoginForm.css";
+import batman from "../assets/images/batman.png";
 
 const LoginForm = () => {
   return (
     <div className="login-container">
       <div className="login-card">
         <h2 className="login-title">Connexion</h2>
-        <p className="login-subtitle">Veuillez entrer vos informations</p>
+        <p className="login-subtitle">
+          Bienvenue ! Connectez-vous pour continuer.
+        </p>
 
         <form className="login-form">
           <input
-            type="text"
+            type="email"
             className="input-field"
-            placeholder="Nom d'utilisateur"
+            placeholder="Email"
+            required
           />
           <input
             type="password"
             className="input-field"
             placeholder="Mot de passe"
+            required
           />
           <button type="submit" className="btn-primary">
-            Se connecter
+            Connexion
           </button>
 
           <a href="/forgot-password" className="forgot-password">
             Mot de passe oublié ?
           </a>
-
-          {/* Bouton d'inscription */}
           <button
             type="button"
             className="btn-secondary"
-            onClick={(e) => {
-              e.preventDefault(); // Prevent form submission
-              window.location.href = "/sign-up"; // Redirection vers la page d'inscription
+            onClick={() => {
+              window.location.href = "/sign-up";
             }}
           >
-            S'inscrire
+            Sign Up
           </button>
         </form>
       </div>
       <div className="login-illustration">
-        <img src="illustration.png" alt="Illustration" />
+        <img src={batman} alt="Illustration" />
       </div>
     </div>
   );

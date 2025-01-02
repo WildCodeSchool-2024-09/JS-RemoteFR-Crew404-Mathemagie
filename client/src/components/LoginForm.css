@@ -1,4 +1,4 @@
-/* Global Styles */
+/* LoginForm.css */
 body {
   margin: 0;
   font-family: "Arial", sans-serif;
@@ -10,15 +10,6 @@ body {
   height: 100vh;
 }
 
-.App {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  height: 100%;
-  width: 100%;
-}
-
-/* Login Container */
 .login-container {
   display: flex;
   justify-content: center;
@@ -30,10 +21,8 @@ body {
   max-width: 900px;
   width: 90%;
   flex-wrap: wrap;
-  padding: 1rem;
 }
 
-/* Login Card */
 .login-card {
   flex: 1;
   padding: 2rem;
@@ -44,7 +33,7 @@ body {
   font-size: 2rem;
   font-weight: bold;
   margin-bottom: 0.5rem;
-  color: #5e60ce;
+  color: #4059ad;
 }
 
 .login-subtitle {
@@ -76,7 +65,7 @@ body {
   padding: 0.8rem;
   font-size: 1rem;
   color: white;
-  background-color: #5e60ce;
+  background-color: #4059ad;
   border: none;
   border-radius: 10px;
   cursor: pointer;
@@ -86,6 +75,22 @@ body {
 
 .btn-primary:hover {
   background-color: #3a42a8;
+}
+
+.btn-secondary {
+  padding: 0.8rem;
+  font-size: 1rem;
+  color: #5e60ce;
+  background-color: white;
+  border: 2px solid #5e60ce;
+  border-radius: 10px;
+  cursor: pointer;
+  transition: all 0.3s ease-in-out;
+  width: 100%;
+}
+
+.btn-secondary:hover {
+  background-color: #f0f0ff;
 }
 
 .forgot-password {
@@ -101,13 +106,12 @@ body {
   color: #3a42a8;
 }
 
-/* Illustration */
 .login-illustration {
+  border-radius: 5%;
   flex: 1;
   display: flex;
   justify-content: center;
   align-items: center;
-  background: linear-gradient(135deg, #ffc8dd, #bde0fe);
 }
 
 .login-illustration img {
@@ -117,7 +121,6 @@ body {
   object-fit: cover;
 }
 
-/* Responsive Design */
 @media (max-width: 768px) {
   .login-container {
     flex-direction: column;
@@ -125,34 +128,7 @@ body {
     width: 100%;
   }
 
-  .login-card {
-    width: 100%;
-  }
-
   .login-illustration {
-    display: none; /* Cache l'illustration en mode mobile */
-  }
-
-  .forgot-password {
-    font-size: 1rem; /* Lien plus grand en mobile */
-    margin-top: 0.5rem; /* Ajuste la position */
-  }
-}
-
-@media (max-width: 480px) {
-  .login-title {
-    font-size: 1.5rem; /* Réduit la taille du titre */
-  }
-
-  .login-subtitle {
-    font-size: 0.9rem; /* Réduit la taille du sous-titre */
-  }
-
-  .input-field {
-    font-size: 0.9rem; /* Taille plus petite des champs */
-  }
-
-  .btn-primary {
-    font-size: 0.9rem; /* Taille du bouton plus petite */
+    display: none;
   }
 }
