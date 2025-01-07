@@ -26,10 +26,6 @@ const LoginForm = () => {
           <button type="submit" className="btn-primary">
             Connexion
           </button>
-
-          <a href="/forgot-password" className="forgot-password">
-            Mot de passe oublié ?
-          </a>
           <button
             type="button"
             className="btn-secondary"
@@ -40,6 +36,10 @@ const LoginForm = () => {
             Sign Up
           </button>
         </form>
+
+        <a href="/forgot-password" className="forgot-password">
+          Mot de passe oublié ?
+        </a>
       </div>
       <div className="login-illustration">
         <img src={batman} alt="Illustration" />

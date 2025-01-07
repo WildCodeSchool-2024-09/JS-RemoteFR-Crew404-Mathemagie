@@ -1,17 +1,16 @@
-import { Route, BrowserRouter as Router, Routes } from "react-router-dom";
-import ForgotPassword from "./components/ForgotPassword";
-import LoginForm from "./components/LoginForm";
-import SignUpForm from "./components/SignUpForm";
-
 const App = () => {
   return (
-    <Router>
-      <Routes>
-        <Route path="/" element={<LoginForm />} />
-        <Route path="/sign-up" element={<SignUpForm />} />
-        <Route path="/forgot-password" element={<ForgotPassword />} />
-      </Routes>
-    </Router>
+    <div>
+      <header>
+        <h1>Bienvenue dans l'application</h1>
+      </header>
+      <main>
+        <p>Le contenu principal sera affiché ici.</p>
+      </main>
+      <footer>
+        <p>© 2025 Mon Application</p>
+      </footer>
+    </div>
   );
 };
 
