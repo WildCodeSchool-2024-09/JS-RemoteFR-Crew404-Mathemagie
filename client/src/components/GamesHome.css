@@ -4,12 +4,16 @@
 }
 
 #root {
-  --green: #53a548;
-  --quizHover: #3baf2c;
-  --blue: #4059ad;
-  --cardHover: #335ed4;
-  --orange: #ff951d;
-  --yellow: #f7ce5b;
+  --purple: #5e60ce;
+  --cardHover: #7476df;
+  --titlesColor: #5e60ce;
+}
+
+body {
+  margin: 0;
+  background: linear-gradient(135deg, #f8d7ff, #b2f0ff);
+  color: #333;
+  height: 100vh;
 }
 
 h1 {
@@ -24,8 +28,8 @@ p {
   display: flex;
   justify-content: space-around;
   color: white;
-  background-color: var(--blue);
-  padding: 1rem;
+  background-color: var(--purple);
+  padding: 1.5rem;
   font-weight: bold;
 }
 
@@ -33,14 +37,21 @@ p {
   display: flex;
   flex-direction: column;
   align-items: center;
-  margin-top: 3rem;
-  margin-bottom: 6rem;
+  margin-top: 2rem;
+  margin-bottom: 3.5rem;
   margin-left: auto;
   margin-right: auto;
-  background-color: rgb(247, 247, 247);
+  color: #5e60ce;
+  background-color: rgba(255, 255, 255, 0.459);
+  border-radius: 40px;
+  border: solid 3px var(--purple);
+  font-size: 22px;
   width: 90%;
   padding: 1.5rem;
-  border-radius: 20px;
+}
+
+#title h1 {
+  font-size: 35px;
 }
 
 #gamesList {
@@ -51,44 +62,52 @@ p {
 }
 
 .gameCard {
-  background-color: var(--blue);
+  background-color: var(--purple);
   font-size: 20px;
   color: white;
   padding: 2rem;
   width: 70%;
   text-align: center;
   border-radius: 20px;
-  font-weight: bold;
+  font-weight: bolder;
   transition: 0.5s;
 }
 
 #dailyQuiz {
   display: flex;
-  margin-top: 3rem;
+  margin-top: 2rem;
   flex-direction: column;
   align-items: center;
-  background-color: var(--green);
-  color: white;
-  font-size: 20px;
+  color: var(--titlesColor);
+  background-color: rgba(255, 255, 255, 0.459);
+  border: solid 4px var(--purple);
   width: 80%;
   padding: 2rem;
-  border-radius: 20px;
+  border-radius: 80px;
   font-weight: bold;
   transition: 0.5s;
 }
 
+#dailyQuiz p {
+  font-size: 25px;
+  font-weight: bolder;
+}
+
 /* RESPONSIVE DESKTOP */
 
-@media (min-width: 992px) {
+@media (min-width: 768px) {
   #statsBar {
     font-size: 20px;
     padding: 1.5rem;
   }
 
   #title {
-    font-size: 22px;
     padding: 2.5rem;
     width: 40%;
+  }
+
+  #title h1 {
+    font-size: 50px;
   }
 
   .gameCard {
@@ -100,16 +119,19 @@ p {
   .gameCard:hover {
     cursor: pointer;
     background-color: var(--cardHover);
+    box-shadow: 5px 5px 20px 3px rgba(94, 96, 206, 0.29);
   }
 
   #dailyQuiz {
     font-size: 22px;
-    width: 40%;
+    width: 35%;
     padding: 3rem;
   }
 
   #dailyQuiz:hover {
     cursor: pointer;
-    background-color: var(--quizHover);
+    background-color: var(--purple);
+    color: white;
+    box-shadow: 5px 5px 20px 3px rgba(94, 96, 206, 0.29);
   }
 }
