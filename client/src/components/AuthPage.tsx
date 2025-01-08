@@ -7,6 +7,6 @@ function AuthPage() {
       <LoginForm />
     </div>
   );
-};
+}
 
 export default AuthPage;
