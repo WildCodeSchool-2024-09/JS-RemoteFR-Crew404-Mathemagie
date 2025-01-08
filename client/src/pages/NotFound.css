@@ -1,0 +1,108 @@
+.not-found-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  height: 100vh;
+  text-align: center;
+  font-family: "Poppins", sans-serif;
+  color: #fff;
+  padding: 20px;
+  /* Code d'erreur */
+  .error-code {
+    font-size: 12rem;
+    font-weight: 900;
+    color: rgba(255, 255, 255, 0.8);
+    text-shadow: 4px 4px 10px rgba(0, 0, 0, 0.3);
+  }
+
+  /* Message d'erreur */
+  .error-message h2 {
+    font-size: 2.5rem;
+    margin: 1rem 0 0.5rem;
+    color: #f8f9fa;
+    background-color: rgba(64, 89, 173, 0.9);
+    padding: 0.8rem 1.5rem;
+    border-radius: 12px;
+    text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.2);
+  }
+
+  .error-message p {
+    font-size: 1.2rem;
+    margin-top: 0.5rem;
+    color: #f0f0f0;
+    text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.2);
+    max-width: 600px;
+  }
+
+  .error-image {
+    margin: 2rem 0;
+    animation: float 3s ease-in-out infinite;
+  }
+
+  .error-image img {
+    width: 150px;
+    height: auto;
+    filter: drop-shadow(4px 4px 10px rgba(0, 0, 0, 0.3));
+  }
+
+  @keyframes float {
+    0%,
+    100% {
+      transform: translateY(0);
+    }
+    50% {
+      transform: translateY(-10px);
+    }
+  }
+
+  /* Bouton Retour */
+  .home-button {
+    background-color: #5e60ce;
+    color: #fff;
+    border: none;
+    padding: 0.8rem 1.5rem;
+    font-size: 1.2rem;
+    font-family: "Poppins", sans-serif;
+    font-weight: 600;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.2);
+  }
+
+  .home-button:hover {
+    background-color: #4059ad;
+    transform: scale(1.05);
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.3);
+  }
+
+  .home-button:active {
+    transform: scale(0.98);
+    background-color: #4059ad;
+  }
+
+  /* Responsive Design */
+  @media (max-width: 768px) {
+    .error-code {
+      font-size: 8rem;
+    }
+
+    .error-message h2 {
+      font-size: 2rem;
+    }
+
+    .error-message p {
+      font-size: 1rem;
+    }
+
+    .error-image img {
+      width: 120px;
+    }
+
+    .home-button {
+      font-size: 1rem;
+      padding: 0.7rem 1.2rem;
+    }
+  }
+}

@@ -12,13 +12,11 @@ import App from "./App";
 // Try creating these components in the "pages" folder
 
 import AuthPage from "./components/AuthPage";
-// import About from "./pages/About";
-// import Contact from "./pages/Contact";
 import ForgotPassword from "./components/ForgotPassword";
 import LoginForm from "./components/LoginForm";
 import SignUpForm from "./components/SignUpForm";
-
 import Avatar from "./pages/Avatar/Avatar";
+import NotFound from "./pages/NotFound";
 
 /* ************************************************************************* */
 
@@ -45,10 +43,13 @@ const router = createBrowserRouter([
     path: "/AuthPage",
     element: <AuthPage />,
   },
-  // Try adding a new route! For example, "/about" with an About component
   {
     path: "/avatar", // Nouvelle route pour la page Avatar
     element: <Avatar />, // Rendu de la page Avatar
+  },
+  {
+    path: "*",
+    element: <NotFound />,
   },
 ]);
 
