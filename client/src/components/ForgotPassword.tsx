@@ -1,7 +1,7 @@
 import { useState } from "react";
 import "./ForgotPassword.css";
 
-function ForgotPassword () {
+function ForgotPassword() {
   const [email, setEmail] = useState("");
 
   const handleSubmit = (e: React.FormEvent) => {
