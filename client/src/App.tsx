@@ -6,4 +6,6 @@ function App () {
   return (
     <SignUpForm />
   );
-};
+}
+
+export default App;
