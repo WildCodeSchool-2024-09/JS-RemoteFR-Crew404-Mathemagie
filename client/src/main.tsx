@@ -17,7 +17,6 @@ import AuthPage from "./components/AuthPage";
 import ForgotPassword from "./components/ForgotPassword";
 import LoginForm from "./components/LoginForm";
 import SignUpForm from "./components/SignUpForm";
-import NotFound from "./pages/NotFound";
 
 /* ************************************************************************* */
 
@@ -43,10 +42,6 @@ const router = createBrowserRouter([
   {
     path: "/AuthPage",
     element: <AuthPage />,
-  },
-  {
-    path: "*",
-    element: <NotFound />,
   },
   // Try adding a new route! For example, "/about" with an About component
 ]);
