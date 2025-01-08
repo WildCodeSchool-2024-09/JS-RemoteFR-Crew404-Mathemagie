@@ -15,8 +15,8 @@ import AuthPage from "./components/AuthPage";
 import ForgotPassword from "./components/ForgotPassword";
 import LoginForm from "./components/LoginForm";
 import SignUpForm from "./components/SignUpForm";
-import NotFound from "./pages/NotFound";
 import Avatar from "./pages/Avatar/Avatar";
+import NotFound from "./pages/NotFound";
 
 /* ************************************************************************* */
 
@@ -50,7 +50,7 @@ const router = createBrowserRouter([
   {
     path: "*",
     element: <NotFound />,
-  }
+  },
 ]);
 
 /* ************************************************************************* */

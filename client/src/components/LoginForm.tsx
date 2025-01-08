@@ -41,7 +41,6 @@ function LoginForm() {
         <a href="/forgot-password" className="forgot-password">
           Mot de passe oublié ?
         </a>
-
       </div>
       <div className="login-illustration">
         <img src={batman} alt="Illustration" />
