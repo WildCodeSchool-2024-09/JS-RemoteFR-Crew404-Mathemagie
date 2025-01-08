@@ -7,7 +7,6 @@ const ForgotPassword = () => {
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
   };
-
   return (
     <div className="forgot-password-container">
       <div className="forgot-password-card">
@@ -34,6 +33,5 @@ const ForgotPassword = () => {
       </div>
     </div>
   );
-};
-
+}
 export default ForgotPassword;
