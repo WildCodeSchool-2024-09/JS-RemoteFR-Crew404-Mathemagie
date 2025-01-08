@@ -29,15 +29,10 @@ const router = createBrowserRouter([
     element: <NotFound />,
   },
 ]);
-
 const rootElement = document.getElementById("root");
-
-
 if (rootElement) {
   ReactDOM.createRoot(rootElement).render(<RouterProvider router={router} />);
 }
-
-
 // Render the app inside the root element
 createRoot(rootElement).render(
   <StrictMode>
