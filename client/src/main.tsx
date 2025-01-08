@@ -1,16 +1,31 @@
-import ReactDOM from "react-dom/client";
+// Import necessary modules from React and React Router
+import { StrictMode } from "react";
+import { createRoot } from "react-dom/client";
 import { RouterProvider, createBrowserRouter } from "react-router-dom";
-import "./App.css";
+
+/* ************************************************************************* */
+
+// Import the main app component
+import App from "./App";
+
+// Import additional components for new routes
+// Try creating these components in the "pages" folder
+
+// import About from "./pages/About";
+// import Contact from "./pages/Contact";
 import ForgotPassword from "./components/ForgotPassword";
-import Home from "./components/Home";
 import LoginForm from "./components/LoginForm";
 import SignUpForm from "./components/SignUpForm";
 import NotFound from "./pages/NotFound";
 
+/* ************************************************************************* */
+
+// Create router configuration with routes
+// You can add more routes as you build out your app!
 const router = createBrowserRouter([
   {
-    path: "/",
-    element: <Home />,
+    path: "/", // The root path
+    element: <App />, // Renders the App component for the home page
   },
   {
     path: "/login",
@@ -28,11 +43,17 @@ const router = createBrowserRouter([
     path: "*",
     element: <NotFound />,
   },
+  // Try adding a new route! For example, "/about" with an About component
 ]);
+
+/* ************************************************************************* */
+
+// Find the root element in the HTML document
 const rootElement = document.getElementById("root");
-if (rootElement) {
-  ReactDOM.createRoot(rootElement).render(<RouterProvider router={router} />);
+if (rootElement == null) {
+  throw new Error(`Your HTML Document should contain a <div id="root"></div>`);
 }
+
 // Render the app inside the root element
 createRoot(rootElement).render(
   <StrictMode>
@@ -61,4 +82,6 @@ createRoot(rootElement).render(
  *    Documentation: https://reactrouter.com/en/main/start/tutorial#nested-routes
  *
  * 3. Experiment with Dynamic Routes:
- *    You can create routes that take parameters (e.g., /users/:id).**/
+ *    You can create routes that take parameters (e.g., /users/:id).
+ *    Documentation: https://reactrouter.com/en/main/start/tutorial#url-params-in-loaders
+ */
