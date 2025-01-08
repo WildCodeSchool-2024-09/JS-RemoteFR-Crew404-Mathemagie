@@ -28,12 +28,16 @@ const router = createBrowserRouter([
     element: <App />, // Renders the App component for the home page
   },
   {
-    path: "/LoginForm",
+    path: "/login",
     element: <LoginForm />,
   },
   {
-    path: "/SignUpForm",
+    path: "/sign-up",
     element: <SignUpForm />,
+  },
+  {
+    path: "/forgot-password",
+    element: <ForgotPassword />,
   },
   {
     path: "/AuthPage",
