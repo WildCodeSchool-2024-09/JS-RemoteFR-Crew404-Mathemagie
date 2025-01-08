@@ -18,6 +18,8 @@ import ForgotPassword from "./components/ForgotPassword";
 import LoginForm from "./components/LoginForm";
 import SignUpForm from "./components/SignUpForm";
 
+import Avatar from "./pages/Avatar/Avatar";
+
 /* ************************************************************************* */
 
 // Create router configuration with routes
@@ -44,6 +46,10 @@ const router = createBrowserRouter([
     element: <AuthPage />,
   },
   // Try adding a new route! For example, "/about" with an About component
+  {
+    path: "/avatar", // Nouvelle route pour la page Avatar
+    element: <Avatar />, // Rendu de la page Avatar
+  },
 ]);
 
 /* ************************************************************************* */
