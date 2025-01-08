@@ -25,15 +25,15 @@ const router = createBrowserRouter([
   },
   {
     path: "/LoginForm", 
-    element: <LoginForm/>, 
+    element: <LoginForm />, 
   },
   {
     path: "/SignUpForm", 
-    element: <SignUpForm/>, 
+    element: <SignUpForm />, 
   },
   {
     path: "/AuthPage", 
-    element: <AuthPage/>, 
+    element: <AuthPage />, 
   },
   // Try adding a new route! For example, "/about" with an About component
 ]);
