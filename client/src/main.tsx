@@ -17,6 +17,7 @@ import ForgotPassword from "./components/ForgotPassword";
 import LoginForm from "./components/LoginForm";
 import SignUpForm from "./components/SignUpForm";
 import NotFound from "./pages/NotFound";
+import AuthPage from "./components/AuthPage";
 
 /* ************************************************************************* */
 
