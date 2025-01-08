@@ -1,7 +1,7 @@
 import { Link } from "react-router-dom";
 import "./Home.css";
 
-const Home = () => {
+function Home() {
   return (
     <div className="home-container">
       <h1>Bienvenue sur la page d'accueil</h1>
@@ -13,6 +13,6 @@ const Home = () => {
       </Link>
     </div>
   );
-};
+}
 
 export default Home;
