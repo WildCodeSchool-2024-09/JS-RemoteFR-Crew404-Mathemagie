@@ -11,8 +11,12 @@ import App from "./App";
 // Import additional components for new routes
 // Try creating these components in the "pages" folder
 
+import AuthPage from "./components/AuthPage";
 // import About from "./pages/About";
 // import Contact from "./pages/Contact";
+import ForgotPassword from "./components/ForgotPassword";
+import LoginForm from "./components/LoginForm";
+import SignUpForm from "./components/SignUpForm";
 
 import Avatar from "./pages/Avatar/Avatar";
 
@@ -24,6 +28,22 @@ const router = createBrowserRouter([
   {
     path: "/", // The root path
     element: <App />, // Renders the App component for the home page
+  },
+  {
+    path: "/login",
+    element: <LoginForm />,
+  },
+  {
+    path: "/sign-up",
+    element: <SignUpForm />,
+  },
+  {
+    path: "/forgot-password",
+    element: <ForgotPassword />,
+  },
+  {
+    path: "/AuthPage",
+    element: <AuthPage />,
   },
   // Try adding a new route! For example, "/about" with an About component
   {
