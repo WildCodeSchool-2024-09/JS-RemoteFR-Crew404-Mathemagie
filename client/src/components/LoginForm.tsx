@@ -26,6 +26,7 @@ function LoginForm() {
           <button type="submit" className="btn-primary">
             Connexion
           </button>
+
           <button
             type="button"
             className="btn-secondary"
@@ -40,6 +41,7 @@ function LoginForm() {
         <a href="/forgot-password" className="forgot-password">
           Mot de passe oublié ?
         </a>
+
       </div>
       <div className="login-illustration">
         <img src={batman} alt="Illustration" />

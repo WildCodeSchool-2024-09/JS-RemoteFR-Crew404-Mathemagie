@@ -1,17 +1,15 @@
 import "./App.css";
+import { Link } from "react-router-dom";
+import GamesHome from "./components/GamesHome";
+
 function App() {
   return (
-    <div>
-      <header>
-        <h1>Bienvenue dans l'application</h1>
-      </header>
-      <main>
-        <p>Le contenu principal sera affiché ici.</p>
-      </main>
-      <footer>
-        <p>© 2025 Mon Application</p>
-      </footer>
-    </div>
+    <>
+      <GamesHome />
+      <div>
+        <Link to="./avatar"> Conçois ton avatar !</Link>
+      </div>
+    </>
   );
 }
 export default App;
