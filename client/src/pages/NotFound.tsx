@@ -1,6 +1,6 @@
 import "./NotFound.css";
 
-const NotFound = () => {
+function NotFound() {
   return (
     <div className="not-found-container">
       <h1 className="error-code">404</h1>
