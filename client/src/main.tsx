@@ -11,13 +11,13 @@ import App from "./App";
 // Import additional components for new routes
 // Try creating these components in the "pages" folder
 
+import AuthPage from "./components/AuthPage";
 // import About from "./pages/About";
 // import Contact from "./pages/Contact";
 import ForgotPassword from "./components/ForgotPassword";
 import LoginForm from "./components/LoginForm";
 import SignUpForm from "./components/SignUpForm";
 import NotFound from "./pages/NotFound";
-import AuthPage from "./components/AuthPage";
 
 /* ************************************************************************* */
 
