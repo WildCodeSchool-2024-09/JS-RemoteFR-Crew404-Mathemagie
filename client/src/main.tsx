@@ -23,6 +23,18 @@ const router = createBrowserRouter([
     path: "/", // The root path
     element: <App />, // Renders the App component for the home page
   },
+  {
+    path: "/LoginForm", 
+    element: <LoginForm/>, 
+  },
+  {
+    path: "/SignUpForm", 
+    element: <SignUpForm/>, 
+  },
+  {
+    path: "/AuthPage", 
+    element: <AuthPage/>, 
+  },
   // Try adding a new route! For example, "/about" with an About component
 ]);
 
