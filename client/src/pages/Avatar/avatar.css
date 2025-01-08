@@ -1,11 +1,6 @@
 /* partie choix et selection avatar */
 body {
   background: linear-gradient(135deg, #f8d7ff, #b2f0ff);
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  justify-items: center;
 }
 
 .caroussel {

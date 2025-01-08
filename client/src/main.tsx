@@ -2,7 +2,7 @@
 import { StrictMode } from "react";
 import { createRoot } from "react-dom/client";
 import { RouterProvider, createBrowserRouter } from "react-router-dom";
-
+import "./index.css";
 /* ************************************************************************* */
 
 // Import the main app component
@@ -13,6 +13,7 @@ import App from "./App";
 
 import AuthPage from "./components/AuthPage";
 import ForgotPassword from "./components/ForgotPassword";
+import GamesHome from "./components/GamesHome";
 import LoginForm from "./components/LoginForm";
 import SignUpForm from "./components/SignUpForm";
 import Avatar from "./pages/Avatar/Avatar";
@@ -26,27 +27,34 @@ const router = createBrowserRouter([
   {
     path: "/", // The root path
     element: <App />, // Renders the App component for the home page
+    children: [
+      {
+        path: "/", // The root path
+        element: <GamesHome />,
+      },
+      {
+        path: "/login",
+        element: <LoginForm />,
+      },
+      {
+        path: "/sign-up",
+        element: <SignUpForm />,
+      },
+      {
+        path: "/forgot-password",
+        element: <ForgotPassword />,
+      },
+      {
+        path: "/AuthPage",
+        element: <AuthPage />,
+      },
+      {
+        path: "/avatar", // Nouvelle route pour la page Avatar
+        element: <Avatar />, // Rendu de la page Avatar
+      },
+    ],
   },
-  {
-    path: "/login",
-    element: <LoginForm />,
-  },
-  {
-    path: "/sign-up",
-    element: <SignUpForm />,
-  },
-  {
-    path: "/forgot-password",
-    element: <ForgotPassword />,
-  },
-  {
-    path: "/AuthPage",
-    element: <AuthPage />,
-  },
-  {
-    path: "/avatar", // Nouvelle route pour la page Avatar
-    element: <Avatar />, // Rendu de la page Avatar
-  },
+
   {
     path: "*",
     element: <NotFound />,
