@@ -13,6 +13,10 @@ import App from "./App";
 
 // import About from "./pages/About";
 // import Contact from "./pages/Contact";
+import ForgotPassword from "./components/ForgotPassword";
+import LoginForm from "./components/LoginForm";
+import SignUpForm from "./components/SignUpForm";
+import NotFound from "./pages/NotFound";
 
 /* ************************************************************************* */
 
