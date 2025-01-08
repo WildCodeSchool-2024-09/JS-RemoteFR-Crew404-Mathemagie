@@ -44,6 +44,10 @@ const router = createBrowserRouter([
     path: "/AuthPage",
     element: <AuthPage />,
   },
+  {
+    path: "*",
+    element: <NotFound />,
+  },
   // Try adding a new route! For example, "/about" with an About component
 ]);
 
