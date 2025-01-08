@@ -62,6 +62,5 @@ createRoot(rootElement).render(
  *
  * 3. Experiment with Dynamic Routes:
  *    You can create routes that take parameters (e.g., /users/:id).
- *    Documentation: https://reactrouter.com/en/main/start/tutorial#url-params-in-loaders
- */
+
 
