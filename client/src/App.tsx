@@ -1,5 +1,4 @@
 import "./App.css";
-
 function App() {
   return (
     <div>
@@ -14,6 +13,5 @@ function App() {
       </footer>
     </div>
   );
-};
-
+}
 export default App;
