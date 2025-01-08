@@ -1,6 +1,6 @@
 import "./SignUpForm.css";
 
-const SignUpForm = () => {
+function SignUpForm() {
   return (
     <div className="sign-up-container">
       <div className="sign-up-card">
