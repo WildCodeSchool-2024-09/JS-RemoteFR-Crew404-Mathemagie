@@ -1,9 +1,17 @@
-import ForgotPassword from "./components/ForgotPassword";
-import LoginForm from "./components/LoginForm";
-import SignUpForm from "./components/SignUpForm";
-
 function App() {
-  return <SignUpForm />;
+  return (
+    <div>
+      <header>
+        <h1>Bienvenue dans l'application</h1>
+      </header>
+      <main>
+        <p>Le contenu principal sera affiché ici.</p>
+      </main>
+      <footer>
+        <p>© 2025 Mon Application</p>
+      </footer>
+    </div>
+  );
 }
 
 export default App;
