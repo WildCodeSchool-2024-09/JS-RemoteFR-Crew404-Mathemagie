@@ -1,6 +1,6 @@
 import "./App.css";
-import GamesHome from "./components/GamesHome";
 import { Link } from "react-router-dom";
+import GamesHome from "./components/GamesHome";
 
 function App() {
   return (
