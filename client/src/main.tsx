@@ -17,6 +17,7 @@ import GamesHome from "./components/GamesHome";
 import LoginForm from "./components/LoginForm";
 import SignUpForm from "./components/SignUpForm";
 import Avatar from "./pages/Avatar/Avatar";
+import GameOne from "./pages/GameOne";
 import NotFound from "./pages/NotFound";
 
 /* ************************************************************************* */
@@ -35,6 +36,10 @@ const router = createBrowserRouter([
       {
         path: "/login",
         element: <LoginForm />,
+      },
+      {
+        path: "/GameOne",
+        element: <GameOne />,
       },
       {
         path: "/sign-up",
