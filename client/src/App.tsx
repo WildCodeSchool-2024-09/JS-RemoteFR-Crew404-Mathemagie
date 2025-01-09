@@ -1,4 +1,4 @@
-const App = () => {
+function App() {
   return (
     <div>
       <header>
@@ -12,6 +12,6 @@ const App = () => {
       </footer>
     </div>
   );
-};
+}
 
 export default App;
