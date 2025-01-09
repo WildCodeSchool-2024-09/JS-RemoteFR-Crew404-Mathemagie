@@ -1,7 +1,7 @@
 import "./LoginForm.css";
 import batman from "../assets/images/batman.png";
 
-const LoginForm = () => {
+function LoginForm() {
   return (
     <div className="login-container">
       <div className="login-card">
@@ -26,6 +26,7 @@ const LoginForm = () => {
           <button type="submit" className="btn-primary">
             Connexion
           </button>
+
           <button
             type="button"
             className="btn-secondary"
@@ -46,6 +47,6 @@ const LoginForm = () => {
       </div>
     </div>
   );
-};
+}
 
 export default LoginForm;

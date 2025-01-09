@@ -1,7 +1,7 @@
 import { useState } from "react";
 import "./ForgotPassword.css";
 
-const ForgotPassword = () => {
+function ForgotPassword() {
   const [email, setEmail] = useState("");
 
   const handleSubmit = (e: React.FormEvent) => {
@@ -34,6 +34,6 @@ const ForgotPassword = () => {
       </div>
     </div>
   );
-};
+}
 
 export default ForgotPassword;
