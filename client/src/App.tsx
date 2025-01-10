@@ -10,6 +10,7 @@ function App() {
         <Link to="./avatar"> Conçois ton avatar !</Link>
       </header>
       <Link to="./GameOne">GamOne</Link>
+      <Link to="./NumGame">Retrouve le chiffre manquant</Link>
       <Outlet />
       <footer>Codé avec le ❤️ par la team @Crew404</footer>
     </div>

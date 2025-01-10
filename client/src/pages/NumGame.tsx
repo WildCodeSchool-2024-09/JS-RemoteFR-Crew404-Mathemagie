@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import "./GameOne.css";
+import "./NumGame.css";
 
 // Fonction pour générer une question aléatoire
 function generateQuestion() {
@@ -22,7 +22,7 @@ function generateQuestion() {
   return { series, missingIndex, correctAnswer, choices };
 }
 
-function GameOne() {
+function NumGame() {
   const [questionIndex, setQuestionIndex] = useState(0);
   const [lives, setLives] = useState(5); // Jauge de vie
   const [score, setScore] = useState(0);
@@ -135,4 +135,4 @@ function GameOne() {
   );
 }
 
-export default GameOne;
+export default NumGame;
