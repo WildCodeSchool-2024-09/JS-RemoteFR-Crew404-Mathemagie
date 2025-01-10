@@ -18,6 +18,7 @@ import LoginForm from "./components/LoginForm";
 import SignUpForm from "./components/SignUpForm";
 import Avatar from "./pages/Avatar/Avatar";
 import NotFound from "./pages/NotFound";
+import GameOne from "./pages/GameOne/GameOne";
 
 /* ************************************************************************* */
 
@@ -51,6 +52,11 @@ const router = createBrowserRouter([
       {
         path: "/avatar", // Nouvelle route pour la page Avatar
         element: <Avatar />, // Rendu de la page Avatar
+      },
+
+      {
+        path: "/GameOne", // Nouvelle route pour la page Avatar
+        element: <GameOne />, // Rendu de la page Avatar
       },
     ],
   },
