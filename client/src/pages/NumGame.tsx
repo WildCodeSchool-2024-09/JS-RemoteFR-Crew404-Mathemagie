@@ -1,17 +1,16 @@
 import { useEffect, useState } from "react";
 import "./NumGame.css";
 
-// Fonction pour générer une question aléatoire
 function generateQuestion() {
-  const seriesLength = 5; // Nombre d'éléments dans la série
+  const seriesLength = 5;
   const start = Math.floor(Math.random() * 10) + 1; // Début de la série
-  const step = Math.floor(Math.random() * 5) + 1; // Pas de la série
+  const step = Math.floor(Math.random() * 5) + 1;
   const series = Array.from(
     { length: seriesLength },
     (_, i) => start + i * step,
   );
 
-  const missingIndex = Math.floor(Math.random() * seriesLength); // Indice manquant
+  const missingIndex = Math.floor(Math.random() * seriesLength);
   const correctAnswer = series[missingIndex];
   const choices = [
     correctAnswer,
@@ -24,16 +23,16 @@ function generateQuestion() {
 
 function NumGame() {
   const [questionIndex, setQuestionIndex] = useState(0);
-  const [lives, setLives] = useState(5); // Jauge de vie
+  const [lives, setLives] = useState(5);
   const [score, setScore] = useState(0);
-  const [answered, setAnswered] = useState(false); // Pour savoir si la question a été répondue
+  const [answered, setAnswered] = useState(false);
   const [currentQuestion, setCurrentQuestion] = useState(generateQuestion());
 
   const handleChoice = (choice: number): void => {
     if (choice === currentQuestion.correctAnswer) {
-      setScore(score + 1); // Ajoute 1 au score
+      setScore(score + 1);
     } else {
-      setLives(lives - 1); // Retire une vie
+      setLives(lives - 1);
     }
     setAnswered(true);
   };
@@ -42,9 +41,9 @@ function NumGame() {
     if (answered) {
       if (questionIndex < 4 && lives > 0) {
         const timer = setTimeout(() => {
-          setQuestionIndex(questionIndex + 1); // Passe à la question suivante
+          setQuestionIndex(questionIndex + 1);
           setAnswered(false);
-          setCurrentQuestion(generateQuestion()); // Génère une nouvelle question
+          setCurrentQuestion(generateQuestion());
         }, 1000);
         return () => clearTimeout(timer);
       }

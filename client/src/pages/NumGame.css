@@ -1,4 +1,3 @@
-/* Style général */
 .game-container {
   display: flex;
   flex-direction: column;
@@ -132,7 +131,6 @@ button:active {
   margin-top: 1.5rem;
 }
 
-/* Responsiveness */
 @media (max-width: 768px) {
   .game-container {
     padding: 15px;

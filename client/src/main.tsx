@@ -20,7 +20,6 @@ import Avatar from "./pages/Avatar/Avatar";
 import NotFound from "./pages/NotFound";
 import GameOne from "./pages/NumGame";
 import NumGame from "./pages/NumGame";
-("");
 
 /* ************************************************************************* */
 
