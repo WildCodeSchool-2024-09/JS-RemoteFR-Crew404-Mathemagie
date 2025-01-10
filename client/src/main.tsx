@@ -12,6 +12,7 @@ import App from "./App";
 // Try creating these components in the "pages" folder
 
 import AuthPage from "./components/AuthPage";
+import CarGame from "./components/CarGame";
 import ForgotPassword from "./components/ForgotPassword";
 import GamesHome from "./components/GamesHome";
 import LoginForm from "./components/LoginForm";
@@ -43,6 +44,10 @@ const router = createBrowserRouter([
       {
         path: "/forgot-password",
         element: <ForgotPassword />,
+      },
+      {
+        path: "/CarGame",
+        element: <CarGame />,
       },
       {
         path: "/AuthPage",

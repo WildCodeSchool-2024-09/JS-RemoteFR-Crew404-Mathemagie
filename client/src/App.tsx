@@ -9,6 +9,7 @@ function App() {
         <p>X/X</p>
         <Link to="./avatar"> Conçois ton avatar !</Link>
       </header>
+      <Link to="./CarGame">Voiture</Link>
       <Outlet />
       <footer>Codé avec le ❤️ par la team @Crew404</footer>
     </div>
