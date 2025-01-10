@@ -38,7 +38,7 @@ const router = createBrowserRouter([
         element: <LoginForm />,
       },
       {
-        path: "/NumGame",
+       path: "/num-game"
         element: <NumGame />,
       },
       {
