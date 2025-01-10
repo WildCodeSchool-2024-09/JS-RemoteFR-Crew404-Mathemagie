@@ -1,0 +1,76 @@
+* {
+  margin: 0;
+  box-sizing: border-box;
+}
+
+#game {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-top: 2rem;
+}
+
+.interface {
+  background-color: white;
+  width: 45%;
+  padding: 4rem 0rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1rem;
+  border-radius: 15px;
+}
+
+#answerList button {
+  color: var(--titlesColor);
+  background-color: rgba(255, 255, 255, 0.459);
+  border: solid 4px var(--purple);
+  padding: 1rem;
+  width: 7rem;
+  margin: 1rem;
+  border-radius: 15px;
+  font-weight: bold;
+  transition: 0.5s;
+  cursor: pointer;
+}
+
+#answerList button:hover {
+  cursor: pointer;
+  background-color: var(--purple);
+  box-shadow: 5px 5px 20px 3px rgba(94, 96, 206, 0.29);
+  color: white;
+}
+
+#generateButton {
+  cursor: pointer;
+  color: var(--titlesColor);
+  background-color: rgba(255, 255, 255, 0.459);
+  border: solid 4px var(--purple);
+  cursor: pointer;
+  padding-top: 1.5rem;
+  padding-bottom: 1.5rem;
+  padding-left: 3rem;
+  padding-right: 3rem;
+  font-size: 1.5rem;
+  border-radius: 40px;
+  margin-top: 1rem;
+  transition: 0.5s;
+}
+
+#generateButton:hover {
+  cursor: pointer;
+  background-color: var(--purple);
+  box-shadow: 5px 5px 20px 3px rgba(94, 96, 206, 0.29);
+  color: white;
+}
+
+#equation {
+  background-color: var(--purple);
+  color: white;
+  font-size: 20px;
+  padding-top: 1.5rem;
+  padding-bottom: 1.5rem;
+  padding-left: 3rem;
+  padding-right: 3rem;
+  border-radius: 1rem;
+}
