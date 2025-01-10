@@ -43,7 +43,7 @@ const router = createBrowserRouter([
         element: <GameOne />,
       },
       {
-        path: "/NumGame",
+        path: "/num-game",
         element: <NumGame />,
       },
       {
