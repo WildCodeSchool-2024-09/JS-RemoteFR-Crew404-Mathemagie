@@ -54,7 +54,7 @@ const router = createBrowserRouter([
         element: <Avatar />, // Rendu de la page Avatar
       },
       {
-        path: "/game",
+        path: "/random-equation",
         element: <RandomEquation />,
       },
     ],

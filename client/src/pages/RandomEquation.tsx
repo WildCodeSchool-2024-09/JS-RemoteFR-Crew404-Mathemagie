@@ -3,25 +3,44 @@ import "./RandomEquation.css";
 
 function RandomEquation() {
   const [equation, setEquation] = useState<string>("");
-  const [answer, setAnswer] = useState(0);
-  const [firstWrong, setFirstWrong] = useState(0);
-  const [secondWrong, setSecondWrong] = useState(0);
+  const [answers, setAnswers] = useState<number[]>([]);
 
   const handleClick = () => {
+    // ici je génère mes deux valeurs entre 0 et 20
     const a = Math.floor(Math.random() * 20);
     const b = Math.floor(Math.random() * 20);
-
+    // j'additionne mes deux valeurs pour définir la réponse de l'addition
     const rightAnswer = a + b;
-    setAnswer(rightAnswer);
     setEquation(`${a} + ${b} = _`);
 
-    const wrongAnswers = [
-      rightAnswer + Math.floor(Math.random() * 50),
-      rightAnswer + Math.floor(Math.random() * 50),
-    ];
-    setFirstWrong(wrongAnswers[0]);
-    setSecondWrong(wrongAnswers[1]);
+    // je crée mon tableau qui va contenir mes deux fausses réponses
+
+    const wrongAnswers: number[] = [];
+
+    // je fais une boucle qui continuera tant que ma mauvaise réponse n'est pas supérieure à 0, différente de la bonne réponse, ET aussi différente de l'autre mauvaise réponse puis je
+    // stocke la mauvaise réponse dans mon tableau initialisé juste avant
+    while (wrongAnswers.length < 2) {
+      const wrongAnswer = rightAnswer + Math.floor(Math.random() * 20) - 10;
+      if (
+        wrongAnswer > 0 &&
+        wrongAnswer !== rightAnswer &&
+        !wrongAnswers.includes(wrongAnswer)
+      ) {
+        wrongAnswers.push(wrongAnswer);
+      }
+    }
+
+    // je stocke les 3 choix dans un nouveau tableau (ici la syntaxe avec ... fait en sorte que les deux mauvaises réponses sont stockées en tant que valeur et non en tant que tableau )
+    const allAnswers = [rightAnswer, ...wrongAnswers];
+
+    //je mélange l'ordre de mes réponses
+
+    const randomOrder = allAnswers.sort(() => Math.random() - 0.5);
+
+    // je mets à jour mon state qui va me permettre d'afficher mes réponses dans des boutons
+    setAnswers(randomOrder);
   };
+
   return (
     <div id="game">
       <div className="interface">
@@ -30,9 +49,11 @@ function RandomEquation() {
         </button>
         <p id="equation">{equation}</p>
         <div id="answerList">
-          <button type="button">{firstWrong}</button>
-          <button type="button">{answer}</button>
-          <button type="button">{secondWrong}</button>
+          {answers.map((answer) => (
+            <button key={answer} type="button">
+              {answer}
+            </button>
+          ))}
         </div>
       </div>
     </div>
