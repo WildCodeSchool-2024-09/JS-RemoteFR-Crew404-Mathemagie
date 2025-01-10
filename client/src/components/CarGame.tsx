@@ -26,6 +26,7 @@ function CarGame () => {
   };
 
   return (
+    
     <div className="car-game-container">
       <h1>
         Jeu 1<p>Associez les objets au bon chiffre</p>
@@ -54,7 +55,7 @@ function CarGame () => {
       </div>
       <div className="score">Score : {score}</div>
     </div>
-  );
+  )
 };
 
 export default CarGame;
