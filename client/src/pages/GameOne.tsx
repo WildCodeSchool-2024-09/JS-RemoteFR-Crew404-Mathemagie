@@ -1,64 +1,51 @@
 import { useEffect, useState } from "react";
 import "./GameOne.css";
 
+// Fonction pour générer une question aléatoire
+function generateQuestion() {
+  const seriesLength = 5; // Nombre d'éléments dans la série
+  const start = Math.floor(Math.random() * 10) + 1; // Début de la série
+  const step = Math.floor(Math.random() * 5) + 1; // Pas de la série
+  const series = Array.from(
+    { length: seriesLength },
+    (_, i) => start + i * step,
+  );
+
+  const missingIndex = Math.floor(Math.random() * seriesLength); // Indice manquant
+  const correctAnswer = series[missingIndex];
+  const choices = [
+    correctAnswer,
+    correctAnswer + Math.floor(Math.random() * 3) + 1,
+    correctAnswer - Math.floor(Math.random() * 3) - 1,
+  ].sort(() => Math.random() - 0.5); // Mélange des choix
+
+  return { series, missingIndex, correctAnswer, choices };
+}
+
 function GameOne() {
   const [questionIndex, setQuestionIndex] = useState(0);
   const [lives, setLives] = useState(5); // Jauge de vie
   const [score, setScore] = useState(0);
   const [answered, setAnswered] = useState(false); // Pour savoir si la question a été répondue
-
-  const questions = [
-    {
-      series: [1, 3, 5, 7, 9], // Logique : Ajouter 2
-      missingIndex: 2,
-      correctAnswer: 5,
-      choices: [2, 5, 7],
-    },
-    {
-      series: [2, 4, 6, 8, 10], // Logique : Ajouter 2
-      missingIndex: 4,
-      correctAnswer: 10,
-      choices: [8, 10, 12],
-    },
-    {
-      series: [5, 10, 15, 20, 25], // Logique : Ajouter 5
-      missingIndex: 3,
-      correctAnswer: 20,
-      choices: [15, 20, 30],
-    },
-    {
-      series: [10, 20, 30, 40, 50], // Logique : Ajouter 10
-      missingIndex: 1,
-      correctAnswer: 20,
-      choices: [10, 20, 25],
-    },
-    {
-      series: [3, 6, 9, 12, 15], // Logique : Ajouter 3
-      missingIndex: 0,
-      correctAnswer: 3,
-      choices: [3, 6, 9],
-    },
-  ];
+  const [currentQuestion, setCurrentQuestion] = useState(generateQuestion());
 
   const handleChoice = (choice: number): void => {
-    const currentQuestion = questions[questionIndex];
-
     if (choice === currentQuestion.correctAnswer) {
       setScore(score + 1); // Ajoute 1 au score
     } else {
       setLives(lives - 1); // Retire une vie
     }
-
-    setAnswered(true); // Marque la question comme répondue
+    setAnswered(true);
   };
 
   useEffect(() => {
     if (answered) {
-      if (questionIndex < questions.length - 1 && lives > 0) {
+      if (questionIndex < 4 && lives > 0) {
         const timer = setTimeout(() => {
           setQuestionIndex(questionIndex + 1); // Passe à la question suivante
-          setAnswered(false); // Réinitialise l'état pour la nouvelle question
-        }, 1000); // Attends 1 seconde avant de passer à la question suivante
+          setAnswered(false);
+          setCurrentQuestion(generateQuestion()); // Génère une nouvelle question
+        }, 1000);
         return () => clearTimeout(timer);
       }
     }
@@ -68,8 +55,12 @@ function GameOne() {
     window.location.href = "/home";
   };
 
-  const handleNextLevel = (): void => {
-    window.location.href = "/next-level";
+  const handleRestart = (): void => {
+    setLives(5);
+    setScore(0);
+    setQuestionIndex(0);
+    setAnswered(false);
+    setCurrentQuestion(generateQuestion());
   };
 
   if (lives <= 0) {
@@ -77,34 +68,30 @@ function GameOne() {
       <div className="game-container">
         <h1>Oh non ! Tu as perdu toutes tes vies.</h1>
         <p>Ton score final : {score}</p>
-        <button type="button" onClick={() => window.location.reload()}>
+        <button type="button" onClick={handleRestart} className="game-button">
           Rejouer
         </button>
-        <button type="button" onClick={handleGoHome}>
+        <button type="button" onClick={handleGoHome} className="game-button">
           Retourner à l'accueil
         </button>
       </div>
     );
   }
 
-  if (questionIndex >= questions.length) {
+  if (questionIndex >= 5) {
     return (
       <div className="game-container">
         <h1>Félicitations !</h1>
-        <p>
-          Ton score : {score} / {questions.length}
-        </p>
-        <button type="button" onClick={() => window.location.reload()}>
+        <p>Ton score : {score} / 5</p>
+        <button type="button" onClick={handleRestart} className="game-button">
           Rejouer
         </button>
-        <button type="button" onClick={handleNextLevel}>
-          Niveau suivant
+        <button type="button" onClick={handleGoHome} className="game-button">
+          Retourner à l'accueil
         </button>
       </div>
     );
   }
-
-  const currentQuestion = questions[questionIndex];
 
   return (
     <div className="game-container">
@@ -120,19 +107,22 @@ function GameOne() {
       </div>
       <h1>Retrouve le chiffre manquant !</h1>
       <div className="series">
-        {currentQuestion.series.map((num, index) => (
-          <div
-            key={`series-${num}`}
-            className={`series-item ${index === currentQuestion.missingIndex ? "missing" : ""}`}
-          >
-            {index === currentQuestion.missingIndex ? "?" : num}
-          </div>
-        ))}
+        {currentQuestion.series.map((num, index) => {
+          const uniqueKey = `${num}-${index}-${currentQuestion.missingIndex}`;
+          return (
+            <div
+              key={uniqueKey}
+              className={`series-item ${index === currentQuestion.missingIndex ? "missing" : ""}`}
+            >
+              {index === currentQuestion.missingIndex ? "?" : num}
+            </div>
+          );
+        })}
       </div>
       <div className="choices">
         {currentQuestion.choices.map((choice) => (
           <button
-            key={`choice-${choice}`}
+            key={`choice-${choice}-${currentQuestion.series.join("-")}`}
             type="button"
             className="choice-button"
             onClick={() => handleChoice(choice)}

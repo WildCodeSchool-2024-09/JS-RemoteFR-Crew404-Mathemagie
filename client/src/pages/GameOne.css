@@ -1,3 +1,4 @@
+/* Style général */
 .game-container {
   display: flex;
   flex-direction: column;
@@ -9,18 +10,23 @@
   padding: 20px;
 }
 
+/* Titre */
 h1 {
   font-size: 2.5rem;
   color: #4059ad;
   margin-bottom: 1rem;
+  text-align: center;
 }
 
+/* Texte descriptif */
 p {
   font-size: 1.2rem;
   color: #4059ad;
-  margin-bottom: 2rem;
+  margin-bottom: 1.5rem;
+  text-align: center;
 }
 
+/* Jauge de vie */
 .lives {
   display: flex;
   gap: 0.5rem;
@@ -32,6 +38,15 @@ p {
   color: red;
 }
 
+/* Timer */
+.timer {
+  font-size: 1.5rem;
+  color: #ff5722;
+  font-weight: bold;
+  margin-bottom: 1rem;
+}
+
+/* Série des chiffres */
 .series {
   display: flex;
   justify-content: center;
@@ -40,11 +55,13 @@ p {
 
 .series-item {
   font-size: 2rem;
-  margin: 0 1rem;
-  padding: 10px;
+  margin: 0 0.5rem;
+  padding: 10px 15px;
   background-color: #fff;
   border: 2px solid #7bd3ea;
   border-radius: 8px;
+  box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
+  transition: transform 0.3s ease;
 }
 
 .series-item.missing {
@@ -52,10 +69,15 @@ p {
   font-weight: bold;
 }
 
+.series-item:hover {
+  transform: scale(1.1);
+}
+
+/* Boutons de choix */
 .choices {
   display: flex;
   gap: 1rem;
-  margin-top: 2rem;
+  margin-top: 1rem;
 }
 
 .choice-button {
@@ -66,16 +88,22 @@ p {
   border: none;
   border-radius: 5px;
   cursor: pointer;
-  transition: background-color 0.3s ease;
+  transition: background-color 0.3s ease, transform 0.2s ease;
 }
 
 .choice-button:hover {
   background-color: #5e60ce;
+  transform: scale(1.05);
 }
 
+.choice-button:active {
+  background-color: #303f9f;
+}
+
+/* Boutons généraux */
 button {
-  font-size: 1rem;
-  padding: 1rem 2rem;
+  font-size: 1.2rem;
+  padding: 0.8rem 1.5rem;
   background-color: #5e60ce;
   color: white;
   border: none;
@@ -94,43 +122,17 @@ button:focus {
 }
 
 button:active {
-  background-color: #4059ad;
+  background-color: #303f9f;
 }
 
-.game-button {
-  font-size: 1rem;
-  padding: 1rem 2rem;
-  background-color: #5e60ce;
-  color: white;
-  border: none;
-  border-radius: 5px;
-  cursor: pointer;
-  transition: background-color 0.3s ease;
-  margin: 10px 0;
+/* Section des boutons navigation (Accueil, Suivant) */
+.navigation-buttons {
+  display: flex;
+  gap: 1rem;
+  margin-top: 1.5rem;
 }
 
-.game-button:hover {
-  background-color: #4059ad;
-}
-
-.game-button:focus {
-  outline: none;
-}
-
-.game-button:active {
-  background-color: #4059ad;
-}
-
-.game-container .series-item,
-.game-container button {
-  transition: transform 0.3s ease;
-}
-
-.game-container .series-item:hover,
-.game-container button:hover {
-  transform: scale(1.1);
-}
-
+/* Responsiveness */
 @media (max-width: 768px) {
   .game-container {
     padding: 15px;
@@ -146,17 +148,22 @@ button:active {
 
   .series-item {
     font-size: 1.5rem;
-    margin: 0 0.5rem;
+    margin: 0 0.3rem;
+    padding: 8px 12px;
   }
 
   .choice-button {
     font-size: 1.2rem;
-    padding: 0.8rem 1.5rem;
+    padding: 0.7rem 1.2rem;
   }
 
   button {
+    font-size: 1rem;
+    padding: 0.7rem 1.2rem;
+  }
+
+  .timer {
     font-size: 1.2rem;
-    padding: 0.8rem 1.5rem;
   }
 }
 
@@ -171,15 +178,20 @@ button:active {
 
   .series-item {
     font-size: 1.2rem;
+    padding: 6px 10px;
   }
 
   .choice-button {
-    font-size: 1.1rem;
-    padding: 0.7rem 1.2rem;
+    font-size: 1rem;
+    padding: 0.5rem 1rem;
   }
 
   button {
-    font-size: 1.1rem;
-    padding: 0.7rem 1.2rem;
+    font-size: 1rem;
+    padding: 0.5rem 1rem;
+  }
+
+  .timer {
+    font-size: 1rem;
   }
 }
