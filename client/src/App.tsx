@@ -9,7 +9,7 @@ function App() {
         <p>X/X</p>
         <Link to="./avatar"> Conçois ton avatar !</Link>
       </header>
-
+      <h1>Jeux de maths</h1>
       <Link to="/num-game">Retrouve le chiffre manquant</Link>
       <Outlet />
       <footer>Codé avec le ❤️ par la team @Crew404</footer>
