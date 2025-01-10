@@ -38,10 +38,6 @@ const router = createBrowserRouter([
         element: <LoginForm />,
       },
       {
-        path: "/GameOne",
-        element: <GameOne />,
-      },
-      {
         path: "/NumGame",
         element: <NumGame />,
       },
