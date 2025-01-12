@@ -18,6 +18,7 @@ import LoginForm from "./components/LoginForm";
 import SignUpForm from "./components/SignUpForm";
 import Avatar from "./pages/Avatar/Avatar";
 import NotFound from "./pages/NotFound";
+import NumGame from "./pages/NumGame";
 
 /* ************************************************************************* */
 
@@ -35,6 +36,10 @@ const router = createBrowserRouter([
       {
         path: "/login",
         element: <LoginForm />,
+      },
+      {
+        path: "/num-game",
+        element: <NumGame />,
       },
       {
         path: "/sign-up",
