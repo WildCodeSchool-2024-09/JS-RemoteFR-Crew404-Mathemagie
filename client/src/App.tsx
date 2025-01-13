@@ -11,7 +11,7 @@ function App() {
         <Link to="./GameOne"> Premier jeu !</Link>
       </header>
       <Outlet />
-      <footer>Codé avec les débris du ❤️ de Julie </footer>
+      <footer>Codé avec le ❤️ par la team @Crew404 </footer>
     </div>
   );
 }

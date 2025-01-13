@@ -46,7 +46,7 @@ const router = createBrowserRouter([
         element: <ForgotPassword />,
       },
       {
-        path: "/AuthPage",
+        path: "/authpage",
         element: <AuthPage />,
       },
       {
@@ -55,7 +55,7 @@ const router = createBrowserRouter([
       },
 
       {
-        path: "/GameOne",
+        path: "/gameone",
         element: <GameOne />,
       },
     ],
