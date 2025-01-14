@@ -8,7 +8,7 @@ function App() {
         <p>Niveau X</p>
         <p>X/X</p>
         <Link to="/avatar"> Conçois ton avatar !</Link>
-        <Link to="/gameOne"> Premier jeu !</Link>
+        <Link to="/gameone"> Premier jeu !</Link>
       </header>
       <Outlet />
       <footer>Codé avec le ❤️ par la team @Crew404 </footer>
