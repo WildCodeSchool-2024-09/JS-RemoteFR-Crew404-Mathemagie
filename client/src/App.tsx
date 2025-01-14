@@ -7,8 +7,8 @@ function App() {
       <header id="statsBar">
         <p>Niveau X</p>
         <p>X/X</p>
-        <Link to="./avatar"> Conçois ton avatar !</Link>
-        <Link to="./GameOne"> Premier jeu !</Link>
+        <Link to="/avatar"> Conçois ton avatar !</Link>
+        <Link to="/gameOne"> Premier jeu !</Link>
       </header>
       <Outlet />
       <footer>Codé avec le ❤️ par la team @Crew404 </footer>
