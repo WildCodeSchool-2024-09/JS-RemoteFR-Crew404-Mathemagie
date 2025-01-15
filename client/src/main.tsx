@@ -11,14 +11,14 @@ import App from "./App";
 // Import additional components for new routes
 // Try creating these components in the "pages" folder
 
-import AuthPage from "./pages/Auth/AuthPage";
-import Avatar from "./pages/Avatar/Avatar";
-import ForgotPassword from "./pages/ForgotPassword/ForgotPassword";
-import GamesHome from "./pages/GamesHome/GamesHome";
-import LoginForm from "./pages/LoginForm/LoginForm";
-import NotFound from "./pages/NotFound";
-import NumGame from "./pages/NumGame";
-import SignUpForm from "./pages/SignUpForm/SignUpForm";
+import AuthPage from "../src/pages/Auth/AuthPage";
+import Avatar from "../src/pages/Avatar/Avatar";
+import ForgotPassword from "../src/pages/ForgotPassword/ForgotPassword";
+import GamesHome from "../src/pages/GamesHome/GamesHome";
+import LoginForm from "../src/pages/LoginForm/LoginForm";
+import NotFound from "../src/pages/Notfound/NotFound";
+import NumGame from "../src/pages/NumGame/NumGame";
+import SignUpForm from "../src/pages/SignUpForm/SignUpForm";
 
 /* ************************************************************************* */
 
@@ -50,7 +50,7 @@ const router = createBrowserRouter([
         element: <ForgotPassword />,
       },
       {
-        path: "/AuthPage",
+        path: "/authPage",
         element: <AuthPage />,
       },
       {

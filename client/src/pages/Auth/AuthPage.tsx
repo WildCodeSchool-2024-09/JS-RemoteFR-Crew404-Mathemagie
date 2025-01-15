@@ -1,5 +1,5 @@
 import LoginForm from "../LoginForm/LoginForm";
-import "./AuthPage.css";
+import "../Auth/AuthPage.css";
 
 function AuthPage() {
   return (

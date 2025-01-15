@@ -1,5 +1,5 @@
-import "./LoginForm.css";
-import batman from "../assets/images/batman.png";
+import "../LoginForm/LoginForm.css";
+import batman from "../../assets/images/batman.png";
 
 function LoginForm() {
   return (

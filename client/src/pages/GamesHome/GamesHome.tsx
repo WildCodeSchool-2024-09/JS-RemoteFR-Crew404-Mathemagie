@@ -1,4 +1,4 @@
-import "./GamesHome.css";
+import "../GamesHome/GamesHome.css";
 
 function GamesHome() {
   return (
