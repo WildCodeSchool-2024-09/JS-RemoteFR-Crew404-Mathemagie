@@ -17,6 +17,7 @@ import GamesHome from "./components/GamesHome";
 import LoginForm from "./components/LoginForm";
 import SignUpForm from "./components/SignUpForm";
 import Avatar from "./pages/Avatar/Avatar";
+import GameOne from "./pages/GameOne/GameOne";
 import NotFound from "./pages/NotFound";
 import NumGame from "./pages/NumGame";
 
@@ -50,12 +51,17 @@ const router = createBrowserRouter([
         element: <ForgotPassword />,
       },
       {
-        path: "/AuthPage",
+        path: "/authpage",
         element: <AuthPage />,
       },
       {
-        path: "/avatar", // Nouvelle route pour la page Avatar
-        element: <Avatar />, // Rendu de la page Avatar
+        path: "/avatar",
+        element: <Avatar />,
+      },
+
+      {
+        path: "/gameone",
+        element: <GameOne />,
       },
     ],
   },
