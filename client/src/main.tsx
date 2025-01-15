@@ -21,6 +21,7 @@ import Avatar from "./pages/Avatar/Avatar";
 import GameOne from "./pages/GameOne/GameOne";
 import NotFound from "./pages/NotFound";
 import NumGame from "./pages/NumGame";
+import RandomEquation from "./pages/RandomEquation/RandomEquation";
 
 /* ************************************************************************* */
 
@@ -67,6 +68,10 @@ const router = createBrowserRouter([
       {
         path: "/gameone",
         element: <GameOne />,
+      },
+      {
+        path: "/random-equation",
+        element: <RandomEquation />,
       },
     ],
   },
