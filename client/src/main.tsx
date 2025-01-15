@@ -19,8 +19,8 @@ import SignUpForm from "./components/SignUpForm";
 import Avatar from "./pages/Avatar/Avatar";
 import GameOne from "./pages/GameOne/GameOne";
 import NotFound from "./pages/NotFound";
-import RandomEquation from "./pages/RandomEquation/RandomEquation";
 import NumGame from "./pages/NumGame";
+import RandomEquation from "./pages/RandomEquation/RandomEquation";
 
 /* ************************************************************************* */
 
