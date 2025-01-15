@@ -18,7 +18,9 @@ import GamesHome from "./components/GamesHome";
 import LoginForm from "./components/LoginForm";
 import SignUpForm from "./components/SignUpForm";
 import Avatar from "./pages/Avatar/Avatar";
+import GameOne from "./pages/GameOne/GameOne";
 import NotFound from "./pages/NotFound";
+import NumGame from "./pages/NumGame";
 
 /* ************************************************************************* */
 
@@ -38,6 +40,10 @@ const router = createBrowserRouter([
         element: <LoginForm />,
       },
       {
+        path: "/num-game",
+        element: <NumGame />,
+      },
+      {
         path: "/sign-up",
         element: <SignUpForm />,
       },
@@ -46,16 +52,21 @@ const router = createBrowserRouter([
         element: <ForgotPassword />,
       },
       {
-        path: "/carGame",
+        path: "/CarGame",
         element: <CarGame />,
       },
       {
-        path: "/authPage",
+        path: "/AuthPage",
         element: <AuthPage />,
       },
       {
-        path: "/avatar", // Nouvelle route pour la page Avatar
-        element: <Avatar />, // Rendu de la page Avatar
+        path: "/avatar",
+        element: <Avatar />,
+      },
+
+      {
+        path: "/gameone",
+        element: <GameOne />,
       },
     ],
   },
