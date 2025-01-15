@@ -2,7 +2,7 @@ import { useEffect, useState } from "react";
 import "./CarGame.css";
 import car from "../assets/images/car.png";
 
-function·CarGame()·{
+function CarGame() {
   const [score, setScore] = useState(0);
   const [timeLeft, setTimeLeft] = useState(45);
   const [selectedAnswer, setSelectedAnswer] = useState<number | null>(null);
@@ -55,6 +55,7 @@ function·CarGame()·{
       <div className="score">Score : {score}</div>
     </div>
   );
+};
 }
 
 export default CarGame;
