@@ -55,6 +55,6 @@ function·CarGame()·{
       <div className="score">Score : {score}</div>
     </div>
   );
-};
+}
 
 export default CarGame;
