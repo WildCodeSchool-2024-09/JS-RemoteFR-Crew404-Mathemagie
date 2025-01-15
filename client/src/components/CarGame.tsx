@@ -34,8 +34,7 @@ function CarGame() {
       <div className="hearts"> ❤️ : {hearts}</div>
       <div className="cars">
         {Array.from({ length: carsCount }).map((_, index) => (
-          // biome-ignore lint/suspicious/noArrayIndexKey: <explanation>
-          <img key={index} src={car} alt="voiture" />
+<img key={index} src={car} alt="voiture" />
         ))}
       </div>
       <div className="answers">
