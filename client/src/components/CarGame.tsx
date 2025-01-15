@@ -34,7 +34,7 @@ function CarGame() {
       <div className="hearts"> ❤️ : {hearts}</div>
       <div className="cars">
         {Array.from({ length: carsCount }).map((_, index) => (
-<img key={index} src={car} alt="voiture" />
+          <img key={`car-${index + 1}`} src={car} alt="voiture" />
         ))}
       </div>
       <div className="answers">
