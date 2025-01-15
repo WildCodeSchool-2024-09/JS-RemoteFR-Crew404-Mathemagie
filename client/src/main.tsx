@@ -52,11 +52,11 @@ const router = createBrowserRouter([
         element: <ForgotPassword />,
       },
       {
-        path: "/CarGame",
+        path: "/carGame",
         element: <CarGame />,
       },
       {
-        path: "/AuthPage",
+        path: "/authPage",
         element: <AuthPage />,
       },
       {
