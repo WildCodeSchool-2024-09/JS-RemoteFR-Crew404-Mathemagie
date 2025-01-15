@@ -2,7 +2,7 @@
 import { StrictMode } from "react";
 import { createRoot } from "react-dom/client";
 import { RouterProvider, createBrowserRouter } from "react-router-dom";
-
+import "./index.css";
 /* ************************************************************************* */
 
 // Import the main app component
@@ -11,8 +11,17 @@ import App from "./App";
 // Import additional components for new routes
 // Try creating these components in the "pages" folder
 
-// import About from "./pages/About";
-// import Contact from "./pages/Contact";
+import AuthPage from "./components/AuthPage";
+import CarGame from "./components/CarGame";
+import ForgotPassword from "./components/ForgotPassword";
+import GamesHome from "./components/GamesHome";
+import LoginForm from "./components/LoginForm";
+import SignUpForm from "./components/SignUpForm";
+import Avatar from "./pages/Avatar/Avatar";
+import GameOne from "./pages/GameOne/GameOne";
+import NotFound from "./pages/NotFound";
+import NumGame from "./pages/NumGame";
+import RandomEquation from "./pages/RandomEquation/RandomEquation";
 
 /* ************************************************************************* */
 
@@ -22,8 +31,55 @@ const router = createBrowserRouter([
   {
     path: "/", // The root path
     element: <App />, // Renders the App component for the home page
+    children: [
+      {
+        path: "/", // The root path
+        element: <GamesHome />,
+      },
+      {
+        path: "/login",
+        element: <LoginForm />,
+      },
+      {
+        path: "/num-game",
+        element: <NumGame />,
+      },
+      {
+        path: "/sign-up",
+        element: <SignUpForm />,
+      },
+      {
+        path: "/forgot-password",
+        element: <ForgotPassword />,
+      },
+      {
+        path: "/cargame",
+        element: <CarGame />,
+      },
+      {
+        path: "/authpage",
+        element: <AuthPage />,
+      },
+      {
+        path: "/avatar",
+        element: <Avatar />,
+      },
+
+      {
+        path: "/gameone",
+        element: <GameOne />,
+      },
+      {
+        path: "/random-equation",
+        element: <RandomEquation />,
+      },
+    ],
   },
-  // Try adding a new route! For example, "/about" with an About component
+
+  {
+    path: "*",
+    element: <NotFound />,
+  },
 ]);
 
 /* ************************************************************************* */
@@ -38,31 +94,30 @@ if (rootElement == null) {
 createRoot(rootElement).render(
   <StrictMode>
     <RouterProvider router={router} />
-  </StrictMode>
+  </StrictMode>,
 );
 
 /**
  * Helpful Notes:
- * 
+ *
  * 1. Adding More Routes:
  *    To add more pages to your app, first create a new component (e.g., About.tsx).
  *    Then, import that component above like this:
- * 
+ *
  *    import About from "./pages/About";
- * 
+ *
  *    Add a new route to the router:
- * 
+ *
  *      {
  *        path: "/about",
  *        element: <About />,  // Renders the About component
  *      }
- * 
+ *
  * 2. Try Nested Routes:
  *    For more complex applications, you can nest routes. This lets you have sub-pages within a main page.
  *    Documentation: https://reactrouter.com/en/main/start/tutorial#nested-routes
- * 
+ *
  * 3. Experiment with Dynamic Routes:
  *    You can create routes that take parameters (e.g., /users/:id).
  *    Documentation: https://reactrouter.com/en/main/start/tutorial#url-params-in-loaders
  */
-
