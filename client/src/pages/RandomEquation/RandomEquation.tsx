@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useCallback, useEffect, useState } from "react";
 import "./RandomEquation.css";
 
 function RandomEquation() {
@@ -7,7 +7,7 @@ function RandomEquation() {
   const [correctAnswer, setCorrectAnswer] = useState<number[] | number>([]);
   const [score, setScore] = useState(Number(0));
 
-  const handleClick = () => {
+  const handleClick = useCallback(() => {
     // ici je génère mes deux valeurs entre 0 et 20
     const a = Math.floor(Math.random() * 10);
     const b = Math.floor(Math.random() * 10);
@@ -42,7 +42,11 @@ function RandomEquation() {
 
     // je mets à jour mon state qui va me permettre d'afficher mes réponses dans des boutons
     setAnswers(randomOrder);
-  };
+  }, []);
+
+  useEffect(() => {
+    handleClick();
+  }, [handleClick]);
 
   //je vérifie si la réponse de l'utilisateur correspond à la somme de a + b
 
@@ -56,11 +60,9 @@ function RandomEquation() {
   return (
     <div id="game">
       <div className="interface">
-        <button type="button" onClick={handleClick} id="generateButton">
-          Appuie pour générer une addition aléatoire !
-        </button>
+        <p id="equationTitle">Quel est le résultat de :</p>
         <p id="equation">{equation}</p>
-        <p>Score : {score}</p>
+        <p id="score">Score : {score}</p>
         <div id="answerList">
           {answers.map((answer) => (
             <button

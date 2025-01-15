@@ -18,7 +18,7 @@ import LoginForm from "./components/LoginForm";
 import SignUpForm from "./components/SignUpForm";
 import Avatar from "./pages/Avatar/Avatar";
 import NotFound from "./pages/NotFound";
-import RandomEquation from "./pages/RandomEquation";
+import RandomEquation from "./pages/RandomEquation/RandomEquation";
 
 /* ************************************************************************* */
 
