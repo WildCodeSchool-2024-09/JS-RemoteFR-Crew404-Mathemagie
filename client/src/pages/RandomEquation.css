@@ -75,3 +75,11 @@
   padding-right: 3rem;
   border-radius: 1rem;
 }
+
+.wrong {
+  border: 7px solid var(--wrong);
+}
+
+.correct {
+  border: 7px solid var(--correct);
+}

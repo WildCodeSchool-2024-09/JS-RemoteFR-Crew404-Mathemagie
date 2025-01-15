@@ -4,13 +4,16 @@ import "./RandomEquation.css";
 function RandomEquation() {
   const [equation, setEquation] = useState<string>("");
   const [answers, setAnswers] = useState<number[]>([]);
+  const [correctAnswer, setCorrectAnswer] = useState<number[] | number>([]);
+  const [score, setScore] = useState(Number(0));
 
   const handleClick = () => {
     // ici je génère mes deux valeurs entre 0 et 20
-    const a = Math.floor(Math.random() * 20);
-    const b = Math.floor(Math.random() * 20);
+    const a = Math.floor(Math.random() * 10);
+    const b = Math.floor(Math.random() * 10);
     // j'additionne mes deux valeurs pour définir la réponse de l'addition
     const rightAnswer = a + b;
+    setCorrectAnswer(rightAnswer);
     setEquation(`${a} + ${b} = _`);
 
     // je crée mon tableau qui va contenir mes deux fausses réponses
@@ -41,6 +44,15 @@ function RandomEquation() {
     setAnswers(randomOrder);
   };
 
+  //je vérifie si la réponse de l'utilisateur correspond à la somme de a + b
+
+  const handleAnswer = (answer: number) => {
+    if (answer === correctAnswer) {
+      setScore(score + 1);
+    }
+    return handleClick();
+  };
+
   return (
     <div id="game">
       <div className="interface">
@@ -48,9 +60,14 @@ function RandomEquation() {
           Appuie pour générer une addition aléatoire !
         </button>
         <p id="equation">{equation}</p>
+        <p>Score : {score}</p>
         <div id="answerList">
           {answers.map((answer) => (
-            <button key={answer} type="button">
+            <button
+              key={answer}
+              type="button"
+              onClick={() => handleAnswer(answer)}
+            >
               {answer}
             </button>
           ))}

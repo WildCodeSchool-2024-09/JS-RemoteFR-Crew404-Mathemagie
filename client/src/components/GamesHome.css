@@ -7,6 +7,8 @@
   --purple: #5e60ce;
   --cardHover: #7476df;
   --titlesColor: #5e60ce;
+  --wrong: #ee6e6e;
+  --correct: #46b446;
 }
 
 body {
