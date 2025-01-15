@@ -1,12 +1,13 @@
 .car-game-container {
-  background-color: #000;
-  color: #fff;
+  background: linear-gradient(135deg, #f8d7ff, #b2f0ff);
+  border-radius: 20;
+  color: black;
   text-align: center;
   padding: 20px;
 }
 
 .car-game-container p {
-  color: aqua;
+  color: #5e60ce;
 }
 
 .timer,
@@ -32,12 +33,26 @@
 }
 
 .answers button {
-  margin: 0 5px;
-  padding: 10px 20px;
-  font-size: 16px;
+  color: var(--titlesColor);
+  background-color: rgba(255, 255, 255, 0.459);
+  border: solid 4px var(--purple);
+  padding: 1rem;
+  width: 7rem;
+  margin: 1rem;
+  border-radius: 15px;
+  font-weight: bold;
+  font-size: 15px;
+  transition: 0.5s;
+  cursor: pointer;
+}
+
+.answers button:hover {
+  cursor: pointer;
+  background-color: var(--purple);
+  box-shadow: 5px 5px 20px 3px rgba(94, 96, 206, 0.29);
+  color: white;
 }
 
 .timer {
-  border: 2px solid white;
   padding: 2px;
 }
