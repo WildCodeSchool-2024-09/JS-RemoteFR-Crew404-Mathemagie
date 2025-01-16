@@ -11,25 +11,25 @@ import App from "./App";
 // Import additional components for new routes
 // Try creating these components in the "pages" folder
 
-import Avatar from "./pages/Avatar/Avatar";
-import GameOne from "./pages/GameOne/GameOne";
 /**
  * Pages
  */
+import AuthPage from "./pages/Auth/AuthPage";
+import Avatar from "./pages/Avatar/Avatar";
+import ForgotPassword from "./pages/ForgotPassword/ForgotPassword";
+import GameOne from "./pages/GameOne/GameOne";
+import GamesHome from "./pages/GamesHome/GamesHome";
 import LevelGame1 from "./pages/LevelGame1/LevelGame1";
+import LoginForm from "./pages/LoginForm/LoginForm";
 import NotFound from "./pages/Notfound/NotFound";
 import NumGame from "./pages/NumGame/NumGame";
+import RandomEquation from "./pages/RandomEquation/RandomEquation";
+import SignUpForm from "./pages/SignUpForm/SignUpForm";
 
 /**
  * Components
  */
-import AuthPage from "./components/AuthPage";
 import CarGame from "./components/CarGame";
-import ForgotPassword from "./components/ForgotPassword";
-import GamesHome from "./components/GamesHome";
-import LoginForm from "./components/LoginForm";
-import SignUpForm from "./components/SignUpForm";
-import RandomEquation from "./pages/RandomEquation/RandomEquation";
 
 /* ************************************************************************* */
 
