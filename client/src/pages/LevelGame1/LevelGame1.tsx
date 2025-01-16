@@ -1,5 +1,8 @@
-function LevelGame1(): JSX.Element {
-  return <div>décès</div>;
+export default function LevelGame1() {
+  return (
+    <div>
+      <h1>LevelGame1</h1>
+    </div>
+  );
+  // Function implementation goes here
 }
-
-export default LevelGame1;
