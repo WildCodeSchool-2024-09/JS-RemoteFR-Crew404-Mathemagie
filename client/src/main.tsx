@@ -11,15 +11,25 @@ import App from "./App";
 // Import additional components for new routes
 // Try creating these components in the "pages" folder
 
-import AuthPage from "../src/pages/Auth/AuthPage";
-import Avatar from "../src/pages/Avatar/Avatar";
-import ForgotPassword from "../src/pages/ForgotPassword/ForgotPassword";
-import GamesHome from "../src/pages/GamesHome/GamesHome";
-import LoginForm from "../src/pages/LoginForm/LoginForm";
-import NotFound from "../src/pages/Notfound/NotFound";
-import NumGame from "../src/pages/NumGame/NumGame";
-import SignUpForm from "../src/pages/SignUpForm/SignUpForm";
+import Avatar from "./pages/Avatar/Avatar";
+import GameOne from "./pages/GameOne/GameOne";
+/**
+ * Pages
+ */
 import LevelGame1 from "./pages/LevelGame1/LevelGame1";
+import NotFound from "./pages/Notfound/NotFound";
+import NumGame from "./pages/NumGame/NumGame";
+
+/**
+ * Components
+ */
+import AuthPage from "./components/AuthPage";
+import CarGame from "./components/CarGame";
+import ForgotPassword from "./components/ForgotPassword";
+import GamesHome from "./components/GamesHome";
+import LoginForm from "./components/LoginForm";
+import SignUpForm from "./components/SignUpForm";
+import RandomEquation from "./pages/RandomEquation/RandomEquation";
 
 /* ************************************************************************* */
 
@@ -55,12 +65,25 @@ const router = createBrowserRouter([
         element: <ForgotPassword />,
       },
       {
+        path: "/car-game",
+        element: <CarGame />,
+      },
+      {
         path: "/authpage",
         element: <AuthPage />,
       },
       {
-        path: "/avatar", // Nouvelle route pour la page Avatar
-        element: <Avatar />, // Rendu de la page Avatar
+        path: "/avatar",
+        element: <Avatar />,
+      },
+
+      {
+        path: "/gameone",
+        element: <GameOne />,
+      },
+      {
+        path: "/random-equation",
+        element: <RandomEquation />,
       },
     ],
   },

@@ -7,12 +7,16 @@ function App() {
       <header id="statsBar">
         <p>Niveau X</p>
         <p>X/X</p>
-        <Link to="./avatar"> Conçois ton avatar !</Link>
+        <Link to="/avatar"> Conçois ton avatar !</Link>
+        <Link to="/gameone"> Premier jeu !</Link>
+        <Link to="/car-game">Voiture</Link>
+        <Link to="/num-game">Retrouve le chiffre manquant</Link>
       </header>
 
-      <Link to="/num-game">Retrouve le chiffre manquant</Link>
+      <h1>Jeux de maths</h1>
+
       <Outlet />
-      <footer>Codé avec le ❤️ par la team @Crew404</footer>
+      <footer>Codé avec le ❤️ par la team @Crew404 </footer>
     </div>
   );
 }

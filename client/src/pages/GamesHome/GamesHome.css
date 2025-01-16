@@ -71,6 +71,7 @@ p {
   border-radius: 20px;
   font-weight: bolder;
   transition: 0.5s;
+  border: solid 2px var(--purple);
 }
 
 #dailyQuiz {
