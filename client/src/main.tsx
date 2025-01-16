@@ -39,7 +39,7 @@ const router = createBrowserRouter([
         element: <LoginForm />,
       },
       {
-        path: "/levelGame1",
+        path: "/levelgame1",
         element: <LevelGame1 />,
       },
       {
