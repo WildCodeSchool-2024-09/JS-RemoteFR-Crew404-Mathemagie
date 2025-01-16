@@ -11,8 +11,6 @@ function App() {
         <Link to="/gameone"> Premier jeu !</Link>
       </header>
 
-      <Link to="/num-game">Retrouve le chiffre manquant</Link>
-
       <Outlet />
       <footer>Codé avec le ❤️ par la team @Crew404 </footer>
     </div>
