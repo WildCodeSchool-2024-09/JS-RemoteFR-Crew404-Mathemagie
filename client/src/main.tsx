@@ -55,12 +55,12 @@ const router = createBrowserRouter([
         element: <ForgotPassword />,
       },
       {
-        path: "/authPage",
+        path: "/authpage",
         element: <AuthPage />,
       },
       {
-        path: "/avatar", // Nouvelle route pour la page Avatar
-        element: <Avatar />, // Rendu de la page Avatar
+        path: "/avatar",
+        element: <Avatar />,
       },
     ],
   },
