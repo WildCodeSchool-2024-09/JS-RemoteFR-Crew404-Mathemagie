@@ -19,6 +19,7 @@ import LoginForm from "../src/pages/LoginForm/LoginForm";
 import NotFound from "../src/pages/Notfound/NotFound";
 import NumGame from "../src/pages/NumGame/NumGame";
 import SignUpForm from "../src/pages/SignUpForm/SignUpForm";
+import LevelGame1 from "./pages/LevelGame1/LevelGame1";
 
 /* ************************************************************************* */
 
@@ -36,6 +37,10 @@ const router = createBrowserRouter([
       {
         path: "/login",
         element: <LoginForm />,
+      },
+      {
+        path: "/levelGame1",
+        element: <LevelGame1 />,
       },
       {
         path: "/num-game",
