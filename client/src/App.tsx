@@ -12,7 +12,6 @@ function App() {
         <p>Niveau X</p>
         <p>X/X</p>
       </header>
-
       <Outlet />
       <footer>Codé avec le ❤️ par la team @Crew404 </footer>
     </div>

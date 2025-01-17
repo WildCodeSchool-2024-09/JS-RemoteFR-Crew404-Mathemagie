@@ -3,6 +3,14 @@ body {
   background: linear-gradient(135deg, #f8d7ff, #b2f0ff);
 }
 
+.pagetotale {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  justify-items: center;
+}
+
 .caroussel {
   border-radius: 10px;
   background-color: white;
@@ -18,15 +26,38 @@ body {
   justify-items: center;
   font-family: "Fredoka", serif;
   color: #5e60ce;
+  overflow: hidden;
+  position: relative;
+}
+
+.caroussel-images {
+  display: flex;
+  flex-direction: row;
+  transition: transform 0.5s ease-in-out;
+  transform: translateX(calc(-100% * var(--current-index, 0)));
+  margin: 0 auto 50px;
+  padding-bottom: 50px;
 }
 
 .animal {
-  width: 80px;
-  display: flex;
-  justify-content: center;
-  justify-items: center;
-  align-items: center;
-  margin-bottom: 50px;
+  width: 90px;
+  height: 100px;
+  object-fit: contain;
+  opacity: 0.5;
+  transition: all 0.5s ease-in-out;
+  transform: scale(1);
+}
+
+.animal.active {
+  width: 150px;
+  height: 200px;
+  opacity: 1;
+  transform: scale(1.5);
+  z-index: 1;
+}
+
+.animal.inactive {
+  filter: blur(2px);
 }
 
 .button-controls {
@@ -47,18 +78,10 @@ body {
   padding: 15px 15px;
   transition: all 0.2s ease-in-out;
   margin-bottom: 20px;
-  display: flex;
-  flex-direction: row;
+
   font-size: 14px;
 }
 /* partie  questions page avatar */
-.pagetotale {
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  justify-items: center;
-}
 
 .pagetotal h2 {
   font-family: "Poppins", serif;
@@ -138,6 +161,10 @@ body {
     font-size: 22px;
   }
 
+  .questions-creation {
+    margin: 0 auto;
+    width: 45%;
+  }
   .validate-button {
     font-size: 20px;
   }

@@ -1,3 +1,4 @@
+
 import { Link } from "react-router-dom";
 import "../GamesHome/GamesHome.css";
 
@@ -20,6 +21,7 @@ function GamesHome() {
         </Link>
       </section>
       <section className="quizSection">
+
         <button type="button" id="dailyQuiz">
           <p>Quiz Quotidien</p>
         </button>

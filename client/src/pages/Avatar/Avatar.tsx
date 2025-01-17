@@ -3,11 +3,17 @@ import { useState } from "react";
 
 function Avatar() {
   const images = [
-    "/public/avatarphotos/chat.png",
-    "/public/avatarphotos/chien.png",
-    "/public/avatarphotos/renard.png",
+    "/public/avatarphotos/cat.png",
+    "/public/avatarphotos/fox.png",
+    "/public/avatarphotos/tiger.png",
+    "/public/avatarphotos/elephant.png",
     "/public/avatarphotos/cadenas.png",
   ];
+
+  const imagesWithId = images.map((image, index) => ({
+    id: `image-${index}-${Date.now()}`,
+    src: image,
+  }));
 
   const [currentIndex, setCurrentIndex] = useState(0);
 
@@ -26,11 +32,18 @@ function Avatar() {
       <section className="pagetotale">
         <h2>Avatar</h2>
         <section className="caroussel">
-          <img
-            src={images[currentIndex]}
-            alt={`Animal ${currentIndex + 1}`}
-            className="animal"
-          />
+          <section className="caroussel-images">
+            {imagesWithId.map((image) => (
+              <img
+                key={image.id}
+                src={image.src}
+                alt={`Animal ${image.id}`}
+                className={`animal ${
+                  image.id === imagesWithId[currentIndex].id ? "active" : ""
+                }`}
+              />
+            ))}
+          </section>
           <div className=" button-controls">
             <button
               type="button"
