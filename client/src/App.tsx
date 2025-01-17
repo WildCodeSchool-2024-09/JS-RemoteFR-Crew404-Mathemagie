@@ -8,13 +8,10 @@ function App() {
         <p>Niveau X</p>
         <p>X/X</p>
         <Link to="/avatar"> Conçois ton avatar !</Link>
-        <Link to="/gameone"> Premier jeu !</Link>
+        <Link to="/game-one"> Premier jeu !</Link>
         <Link to="/car-game">Voiture</Link>
         <Link to="/num-game">Retrouve le chiffre manquant</Link>
       </header>
-
-      <h1>Jeux de maths</h1>
-
       <Outlet />
       <footer>Codé avec le ❤️ par la team @Crew404 </footer>
     </div>
