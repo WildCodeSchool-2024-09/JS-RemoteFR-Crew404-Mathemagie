@@ -12,6 +12,7 @@ import AuthPage from "../src/pages/Auth/AuthPage";
 import Avatar from "../src/pages/Avatar/Avatar";
 // Import additional components for new routes
 // Try creating these components in the "pages" folder
+
 import CarGame from "../src/pages/CarGame/CarGame";
 import ForgotPassword from "../src/pages/ForgotPassword/ForgotPassword";
 import GameOne from "../src/pages/GameOne/GameOne";

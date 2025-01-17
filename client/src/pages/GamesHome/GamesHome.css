@@ -1,8 +1,3 @@
-* {
-  margin: 0;
-  box-sizing: border-box;
-}
-
 h1 {
   font-family: "Poppins", "Arial", sans-serif;
 }
@@ -46,6 +41,7 @@ p {
   padding: 2rem;
   text-align: center;
   border-radius: 20px;
+
   transition: 0.5s;
   border: solid 2px var(--purple);
 }
@@ -120,7 +116,6 @@ p {
     color: white;
     box-shadow: 5px 5px 20px 3px rgba(94, 96, 206, 0.29);
   }
-
   #dailyQuiz:hover p {
     color: white;
   }
