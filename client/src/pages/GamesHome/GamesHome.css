@@ -2,7 +2,8 @@ h1 {
   font-family: "Poppins", "Arial", sans-serif;
 }
 
-p {
+#dailyQuiz,
+.gameCard {
   font-family: "Fredoka", "Arial", sans-serif;
 }
 
@@ -11,7 +12,7 @@ p {
   flex-direction: column;
   align-items: center;
   margin-top: 2rem;
-  margin-bottom: 3.5rem;
+  margin-bottom: 3rem;
   margin-left: auto;
   margin-right: auto;
   background-color: rgba(255, 255, 255, 0.459);
@@ -23,14 +24,15 @@ p {
 }
 
 #title h1 {
-  font-size: 35px;
+  font-size: 25px;
+  color: var(--titlesColor);
 }
 
 #gamesList {
   display: flex;
   flex-direction: column;
   align-items: center;
-  gap: 3rem;
+  gap: 1.5rem;
   width: 180px;
   margin: 0 auto;
 }
@@ -41,13 +43,8 @@ p {
   padding: 2rem;
   text-align: center;
   border-radius: 20px;
-
   transition: 0.5s;
   border: solid 2px var(--purple);
-}
-
-.gameCard p {
-  color: white;
 }
 
 #dailyQuiz {
@@ -71,6 +68,11 @@ p {
   font-weight: bolder;
 }
 
+footer {
+  margin-top: 4rem;
+  margin-bottom: 0.5rem;
+}
+
 /* RESPONSIVE DESKTOP */
 
 @media (min-width: 768px) {
@@ -81,17 +83,17 @@ p {
 
   #title {
     padding: 2.5rem;
-    width: 40%;
-    font-size: 20px;
+    width: 30%;
   }
 
   #title h1 {
-    font-size: 50px;
+    font-size: 30px;
   }
 
   .gameCard {
     font-size: 22px;
     padding: 3.5rem;
+    width: 20rem;
   }
 
   #gamesList {
@@ -106,7 +108,7 @@ p {
 
   #dailyQuiz {
     font-size: 22px;
-    width: 35%;
+    width: 25%;
     padding: 3rem;
   }
 
