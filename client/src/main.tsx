@@ -8,18 +8,21 @@ import "./index.css";
 // Import the main app component
 import App from "./App";
 
-// Import additional components for new routes
-// Try creating these components in the "pages" folder
-import CarGame from "../src/components/CarGame";
 import AuthPage from "../src/pages/Auth/AuthPage";
 import Avatar from "../src/pages/Avatar/Avatar";
+// Import additional components for new routes
+// Try creating these components in the "pages" folder
+import CarGame from "../src/pages/CarGame/CarGame";
 import ForgotPassword from "../src/pages/ForgotPassword/ForgotPassword";
+import GameOne from "../src/pages/GameOne/GameOne";
 import GamesHome from "../src/pages/GamesHome/GamesHome";
 import LoginForm from "../src/pages/LoginForm/LoginForm";
 import NotFound from "../src/pages/Notfound/NotFound";
 import NumGame from "../src/pages/NumGame/NumGame";
+import RandomEquation from "../src/pages/RandomEquation/RandomEquation";
 import SignUpForm from "../src/pages/SignUpForm/SignUpForm";
 import LevelGame1 from "./pages/LevelGame1/LevelGame1";
+import LevelGame2 from "./pages/LevelGame2/LevelGame2";
 
 /* ************************************************************************* */
 
@@ -39,8 +42,20 @@ const router = createBrowserRouter([
         element: <LoginForm />,
       },
       {
+        path: "/random-equation",
+        element: <RandomEquation />,
+      },
+      {
         path: "/levelgame1",
         element: <LevelGame1 />,
+      },
+      {
+        path: "/levelgame2",
+        element: <LevelGame2 />,
+      },
+      {
+        path: "/game-one",
+        element: <GameOne />,
       },
       {
         path: "/num-game",
@@ -55,7 +70,7 @@ const router = createBrowserRouter([
         element: <ForgotPassword />,
       },
       {
-        path: "/cargame",
+        path: "/car-game",
         element: <CarGame />,
       },
       {

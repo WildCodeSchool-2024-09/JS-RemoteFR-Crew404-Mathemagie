@@ -1,8 +1,9 @@
 body {
-  font-family: "Arial", sans-serif;
-  background-color: #f0f4f8;
+  margin: 0;
+  background: linear-gradient(135deg, #f8d7ff, #b2f0ff);
+  color: #333;
+  height: 100vh;
 }
-
 .layout {
   display: flex;
   flex-direction: column;
@@ -15,9 +16,49 @@ body {
   min-height: 100vh;
 }
 
-.app {
+#root {
+  --purple: #5e60ce;
+  --cardHover: #7476df;
+  --titlesColor: #5e60ce;
+}
+
+#statsBar {
   display: flex;
-  justify-content: center;
-  align-items: center;
-  min-height: 100vh;
+  justify-content: space-around;
+  color: white;
+  background-color: var(--purple);
+  padding: 1.5rem;
+  font-weight: bold;
+}
+
+#statsBar p {
+  margin-top: 15px;
+  color: white;
+}
+
+.Home {
+  width: 55px;
+  cursor: pointer;
+}
+
+* {
+  margin: 0;
+  box-sizing: border-box;
+}
+
+footer {
+  text-align: center;
+  margin: 0 auto;
+  padding-top: 30px;
+}
+
+@media (min-width: 768px) {
+  .Home {
+    width: 45px;
+  }
+
+  footer {
+    margin-top: 50px;
+    margin-bottom: 20px;
+  }
 }

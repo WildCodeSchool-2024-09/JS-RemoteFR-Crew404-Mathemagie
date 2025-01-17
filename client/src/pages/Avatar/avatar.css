@@ -60,7 +60,7 @@ body {
   justify-items: center;
 }
 
-h2 {
+.pagetotal h2 {
   font-family: "Poppins", serif;
   font-size: 60px;
   margin: 0;

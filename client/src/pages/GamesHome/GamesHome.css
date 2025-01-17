@@ -3,34 +3,12 @@
   box-sizing: border-box;
 }
 
-#root {
-  --purple: #5e60ce;
-  --cardHover: #7476df;
-  --titlesColor: #5e60ce;
-}
-
-body {
-  margin: 0;
-  background: linear-gradient(135deg, #f8d7ff, #b2f0ff);
-  color: #333;
-  height: 100vh;
-}
-
 h1 {
   font-family: "Poppins", "Arial", sans-serif;
 }
 
 p {
   font-family: "Fredoka", "Arial", sans-serif;
-}
-
-#statsBar {
-  display: flex;
-  justify-content: space-around;
-  color: white;
-  background-color: var(--purple);
-  padding: 1.5rem;
-  font-weight: bold;
 }
 
 #title {
@@ -41,7 +19,6 @@ p {
   margin-bottom: 3.5rem;
   margin-left: auto;
   margin-right: auto;
-  color: #5e60ce;
   background-color: rgba(255, 255, 255, 0.459);
   border-radius: 40px;
   border: solid 3px var(--purple);
@@ -59,19 +36,26 @@ p {
   flex-direction: column;
   align-items: center;
   gap: 3rem;
+  width: 180px;
+  margin: 0 auto;
 }
 
 .gameCard {
   background-color: var(--purple);
   font-size: 20px;
-  color: white;
   padding: 2rem;
-  width: 70%;
   text-align: center;
   border-radius: 20px;
-  font-weight: bolder;
   transition: 0.5s;
   border: solid 2px var(--purple);
+}
+
+#dailyQuiz {
+  margin: 0 auto;
+}
+
+.gameCard p {
+  color: white;
 }
 
 #dailyQuiz {
@@ -105,6 +89,7 @@ p {
   #title {
     padding: 2.5rem;
     width: 40%;
+    font-size: 20px;
   }
 
   #title h1 {
@@ -114,7 +99,10 @@ p {
   .gameCard {
     font-size: 22px;
     padding: 3.5rem;
-    width: 30%;
+  }
+
+  #gamesList {
+    width: 6rem;
   }
 
   .gameCard:hover {
@@ -134,5 +122,9 @@ p {
     background-color: var(--purple);
     color: white;
     box-shadow: 5px 5px 20px 3px rgba(94, 96, 206, 0.29);
+  }
+
+  #dailyQuiz:hover p {
+    color: white;
   }
 }

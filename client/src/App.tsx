@@ -1,14 +1,16 @@
 import { Link, Outlet } from "react-router-dom";
 import "./App.css";
+import Home from "../src/assets/images/home.png";
 
 function App() {
   return (
     <div className="layout">
       <header id="statsBar">
+        <Link to="/">
+          <img src={Home} alt="Page d'accueil" className="Home" />
+        </Link>
         <p>Niveau X</p>
         <p>X/X</p>
-        <Link to="/avatar"> Conçois ton avatar !</Link>
-        <Link to="/gameone"> Premier jeu !</Link>
       </header>
 
       <Outlet />
