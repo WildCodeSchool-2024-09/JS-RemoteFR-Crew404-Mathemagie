@@ -1,4 +1,4 @@
-import "./GamesHome.css";
+import "../GamesHome/GamesHome.css";
 
 function GamesHome() {
   return (
@@ -7,15 +7,15 @@ function GamesHome() {
         <h1>Choisis un jeu !</h1>
       </section>
       <section id="gamesList">
-        <div className="gameCard">
+        <button type="button" className="gameCard">
           <p>Des objets et des chiffres</p>
-        </div>
-        <div className="gameCard">
+        </button>
+        <button type="button" className="gameCard">
           <p>Petits calculs !</p>
-        </div>
-        <div id="dailyQuiz">
+        </button>
+        <button type="button" id="dailyQuiz">
           <p>Quiz Quotidien</p>
-        </div>
+        </button>
       </section>
     </>
   );
