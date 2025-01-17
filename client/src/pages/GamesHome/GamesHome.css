@@ -50,15 +50,12 @@ p {
   border: solid 2px var(--purple);
 }
 
-#dailyQuiz {
-  margin: 0 auto;
-}
-
 .gameCard p {
   color: white;
 }
 
 #dailyQuiz {
+  margin: 0 auto;
   display: flex;
   margin-top: 2rem;
   flex-direction: column;

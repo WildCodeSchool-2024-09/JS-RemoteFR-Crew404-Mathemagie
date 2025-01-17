@@ -5,9 +5,7 @@ function LevelGame2() {
   return (
     <section className="jeu-niveau">
       <Link to="/car-game">
-        <button type="button">
-          Niveau <strong>1</strong>{" "}
-        </button>
+        <button type="button">Niveau 1</button>
       </Link>
     </section>
   );

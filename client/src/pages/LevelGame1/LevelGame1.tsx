@@ -5,14 +5,10 @@ function LevelGame1() {
   return (
     <section className="jeu-niveau">
       <Link to="/num-game">
-        <button type="button">
-          Niveau <strong>1</strong>{" "}
-        </button>
+        <button type="button">Niveau 1</button>
       </Link>
       <Link to="/game-one">
-        <button type="button">
-          Niveau <strong>2</strong>
-        </button>
+        <button type="button">Niveau 2</button>
       </Link>
       <Link to="/random-equation">
         <button type="button">Bonus</button>
