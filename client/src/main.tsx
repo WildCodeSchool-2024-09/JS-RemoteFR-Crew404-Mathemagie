@@ -8,20 +8,20 @@ import "./index.css";
 // Import the main app component
 import App from "./App";
 
-import AuthPage from "../src/pages/Auth/AuthPage";
-import Avatar from "../src/pages/Avatar/Avatar";
+import AuthPage from "./pages/Auth/AuthPage";
+import Avatar from "./pages/Avatar/Avatar";
 // Import additional components for new routes
 // Try creating these components in the "pages" folder
 
-import CarGame from "../src/pages/CarGame/CarGame";
-import ForgotPassword from "../src/pages/ForgotPassword/ForgotPassword";
-import GameOne from "../src/pages/GameOne/GameOne";
-import GamesHome from "../src/pages/GamesHome/GamesHome";
-import LoginForm from "../src/pages/LoginForm/LoginForm";
-import NotFound from "../src/pages/Notfound/NotFound";
-import NumGame from "../src/pages/NumGame/NumGame";
-import RandomEquation from "../src/pages/RandomEquation/RandomEquation";
-import SignUpForm from "../src/pages/SignUpForm/SignUpForm";
+import CarGame from "./pages/CarGame/CarGame";
+import ForgotPassword from "./pages/ForgotPassword/ForgotPassword";
+import GameOne from "./pages/GameOne/GameOne";
+import GamesHome from "./pages/GamesHome/GamesHome";
+import LoginForm from "./pages/LoginForm/LoginForm";
+import NotFound from "./pages/Notfound/NotFound";
+import NumGame from "./pages/NumGame/NumGame";
+import RandomEquation from "./pages/RandomEquation/RandomEquation";
+import SignUpForm from "./pages/SignUpForm/SignUpForm";
 import LevelGame1 from "./pages/LevelGame1/LevelGame1";
 import LevelGame2 from "./pages/LevelGame2/LevelGame2";
 
