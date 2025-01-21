@@ -1,6 +1,6 @@
 import { Link, Outlet } from "react-router-dom";
 import "./App.css";
-import Home from "../src/assets/images/home.png";
+import Home from "./assets/images/home.png";
 
 function App() {
   return (
