@@ -83,7 +83,7 @@ body {
 }
 /* partie  questions page avatar */
 
-h2 {
+.pagetotal h2 {
   font-family: "Poppins", serif;
   font-size: 60px;
   margin: 0;

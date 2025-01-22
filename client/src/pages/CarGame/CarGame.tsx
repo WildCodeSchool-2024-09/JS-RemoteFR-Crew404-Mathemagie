@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 import "./CarGame.css";
-import car from "../assets/images/car.png";
+import car from "../../assets/images/car.png";
 
 function CarGame() {
   const [score, setScore] = useState(0);
