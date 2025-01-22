@@ -1,0 +1,22 @@
+.jeu-niveau {
+  display: flex;
+  flex-direction: column;
+  margin: 0 auto;
+  justify-content: center;
+  align-items: center;
+  height: 70vh;
+  gap: 50px;
+}
+
+.jeu-niveau button {
+  padding: 20px;
+  font-size: 1rem;
+  color: white;
+  border: none;
+  font-family: "Fredoka", serif;
+  border-radius: 0.5rem;
+  cursor: pointer;
+  transition: background-color 0.3s ease, transform 0.2s ease;
+  font-size: 25px;
+  width: 150px;
+}
