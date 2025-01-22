@@ -31,8 +31,8 @@ import SignUpForm from "./pages/SignUpForm/SignUpForm";
 // You can add more routes as you build out your app!
 const router = createBrowserRouter([
   {
-    path: "/", // The root path
-    element: <App />, // Renders the App component for the home page
+    path: "/",
+    element: <App />,
     children: [
       {
         path: "/", // The root path

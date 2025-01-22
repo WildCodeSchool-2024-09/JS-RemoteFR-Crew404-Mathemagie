@@ -1,19 +1,26 @@
+html,
 body {
   margin: 0;
+  padding: 0;
+  height: 100%;
   background: linear-gradient(135deg, #f8d7ff, #b2f0ff);
+  background-attachment: fixed;
+  background-size: cover;
+  background-repeat: no-repeat;
   color: #333;
-  height: 100vh;
 }
+
 .layout {
   display: flex;
   flex-direction: column;
+  min-height: 100vh;
 }
 
 .app {
   display: flex;
   justify-content: center;
   align-items: center;
-  min-height: 100vh;
+  flex: 1;
 }
 
 #root {
@@ -48,8 +55,8 @@ body {
 
 footer {
   text-align: center;
-  margin: 0 auto;
-  padding-top: 30px;
+  font-family: "Poppins", serif;
+  font-size: 12px;
 }
 
 @media (min-width: 768px) {
