@@ -8,7 +8,7 @@ body {
 }
 
 .login-container {
-  margin: 0 auto;
+  margin: 10rem auto;
   display: flex;
   justify-content: center;
   align-items: center;

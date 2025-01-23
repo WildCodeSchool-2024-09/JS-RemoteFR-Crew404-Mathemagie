@@ -1,5 +1,6 @@
 /* Global Styles */
 .sign-up-container {
+  margin: 10rem auto;
   display: flex;
   justify-content: center;
   align-items: center;
