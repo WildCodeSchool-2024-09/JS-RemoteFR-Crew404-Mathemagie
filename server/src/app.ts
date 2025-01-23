@@ -20,9 +20,7 @@ const app = express();
 
 import cors from "cors";
 
-if (process.env.CLIENT_URL != null) {
-  app.use(cors({ origin: [process.env.CLIENT_URL] }));
-}
+app.use(cors({ origin: ["http://localhost:3000"] }));
 
 // If you need to allow extra origins, you can add something like this:
 
@@ -52,7 +50,7 @@ app.use(
 
 // Uncomment one or more of these options depending on the format of the data sent by your client:
 
-// app.use(express.json());
+app.use(express.json());
 // app.use(express.urlencoded());
 // app.use(express.text());
 // app.use(express.raw());
