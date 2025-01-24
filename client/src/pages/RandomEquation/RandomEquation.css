@@ -70,6 +70,44 @@
   font-size: 19px;
 }
 
+@keyframes pulseGreen {
+  0% {
+    background-color: #28b42c;
+  }
+  25% {
+    background-color: #28be2d;
+  }
+  50% {
+    background-color: #30c735;
+  }
+  100% {
+    background-color: #2dc232;
+  }
+}
+
+@keyframes pulseRed {
+  0% {
+    background-color: #d62316;
+  }
+  25% {
+    background-color: #e63124;
+  }
+  50% {
+    background-color: #f13023;
+  }
+  100% {
+    background-color: #f52516;
+  }
+}
+
+.correct {
+  animation: pulseGreen 0.8s ease-in-out;
+}
+
+.wrong {
+  animation: pulseRed 0.8s ease-in-out;
+}
+
 @media (min-width: 768px) {
   .interface {
     width: 50%;
