@@ -1,7 +1,7 @@
 import type { RequestHandler } from "express";
 import userRepository from "./userRepository";
 
-const information: RequestHandler = async (req, res, next) => {
+const addAvatar: RequestHandler = async (req, res, next) => {
   try {
     const userId = Number(req.params.id);
     const user = await userRepository.create(req.body);
@@ -11,4 +11,4 @@ const information: RequestHandler = async (req, res, next) => {
   }
 };
 
-export default { information };
+export default { addAvatar };

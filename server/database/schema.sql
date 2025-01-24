@@ -1,3 +1,4 @@
+-- SQLBook: Code
 CREATE TABLE user (
   id_user INT AUTO_INCREMENT PRIMARY KEY,
   prenom VARCHAR(50) NOT NULL,

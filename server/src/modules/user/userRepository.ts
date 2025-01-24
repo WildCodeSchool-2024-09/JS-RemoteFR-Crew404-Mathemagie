@@ -1,9 +1,9 @@
-import DatabaseClient from "../../../../database/client";
-import type { Result, Rows } from "../../../../database/client";
+import DatabaseClient from "../../../database/client";
+import type { Result, Rows } from "../../../database/client";
 
 type User = {
   id: number;
-  prenom: string;
+  name: string;
   classe: string;
   birthday: string;
   photo: string;
@@ -16,7 +16,7 @@ class userRepository {
     const [result] = await DatabaseClient.query<Result>(
       "INSERT INTO user (prenom, classe, birthday, photo) values (?, ?, ?, ?)",
 
-      [user.prenom, user.classe, user.birthday, user.photo],
+      [user.name, user.classe, user.birthday, user.photo],
     );
 
     return result.insertId;
