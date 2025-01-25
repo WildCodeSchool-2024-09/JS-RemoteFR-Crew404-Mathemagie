@@ -19,8 +19,9 @@ const app = express();
 // For this pedagogical template, the CORS code allows CLIENT_URL in development mode (when process.env.CLIENT_URL is defined).
 
 import cors from "cors";
-
-app.use(cors({ origin: ["http://localhost:3000"] }));
+if (process.env.CLIENT_URL != null) {
+  app.use(cors({ origin: [process.env.CLIENT_URL] }));
+}
 
 // If you need to allow extra origins, you can add something like this:
 
