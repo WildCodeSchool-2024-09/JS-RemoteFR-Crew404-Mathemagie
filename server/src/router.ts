@@ -15,4 +15,7 @@ router.post("/api/items", itemActions.add);
 
 /* ************************************************************************* */
 
+import userActions from "./modules/user/userActions";
+router.post("/api/avatar", userActions.addAvatar);
+
 export default router;
