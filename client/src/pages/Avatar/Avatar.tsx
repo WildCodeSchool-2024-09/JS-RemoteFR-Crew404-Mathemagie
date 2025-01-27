@@ -26,20 +26,21 @@ function Avatar() {
     e.preventDefault();
 
     try {
-       const response = await fetch(
-   `${import.meta.env.VITE_API_URL}/api/avatar`, 
-   {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
+      const response = await fetch(
+        `${import.meta.env.VITE_API_URL}/api/avatar`,
+        {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify({
+            name: avatar.name,
+            classe: avatar.classe,
+            photo: avatar.photo,
+            birthday: `${avatar.year}-${avatar.month}-${avatar.day}`,
+          }),
         },
-        body: JSON.stringify({
-          name: avatar.name,
-          classe: avatar.classe,
-          photo: avatar.photo,
-          birthday: `${avatar.year}-${avatar.month}-${avatar.day}`,
-        }),
-      });
+      );
 
       if (response.ok) {
         console.info("User created successfully");
