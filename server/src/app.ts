@@ -22,6 +22,7 @@ import cors from "cors";
 
 app.use(cors({ origin: ["http://localhost:3000"] }));
 
+
 // If you need to allow extra origins, you can add something like this:
 
 /*
