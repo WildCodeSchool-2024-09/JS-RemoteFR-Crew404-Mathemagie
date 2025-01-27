@@ -11,14 +11,23 @@ body {
   justify-items: center;
 }
 
+.pagetotale h2 {
+  font-family: "Fredoka", serif;
+  color: #5e60ce;
+  font-size: 40px;
+  align-items: center;
+}
+
 .caroussel {
-  border-radius: 10px;
-  background-color: white;
-  box-shadow: 0 20px 20px rgba(0, 0, 0, 0.1);
-  margin: 10%;
-  padding-left: 50px;
-  padding-right: 50px;
-  padding-top: 50px;
+  margin-left: auto;
+  margin-right: auto;
+  margin-top: 50px;
+  background-color: rgba(255, 255, 255, 0.459);
+  border-radius: 40px;
+  border: solid 3px var(--purple);
+  text-align: center;
+  width: 80%;
+  padding-top: 20px;
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -32,11 +41,14 @@ body {
 
 .caroussel-images {
   display: flex;
-  flex-direction: row;
+  flex-direction: column;
   transition: transform 0.5s ease-in-out;
   transform: translateX(calc(-100% * var(--current-index, 0)));
   margin: 0 auto 50px;
   padding-bottom: 50px;
+  object-fit: cover;
+  gap: 15px;
+  align-items: center;
 }
 
 .animal {
@@ -110,7 +122,6 @@ body {
   padding: 10px 15px;
   font-family: "Fredoka", serif;
   margin: 10px 0;
-
   font-size: 16px;
   line-height: 1.5;
   width: 100%;
@@ -123,25 +134,41 @@ body {
   font-size: 18px;
 }
 
+.anniv {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 10px; /* Espacement entre les éléments */
+  width: 70%;
+  max-width: 400px;
+  margin: 0 auto;
+}
+
+.input-bulle,
 .input-anniv {
   border-radius: 10px;
   font-family: "Fredoka", serif;
   margin: 10px 0;
-  font-size: 19px;
   color: #6c757d;
   text-align: center;
   width: 100%;
+  text-align: center;
+  padding: 10px;
+  font-size: 16px;
   display: flex;
-  flex-direction: column;
+  flex-direction: row;
+}
+.input-bulle::placeholder {
+  text-align: center;
+  width: 100%;
+  display: block;
 }
 
-.creation-button {
+.validate-button {
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
-}
-.validate-button {
   background-color: #5e60ce;
   border-radius: 30px;
   font-family: "Fredoka", serif;
@@ -151,14 +178,16 @@ body {
   padding: 15px 40px;
   transition: all 0.2s ease-in-out;
   margin: 20px auto 0 auto;
-  align-items: center;
-  justify-content: center;
-  justify-items: center;
+  margin-bottom: 30px;
 }
 
 @media (min-width: 768px) {
   .questions-creation p {
     font-size: 22px;
+  }
+
+  .pagetotal h2 {
+    font-size: 50px;
   }
 
   .questions-creation {
@@ -171,5 +200,21 @@ body {
 
   .animal {
     width: 150px;
+  }
+
+  .caroussel {
+    width: 45%;
+    margin-bottom: 50px;
+  }
+
+  .caroussel-images {
+    padding-bottom: 1px;
+
+    display: flex;
+    flex-direction: row;
+  }
+
+  .anniv {
+    width: 100%;
   }
 }
