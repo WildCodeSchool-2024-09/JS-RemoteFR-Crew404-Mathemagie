@@ -5,7 +5,7 @@ function GamesHome() {
   return (
     <>
       <section id="title">
-        <h1>Choisis un jeu, Maël !🤓</h1>
+        <h1>Choisis un jeu, Utilisateur !🤓</h1>
       </section>
       <section id="gamesList">
         <Link to="/levelgame1">
