@@ -5,17 +5,17 @@ function GamesHome() {
   return (
     <>
       <section id="title">
-        <h1>Choisis un jeu </h1>
+        <h1>Choisis un jeu, Maël !🤓</h1>
       </section>
       <section id="gamesList">
         <Link to="/levelgame1">
           <button type="button" className="gameCard" id="petitsCalculs">
-            Petits calculs
+            Petits Calculs
           </button>
         </Link>
         <Link to="/levelgame2">
           <button type="button" className="gameCard" id="objetsChiffres">
-            Des objets et des chiffres
+            Objets & Chiffres
           </button>
         </Link>
       </section>
@@ -24,7 +24,9 @@ function GamesHome() {
           Quiz Quotidien
         </button>
       </section>
-      <footer>Codé avec le ❤️ par la team @Crew404 </footer>
+      <footer>
+        Codé avec le ❤️ par la team <strong>@Crew404</strong>
+      </footer>
     </>
   );
 }

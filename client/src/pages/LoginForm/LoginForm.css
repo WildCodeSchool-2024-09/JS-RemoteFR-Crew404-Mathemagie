@@ -59,7 +59,7 @@ body {
   border-color: #5e60ce;
 }
 
-.btn-primary {
+.btn-connect {
   padding: 0.8rem;
   font-size: 1rem;
   color: white;
@@ -71,11 +71,11 @@ body {
   width: 100%;
 }
 
-.btn-primary:hover {
+.btn-connect:hover {
   background-color: #3a42a8;
 }
 
-.btn-secondary {
+.btn-signUp {
   padding: 0.8rem;
   font-size: 1rem;
   color: #5e60ce;
@@ -87,7 +87,7 @@ body {
   width: 100%;
 }
 
-.btn-secondary:hover {
+.btn-signUp:hover {
   background-color: #f0f0ff;
 }
 

@@ -14,11 +14,11 @@ class AuthRepository {
   // The C of CRUD - Create operation
   // (pour l'authentification, c'est le register)
 
-  async create(user: Omit<User, "id">) {
+  async create(parent: Omit<User, "id">) {
     // Execute the SQL INSERT query to add a new item to the "item" table
     const [result] = await databaseClient.query<Result>(
-      "insert into user (email, firstname, lastname, password) values (?, ?, ?, ?)",
-      [user.email, user.firstname, user.lastname, user.password],
+      "insert into parent (email, firstname, lastname, password) values (?, ?, ?, ?)",
+      [parent.email, parent.firstname, parent.lastname, parent.password],
     );
 
     // Return the ID of the newly inserted item
@@ -30,7 +30,7 @@ class AuthRepository {
   async read(email: string) {
     // Execute the SQL SELECT query to retrieve a specific item by its ID
     const [rows] = await databaseClient.query<Rows>(
-      "select * from user where email = ?",
+      "select * from parent where email = ?",
       [email],
     );
 

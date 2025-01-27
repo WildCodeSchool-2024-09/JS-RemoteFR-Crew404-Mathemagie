@@ -1,7 +1,37 @@
+import { useState } from "react";
 import "../LoginForm/LoginForm.css";
+import axios from "axios";
 import batman from "../../assets/images/batman.png";
 
 function LoginForm() {
+  const [login, setLogin] = useState({
+    email: "",
+    password: "",
+  });
+
+  const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    const { name, value } = e.target;
+
+    setLogin((prev) => ({
+      ...prev,
+      [name]: value,
+    }));
+  };
+
+  const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
+    e.preventDefault();
+
+    /**
+     * On a testé avec axios, point faible, trop fort.
+     */
+    const response = await axios.post(
+      `${import.meta.env.VITE_API_URL}/api/login`,
+      login,
+    );
+
+    console.info(response.data);
+  };
+
   return (
     <div className="login-container">
       <div className="login-card">
@@ -10,26 +40,40 @@ function LoginForm() {
           Bienvenue ! Connectez-vous pour continuer.
         </p>
 
-        <form className="login-form">
+        <form className="login-form" onSubmit={handleSubmit}>
           <input
             type="email"
+            name="email"
+            value={login.email}
+            onChange={handleChange}
             className="input-field"
             placeholder="Email"
             required
+            autoComplete="email"
           />
           <input
             type="password"
+            name="password"
             className="input-field"
             placeholder="Mot de passe"
             required
+            value={login.password}
+            onChange={handleChange}
+            autoComplete="current-password"
           />
-          <button type="submit" className="btn-primary">
+          <button
+            type="submit"
+            className="btn-connect"
+            onClick={() => {
+              window.location.href = "/avatar";
+            }}
+          >
             Connexion
           </button>
 
           <button
             type="button"
-            className="btn-secondary"
+            className="btn-signUp"
             onClick={() => {
               window.location.href = "/sign-up";
             }}
