@@ -111,7 +111,7 @@ function EuroGame() {
   useEffect(() => {
     if (answered) {
       const timer = setTimeout(() => {
-        if (questionIndex < TOTAL_QUESTIONS - 1) {
+        if (questionIndex < questions.length - 1) {
           setQuestionIndex(questionIndex + 1);
           setAnswered(false);
           setFeedback(null);
@@ -121,7 +121,7 @@ function EuroGame() {
       }, 1000);
       return () => clearTimeout(timer);
     }
-  }, [answered, questionIndex]);
+  }, [answered, questionIndex, score, TOTAL_QUESTIONS]);
 
   const handleRestart = () => {
     setProgress(100);

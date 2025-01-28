@@ -48,7 +48,7 @@ p {
 
 .question-image {
   display: block;
-  width: 300px; /* Ajustez la taille selon vos besoins */
+  width: 300px;
   margin: 30px auto;
 }
 
@@ -86,9 +86,9 @@ p {
 .feedback {
   font-size: 1.2rem;
   margin-top: 1rem;
-  color: #f44336; /* Couleur pour le feedback */
+  color: #f44336;
 }
 
 .feedback.correct {
-  color: #4caf50; /* Couleur pour le feedback correct */
+  color: #4caf50;
 }
