@@ -17,15 +17,19 @@
   margin: 10px 0;
 }
 
-.cars {
-  display: row;
+.question-image {
+  display: block;
+  width: 300px; /*Ajustez la taille selon vos besoins */
+  margin: 30px auto;
   justify-content: center;
-  margin: 20px 0;
+  align-items: end;
 }
 
-.cars img {
-  width: 90px; /* Ajustez la taille selon vos besoins */
-  margin: 0 10px;
+.question {
+  color: black;
+  align-items: center;
+  text-align: center;
+  font-size: 20px;
 }
 
 .answers {
@@ -55,4 +59,135 @@
 
 .timer {
   padding: 2px;
+}
+
+/** pour les couleurs des boutons*/
+h1 {
+  font-size: 2.5rem;
+  color: #4059ad;
+  margin-bottom: 1rem;
+  text-align: center;
+}
+
+p {
+  font-size: 1.2rem;
+  color: #4059ad;
+  margin-bottom: 1.5rem;
+  text-align: center;
+}
+
+.lives {
+  display: flex;
+  gap: 0.5rem;
+  margin-bottom: 1rem;
+}
+
+.heart {
+  font-size: 24px;
+  color: red;
+  transition: transform 0.3s ease;
+}
+
+.heart.shake {
+  animation: shake 0.5s ease;
+}
+
+@keyframes shake {
+  0%,
+  100% {
+    transform: translateX(0);
+  }
+  25% {
+    transform: translateX(-5px);
+  }
+  50% {
+    transform: translateX(5px);
+  }
+  75% {
+    transform: translateX(-5px);
+  }
+}
+
+.series {
+  display: flex;
+  justify-content: center;
+  margin-bottom: 2rem;
+}
+
+.series-item {
+  font-size: 2rem;
+  margin: 0 0.5rem;
+  padding: 10px 15px;
+  background-color: #fff;
+  border: 3px solid #4059ad;
+  border-radius: 8px;
+  box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
+  transition: transform 0.3s ease, background-color 0.3s ease;
+}
+
+.series-item.missing {
+  background: linear-gradient(135deg, #f8d7ff, #b2f0ff);
+  font-weight: bold;
+}
+
+.series-item.correct {
+  background-color: #4caf50;
+}
+
+.series-item.wrong {
+  background-color: #f44336;
+}
+
+.series-item:hover {
+  transform: scale(1.1);
+}
+
+.choices {
+  display: flex;
+  gap: 1rem;
+  margin-top: 1rem;
+}
+
+.choice-button {
+  font-size: 1.5rem;
+  padding: 1rem 2rem;
+  background-color: #4059ad;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background-color 0.3s ease, transform 0.2s ease;
+}
+
+.choice-button:hover {
+  background-color: #5e60ce;
+  transform: scale(1.05);
+}
+
+.choice-button:active {
+  background-color: #303f9f;
+}
+
+button {
+  font-size: 1.2rem;
+  padding: 0.8rem 1.5rem;
+  background-color: #5e60ce;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+  margin: 10px 0;
+}
+
+button:hover {
+  background-color: #4059ad;
+}
+
+button:focus {
+  outline: none;
+}
+
+button:active {
+  background-color: #303f9f;
 }

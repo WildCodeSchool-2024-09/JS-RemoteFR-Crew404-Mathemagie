@@ -25,11 +25,13 @@ import NotFound from "./pages/Notfound/NotFound";
 import NumGame from "./pages/NumGame/NumGame";
 import RandomEquation from "./pages/RandomEquation/RandomEquation";
 import SignUpForm from "./pages/SignUpForm/SignUpForm";
+// Correction : Suppression de l'importation de EuroGame car ce fichier n'est pas un module.
 
 /**
  * Components
  */
 import CarGame from "./components/CarGame";
+import EuroGame from "./components/EuroGame";
 
 /* ************************************************************************* */
 
@@ -67,6 +69,10 @@ const router = createBrowserRouter([
       {
         path: "/car-game",
         element: <CarGame />,
+      },
+      {
+        path: "/euro-game",
+        element: <EuroGame />,
       },
       {
         path: "/authpage",
