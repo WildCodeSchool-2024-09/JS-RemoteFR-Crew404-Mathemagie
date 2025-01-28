@@ -24,7 +24,6 @@ import NotFound from "./pages/Notfound/NotFound";
 import NumGame from "./pages/NumGame/NumGame";
 import RandomEquation from "./pages/RandomEquation/RandomEquation";
 import SignUpForm from "./pages/SignUpForm/SignUpForm";
-// Correction : Suppression de l'importation de EuroGame car ce fichier n'est pas un module.
 
 /**
  * Components

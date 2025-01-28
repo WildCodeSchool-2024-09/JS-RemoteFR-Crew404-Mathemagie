@@ -11,12 +11,13 @@ function App() {
         </Link>
         <p>Niveau X</p>
         <p>X/X</p>
-
+        
         <Link to="/avatar"> Conçois ton avatar !</Link>
         <Link to="/game-one"> Premier jeu !</Link>
         <Link to="/car-game">Objets</Link>
         <Link to="/num-game">Retrouve le chiffre manquant</Link>
         <Link to="/euro-game">EuroGame</Link>
+
       </header>
       <Outlet />
     </div>
