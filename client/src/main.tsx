@@ -13,6 +13,7 @@ import Avatar from "./pages/Avatar/Avatar";
 // Import additional components for new routes
 // Try creating these components in the "pages" folder
 
+import Bonus from "./pages/BonusGame/BonusGame";
 import CarGame from "./pages/CarGame/CarGame";
 import ForgotPassword from "./pages/ForgotPassword/ForgotPassword";
 import GameOne from "./pages/GameOne/GameOne";
@@ -81,6 +82,10 @@ const router = createBrowserRouter([
       {
         path: "/avatar",
         element: <Avatar />,
+      },
+      {
+        path: "/bonus-game",
+        element: <Bonus />,
       },
     ],
   },

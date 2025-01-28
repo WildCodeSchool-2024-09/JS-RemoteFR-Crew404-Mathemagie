@@ -1,0 +1,76 @@
+@font-face {
+  font-family: "Fredoka";
+  src: url("./fredoka.ttf") format("truetype");
+  font-weight: normal;
+  font-style: normal;
+}
+
+body {
+  text-align: center;
+}
+
+h1 {
+  font-size: 36px;
+  color: #4059ad;
+  font-family: "Fredoka", "Arial", sans-serif;
+}
+
+p {
+  font-family: "Fredoka", "Arial", sans-serif;
+}
+
+.avatar {
+  width: 130px;
+  max-height: 100%;
+}
+
+.game-area {
+  position: relative;
+  width: 80%;
+  height: 80vh;
+  background: linear-gradient(135deg, #f8d7ff, #b2f0ff);
+  border-radius: 20px;
+  border: 2px solid #4059ad;
+  overflow: hidden;
+  margin: 20px auto;
+}
+
+.character {
+  position: absolute;
+  bottom: 0;
+  overflow: hidden;
+}
+
+.falling-object {
+  position: absolute;
+  font-size: 24px;
+}
+
+.gateau {
+  color: #ff6f61;
+}
+
+.piege {
+  color: #6b6b6b;
+}
+
+.score {
+  color: white;
+  background-color: #4059ad;
+  border: solid 4px var(--purple);
+  padding: 1rem;
+  width: 7rem;
+  margin: 1rem;
+  border-radius: 15px;
+  font-weight: bold;
+  font-size: 15px;
+  transition: 0.5s;
+  cursor: pointer;
+}
+
+#answerList button:hover {
+  cursor: pointer;
+  background-color: var(--purple);
+  box-shadow: 5px 5px 20px 3px rgba(94, 96, 206, 0.29);
+  color: white;
+}

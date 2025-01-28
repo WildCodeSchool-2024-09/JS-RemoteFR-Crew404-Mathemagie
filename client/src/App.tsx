@@ -1,6 +1,7 @@
 import { Link, Outlet } from "react-router-dom";
 import "./App.css";
 import Home from "./assets/images/home.png";
+import { AvatarProvider } from "./pages/Context/AvatarContext";
 
 function App() {
   return (
@@ -12,7 +13,9 @@ function App() {
         <p>Niveau X</p>
         <p>X/X</p>
       </header>
-      <Outlet />
+      <AvatarProvider>
+        <Outlet />
+      </AvatarProvider>
     </div>
   );
 }
