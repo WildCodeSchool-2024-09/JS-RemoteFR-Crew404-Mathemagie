@@ -82,8 +82,8 @@ function CarGame() {
   const [score, setScore] = useState(0);
   const [answered, setAnswered] = useState(false);
   const [currentQuestion, setCurrentQuestion] = useState(questions[0]);
-  const [feedback, setFeedback] = useState<null | "correct" | "wrong">(null);
-  const [timeLeft, setTimeLeft] = useState(100);
+  const [, setFeedback] = useState<null | "correct" | "wrong">(null);
+  const [timeLeft] = useState(100);
   const [selectedAnswer, setSelectedAnswer] = useState<number | null>(null);
 
   useEffect(() => {
