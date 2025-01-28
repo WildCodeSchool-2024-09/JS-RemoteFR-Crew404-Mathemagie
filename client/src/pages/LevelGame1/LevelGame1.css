@@ -1,0 +1,78 @@
+/* Global styles */
+body {
+  margin: 0;
+  padding: 0;
+  font-family: "Poppins", sans-serif;
+  background: linear-gradient(135deg, #f8d7ff, #b2f0ff);
+  color: #333;
+}
+
+/* Section principale */
+.jeu-niveau {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  height: 100vh;
+  gap: 2rem;
+  text-align: center;
+}
+
+.jeu-niveau-title {
+  font-size: 2.5rem;
+  font-weight: bold;
+  color: #4a4a8f;
+  margin-bottom: 2rem;
+}
+
+/* Boutons */
+.niveau-btn {
+  padding: 1rem 2rem;
+  font-size: 1.5rem;
+  font-family: "Fredoka", sans-serif;
+  color: white;
+  background-color: #5e60ce;
+  border: none;
+  border-radius: 10px;
+  cursor: pointer;
+  transition: all 0.3s ease-in-out;
+  width: 200px;
+  box-shadow: 0px 4px 10px rgba(157, 201, 255, 0.2);
+}
+
+.niveau-btn:hover {
+  background: linear-gradient(135deg, #b19ce9, #89bbf7);
+  transform: translateY(-5px);
+  box-shadow: 0px 8px 20px rgba(157, 201, 255, 0.4);
+}
+
+/* Bouton Bonus */
+.bonus-btn {
+  background: linear-gradient(135deg, #ffaf7b, #d76d77);
+  color: white;
+  font-weight: bold;
+  box-shadow: 0px 4px 10px rgba(215, 109, 119, 0.3);
+}
+
+.bonus-btn:hover {
+  background: linear-gradient(135deg, #d76d77, #ffaf7b);
+  transform: translateY(-5px);
+  box-shadow: 0px 8px 20px rgba(215, 109, 119, 0.5);
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+  .jeu-niveau {
+    gap: 1.5rem;
+  }
+
+  .jeu-niveau-title {
+    font-size: 2rem;
+  }
+
+  .niveau-btn {
+    font-size: 1.2rem;
+    padding: 0.8rem 1.5rem;
+    width: 180px;
+  }
+}

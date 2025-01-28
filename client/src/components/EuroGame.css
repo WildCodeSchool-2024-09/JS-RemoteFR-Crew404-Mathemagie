@@ -27,6 +27,7 @@ p {
   display: flex;
   gap: 0.5rem;
   margin-bottom: 1rem;
+  justify-content: center;
 }
 
 .heart {
@@ -55,6 +56,7 @@ p {
   display: flex;
   gap: 1rem;
   margin: 20px 0;
+  justify-content: center;
 }
 
 .choice-button {
@@ -78,6 +80,7 @@ p {
   font-size: 1.5rem;
   color: #4059ad;
   margin-top: 1rem;
+  text-align: center;
 }
 
 .feedback {

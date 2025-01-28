@@ -1,16 +1,16 @@
 import { useEffect, useState } from "react";
 import "./CarGame.css";
-import Animals from "../assets/images/Animals.png";
-import BusBus from "../assets/images/BusBus.png";
-import moto from "../assets/images/Moto.png";
-import berline from "../assets/images/berline.png";
-import billets from "../assets/images/billets.png";
-import decapo from "../assets/images/decapo.png";
-import enfants from "../assets/images/enfants.png";
-import s from "../assets/images/s.png";
-import somme from "../assets/images/somme.png";
 
-// Déplacer questions en dehors du composant
+import Animals from "../../assets/images/Animals.png";
+import BusBus from "../../assets/images/BusBus.png";
+import moto from "../../assets/images/Moto.png";
+import berline from "../../assets/images/berline.png";
+import billets from "../../assets/images/billets.png";
+import decapo from "../../assets/images/decapo.png";
+import enfants from "../../assets/images/enfants.png";
+import s from "../../assets/images/s.png";
+import somme from "../../assets/images/somme.png";
+
 const questions = [
   {
     question: "Combien de berlines y'a t-il ?",
@@ -73,11 +73,10 @@ const questions = [
     image: BusBus,
     options: [8, 12, 9, 10],
   },
-  // Ajoutez d'autres questions si nécessaire
 ];
 
 function CarGame() {
-  const TOTAL_QUESTIONS = 10; // Nombre total de questions
+  const TOTAL_QUESTIONS = 10;
   const [questionIndex, setQuestionIndex] = useState(0);
   const [lives, setLives] = useState(6);
   const [score, setScore] = useState(0);
@@ -87,7 +86,7 @@ function CarGame() {
 
   useEffect(() => {
     setCurrentQuestion(questions[questionIndex]);
-  }, [questionIndex]); // Maintenant on peut retirer questions des dépendances
+  }, [questionIndex]);
 
   const handleChoice = (answer: number) => {
     if (answer === currentQuestion.answer) {
@@ -113,7 +112,7 @@ function CarGame() {
       }, 1000);
       return () => clearTimeout(timer);
     }
-  }, [answered, questionIndex, lives, score]); // Retirer TOTAL_QUESTIONS des dépendances
+  }, [answered, questionIndex, lives, score]);
 
   const handleRestart = () => {
     setLives(6);
@@ -128,7 +127,6 @@ function CarGame() {
     window.location.href = "/home";
   };
 
-  // Rendu conditionnel pour afficher les messages de fin de jeu
   if (lives <= 0) {
     return (
       <div className="game-container">
@@ -189,7 +187,7 @@ function CarGame() {
             key={num}
             type="button"
             onClick={() => handleChoice(num)}
-            disabled={lives === 0} // Désactive les boutons si le jeu est terminé
+            disabled={lives === 0}
           >
             {num}
           </button>

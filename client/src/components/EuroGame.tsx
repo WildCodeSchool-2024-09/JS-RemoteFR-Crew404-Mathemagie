@@ -11,7 +11,6 @@ import cinq from "../assets/images/cinq.png";
 import jep from "../assets/images/jep.png";
 import un from "../assets/images/un.png";
 
-// Déplacer questions en dehors du composant
 const questions = [
   {
     question: "Combien de centimes valent ces pièces ?",
@@ -74,13 +73,12 @@ const questions = [
     image: cinq,
     options: [250, 150, 200, 300],
   },
-  // Ajoutez d'autres questions si nécessaire
 ];
 
 function EuroGame() {
-  const TOTAL_QUESTIONS = 10; // Nombre total de questions
+  const TOTAL_QUESTIONS = 10;
   const [questionIndex, setQuestionIndex] = useState(0);
-  const [lives, setLives] = useState(6);
+  const [progress, setProgress] = useState(100);
   const [score, setScore] = useState(0);
   const [answered, setAnswered] = useState(false);
   const [currentQuestion, setCurrentQuestion] = useState(questions[0]);
@@ -88,14 +86,22 @@ function EuroGame() {
 
   useEffect(() => {
     setCurrentQuestion(questions[questionIndex]);
-  }, [questionIndex]); // Maintenant on peut retirer questions des dépendances
+    setProgress(100);
+  }, [questionIndex]);
+
+  useEffect(() => {
+    const timer = setInterval(() => {
+      setProgress((prev) => Math.max(prev - 1, 0));
+    }, 210);
+
+    return () => clearInterval(timer);
+  }, []);
 
   const handleChoice = (answer: number) => {
     if (answer === currentQuestion.answer) {
       setScore(score + 1);
       setFeedback("correct");
     } else {
-      setLives(lives - 1);
       setFeedback("wrong");
     }
     setAnswered(true);
@@ -115,10 +121,10 @@ function EuroGame() {
       }, 1000);
       return () => clearTimeout(timer);
     }
-  }, [answered, questionIndex, lives]); // Retirer TOTAL_QUESTIONS des dépendances
+  }, [answered, questionIndex]);
 
   const handleRestart = () => {
-    setLives(6);
+    setProgress(100);
     setScore(0);
     setQuestionIndex(0);
     setAnswered(false);
@@ -130,11 +136,10 @@ function EuroGame() {
     window.location.href = "/home";
   };
 
-  // Rendu conditionnel pour afficher les messages de fin de jeu
-  if (lives <= 0) {
+  if (progress <= 0) {
     return (
       <div className="game-container">
-        <h1>Oh non ! Tu as perdu toutes tes vies.</h1>
+        <h1>Oh non ! Tu n'as pas terminé à temps.</h1>
         <p>Ton score final : {score}</p>
         <button type="button" onClick={handleRestart} className="game-button">
           Rejouer
@@ -169,14 +174,23 @@ function EuroGame() {
         Jeu 2<p>Associez les objets au bon chiffre avant la fin du chrono</p>
       </h1>
 
-      <div className="lives">
-        {Array.from({ length: lives }).map((_, index) => (
-          // biome-ignore lint/suspicious/noArrayIndexKey: <explanation>
-          <span key={index} className="heart">
-            ❤️
-          </span>
-        ))}
-      </div>
+      {progress > 0 && (
+        <div
+          className="progress-bar"
+          style={{
+            width: `${progress}%`,
+            backgroundColor:
+              progress > 50
+                ? "green"
+                : progress > 20
+                  ? "yellow"
+                  : progress > 10
+                    ? "orange"
+                    : "red",
+            height: "20px",
+          }}
+        />
+      )}
 
       <div className="question">
         {currentQuestion.question}
@@ -192,7 +206,7 @@ function EuroGame() {
             key={num}
             type="button"
             onClick={() => handleChoice(num)}
-            disabled={lives === 0} // Désactive les boutons si le jeu est terminé
+            disabled={progress === 0}
           >
             {num}
           </button>
