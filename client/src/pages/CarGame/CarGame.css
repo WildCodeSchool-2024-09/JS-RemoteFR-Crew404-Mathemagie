@@ -19,7 +19,7 @@
 
 .question-image {
   display: block;
-  width: 300px; 
+  width: 300px;
   margin: 30px auto;
   justify-content: center;
   align-items: end;
@@ -30,6 +30,7 @@
   align-items: center;
   text-align: center;
   font-size: 20px;
+}
 
 .cars {
   display: row;
@@ -38,7 +39,7 @@
 }
 
 .cars img {
-  width: 90px; 
+  width: 90px;
   margin: 0 10px;
 }
 
@@ -197,6 +198,6 @@ button:focus {
   outline: none;
 }
 
-button:active {
+button:focus {
   background-color: #303f9f;
 }

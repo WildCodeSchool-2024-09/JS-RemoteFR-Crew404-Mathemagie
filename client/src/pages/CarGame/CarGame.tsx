@@ -83,6 +83,8 @@ function CarGame() {
   const [answered, setAnswered] = useState(false);
   const [currentQuestion, setCurrentQuestion] = useState(questions[0]);
   const [feedback, setFeedback] = useState<null | "correct" | "wrong">(null);
+  const [timeLeft, setTimeLeft] = useState(100);
+  const [selectedAnswer, setSelectedAnswer] = useState<number | null>(null);
 
   useEffect(() => {
     setCurrentQuestion(questions[questionIndex]);
@@ -127,6 +129,15 @@ function CarGame() {
     window.location.href = "/home";
   };
 
+  const validateAnswer = () => {
+    if (selectedAnswer === currentQuestion.answer) {
+      setScore(score + 1);
+    } else {
+      setLives(lives - 1);
+    }
+    setSelectedAnswer(null);
+  };
+
   if (lives <= 0) {
     return (
       <div className="game-container">
@@ -159,29 +170,6 @@ function CarGame() {
     );
   }
 
-
-function CarGame() {
-  const [score, setScore] = useState(0);
-  const [timeLeft, setTimeLeft] = useState(45);
-  const [selectedAnswer, setSelectedAnswer] = useState<number | null>(null);
-  const [hearts, setHearts] = useState(6);
-
-  useEffect(() => {
-    const timer = setInterval(() => {
-      setTimeLeft((prev) => (prev > 0 ? prev - 1 : 0));
-    }, 1000);
-    return () => clearInterval(timer);
-  }, []);
-
-  const validateAnswer = () => {
-    if (selectedAnswer === carsCount) {
-      setScore(score + 1);
-    } else {
-      setHearts(hearts - 1);
-    }
-    setSelectedAnswer(null); 
-  };
-
   return (
     <div className="car-game-container">
       <h1>
@@ -211,36 +199,16 @@ function CarGame() {
             type="button"
             onClick={() => handleChoice(num)}
             disabled={lives === 0}
-            
-      <div className="timer">Temps restant : {timeLeft} sec</div>
-      <div className="hearts"> ❤️ : {hearts}</div>
-      <div className="cars">
-        {Array.from({ length: carsCount }).map((_, index) => (
-          <img key={`car-${index + 1}`} src={car} alt="voiture" />
-        ))}
-      </div>
-      <div className="answers">
-        {[5, 4, 3].map((num) => (
-          <button
-            key={num}
-            type="button"
-            onClick={() => setSelectedAnswer(num)}
-
           >
             {num}
           </button>
         ))}
-
       </div>
-      <div className="score">Score : {score}</div>
-      <div className={`feedback ${feedback}`}>{feedback && feedback}</div>
-
-        <button type="button" onClick={validateAnswer}>
-          Valider
-        </button>
-      </div>
-      <div className="score">Score : {score}</div>
-
+      <div className="timer">Temps restant : {timeLeft} sec</div>
+      <div className="hearts"> ❤️ : {lives}</div>
+      <button type="button" onClick={validateAnswer}>
+        Valider
+      </button>
     </div>
   );
 }
