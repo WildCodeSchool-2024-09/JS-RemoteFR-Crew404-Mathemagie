@@ -11,7 +11,6 @@ function App() {
         </Link>
         <p>Niveau X</p>
         <p>X/X</p>
-        
         <Link to="/avatar"> Conçois ton avatar !</Link>
         <Link to="/game-one"> Premier jeu !</Link>
         <Link to="/car-game">Objets</Link>
