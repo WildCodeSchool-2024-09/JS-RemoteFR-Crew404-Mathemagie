@@ -48,7 +48,12 @@ body {
   width: 180px;
 }
 
-.gameCard {
+.BonusSection {
+  display: flex;
+  justify-content: center;
+}
+.gameCard,
+.bonusGame {
   background-color: var(--purple);
   font-family: "Fredoka", "Arial", sans-serif;
   font-size: 20px;
@@ -57,13 +62,12 @@ body {
   border-radius: 20px;
   border: 2px solid var(--purple);
   color: white;
-  transition:
-    transform 0.3s ease,
-    box-shadow 0.3s ease,
+  transition: transform 0.3s ease, box-shadow 0.3s ease,
     background-color 0.3s ease;
 }
 
-.gameCard:hover {
+.gameCard:hover,
+.bonusGame:hover {
   cursor: pointer;
   background-color: var(--cardHover);
   box-shadow: 0px 8px 20px rgba(94, 96, 206, 0.29);

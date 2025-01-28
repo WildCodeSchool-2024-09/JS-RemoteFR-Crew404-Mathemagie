@@ -36,7 +36,7 @@ function Bonus() {
       const number = Math.floor(Math.random() * 100);
       const isEven = number % 2 === 0; // je véirfie que mon chiffre est pair
 
-      // Ajoute le nouvel objet à la liste des objets qui tombent.
+      // je rajoute de nouveaux chiffres dans mon tableau
       setFallingObjects((objs) => [
         ...objs,
         {
@@ -70,7 +70,7 @@ function Bonus() {
               return false;
             }
             return true;
-          }),
+          })
       );
     }, intervalTime);
 
@@ -78,35 +78,40 @@ function Bonus() {
   }, [characterPosition, score]);
 
   return (
-    <section className="bonus-container">
-      <h1> Attrape les nombres pairs ! </h1>
-      <p>
-        Attrape les nombres pairs et évite les nombres impairs pour gagner des
-        points.
-      </p>
-      <section className="game-area">
-        <section
-          className="character"
-          style={{ left: `${characterPosition}%` }}
-        >
-          <img
-            src={avatar.photo || "/avatarphotos/cat.png"}
-            className="avatar"
-            alt="character"
-          />
-        </section>
-        {fallingObjects.map((obj) => (
-          <section
-            key={obj.id}
-            className={`falling-object ${obj.type}`}
-            style={{ left: `${obj.position}%`, top: `${obj.top}%` }}
-          >
-            {obj.content}
-          </section>
-        ))}
+    <>
+      <section className="titres-jeu">
+        <h1> Attrape les nombres pairs ! </h1>
+        <p>
+          Attrape les nombres pairs et évite les nombres impairs pour gagner des
+          points.
+        </p>
       </section>
-      <section className="score">Score : {score}</section>
-    </section>
+
+      <section className="bonus-container">
+        <section className="game-area">
+          <section
+            className="character"
+            style={{ left: `${characterPosition}%` }}
+          >
+            <img
+              src={avatar.photo || "/avatarphotos/cat.png"}
+              className="avatar"
+              alt="character"
+            />
+          </section>
+          {fallingObjects.map((obj) => (
+            <section
+              key={obj.id}
+              className={`falling-object ${obj.type}`}
+              style={{ left: `${obj.position}%`, top: `${obj.top}%` }}
+            >
+              {obj.content}
+            </section>
+          ))}
+        </section>
+        <section className="score">Score : {score}</section>
+      </section>
+    </>
   );
 }
 
