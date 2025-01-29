@@ -1,6 +1,5 @@
 import { useEffect, useState } from "react";
 import "./CarGame.css";
-
 import Animals from "../../assets/images/Animals.png";
 import BusBus from "../../assets/images/BusBus.png";
 import moto from "../../assets/images/Moto.png";
