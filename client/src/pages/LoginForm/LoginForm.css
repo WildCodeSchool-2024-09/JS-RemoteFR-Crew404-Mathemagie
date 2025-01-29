@@ -119,6 +119,16 @@ body {
   object-fit: cover;
 }
 
+.hidden-modalLogin {
+  display: none;
+}
+
+.modalLogin {
+  text-align: center;
+  color: rgb(224, 22, 22);
+  font-size: 16px;
+}
+
 @media (max-width: 768px) {
   .login-container {
     flex-direction: column;

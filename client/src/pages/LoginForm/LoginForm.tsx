@@ -9,6 +9,12 @@ function LoginForm() {
     password: "",
   });
 
+  const [modalLogin, setModalLogin] = useState(false);
+
+  const handleLogin = () => {
+    setModalLogin(true);
+  };
+
   const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     const { name, value } = e.target;
 
@@ -20,16 +26,18 @@ function LoginForm() {
 
   const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
-
-    /**
-     * On a testé avec axios, point faible, trop fort.
-     */
-    const response = await axios.post(
-      `${import.meta.env.VITE_API_URL}/api/login`,
-      login,
-    );
-
-    console.info(response.data);
+    try {
+      const response = await axios.post(
+        `${import.meta.env.VITE_API_URL}/api/login`,
+        login,
+      );
+      if (response.status === 200) {
+        window.location.href = "/avatar";
+      }
+    } catch (error) {
+      console.error(error);
+      handleLogin();
+    }
   };
 
   return (
@@ -39,7 +47,6 @@ function LoginForm() {
         <p className="login-subtitle">
           Bienvenue ! Connectez-vous pour continuer.
         </p>
-
         <form className="login-form" onSubmit={handleSubmit}>
           <input
             type="email"
@@ -61,13 +68,10 @@ function LoginForm() {
             onChange={handleChange}
             autoComplete="current-password"
           />
-          <button
-            type="submit"
-            className="btn-connect"
-            onClick={() => {
-              window.location.href = "/avatar";
-            }}
-          >
+          <p className={modalLogin ? "modalLogin" : "hidden-modalLogin"}>
+            Adresse mail ou mot de passe incorrect.
+          </p>
+          <button type="submit" className="btn-connect">
             Connexion
           </button>
 

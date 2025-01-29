@@ -1,0 +1,73 @@
+@font-face {
+  font-family: "Fredoka";
+  src: url("./fredoka.ttf") format("truetype");
+  font-weight: normal;
+  font-style: normal;
+}
+
+.bonus-container {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  justify-items: center;
+}
+
+h1 {
+  font-size: 36px;
+  color: #4059ad;
+  font-family: "Fredoka", "Arial", sans-serif;
+}
+
+p {
+  font-family: "Fredoka", "Arial", sans-serif;
+}
+
+.game-area {
+  display: flex;
+  flex-direction: row;
+  position: relative;
+  width: 75%;
+  height: 75vh;
+  background: linear-gradient(135deg, #f8d7ff, #b2f0ff);
+  border-radius: 20px;
+  border: 2px solid #4059ad;
+  overflow: hidden;
+  margin: 40px;
+}
+
+.character {
+  position: absolute;
+  bottom: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  max-width: 90%;
+  overflow: hidden;
+  pointer-events: none;
+}
+
+.avatar {
+  width: 130px;
+  max-height: 100%;
+}
+
+.falling-object {
+  position: absolute;
+  font-size: 50px;
+  max-width: 90%;
+  max-height: 100%;
+  overflow: hidden;
+  color: #4059ad;
+  font-family: "Fredoka", "Arial", sans-serif;
+}
+
+.score {
+  padding: 1rem;
+  border-radius: 15px;
+  font-size: 15px;
+  background: linear-gradient(135deg, #ffaf7b, #d76d77);
+  color: white;
+  font-weight: bold;
+  box-shadow: 0px 4px 10px rgba(215, 109, 119, 0.3);
+  text-align: center;
+}

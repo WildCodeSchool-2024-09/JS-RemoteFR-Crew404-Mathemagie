@@ -1,5 +1,6 @@
 import "./avatar.css";
 import { useState } from "react";
+import { Link } from "react-router-dom";
 
 function Avatar() {
   const [avatar, setAvatar] = useState({
@@ -53,11 +54,11 @@ function Avatar() {
   };
 
   const images = [
-    "/public/avatarphotos/cat.png",
-    "/public/avatarphotos/fox.png",
-    "/public/avatarphotos/tiger.png",
-    "/public/avatarphotos/elephant.png",
-    "/public/avatarphotos/cadenas.png",
+    "/avatarphotos/cat.png",
+    "/avatarphotos/fox.png",
+    "/avatarphotos/tiger.png",
+    "/avatarphotos/elephant.png",
+    "/avatarphotos/cadenas.png",
   ];
 
   // Je gère la partie du carroussel pour les images
@@ -181,9 +182,11 @@ function Avatar() {
           </div>
         </section>
         <section className="creation-button">
-          <button className="validate-button" type="submit">
-            Je valide!
-          </button>
+          <Link to="/">
+            <button className="validate-button" type="submit">
+              Je valide!
+            </button>
+          </Link>
         </section>
       </form>
     </>

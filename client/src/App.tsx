@@ -1,6 +1,7 @@
 import { Link, Outlet } from "react-router-dom";
 import "./App.css";
 import Home from "./assets/images/home.png";
+import { AvatarProvider } from "./pages/Context/AvatarContext";
 
 function App() {
   return (
@@ -17,7 +18,9 @@ function App() {
         <Link to="/num-game">Retrouve le chiffre manquant</Link>
         <Link to="/euro-game">EuroGame</Link>
       </header>
-      <Outlet />
+      <AvatarProvider>
+        <Outlet />
+      </AvatarProvider>
     </div>
   );
 }
