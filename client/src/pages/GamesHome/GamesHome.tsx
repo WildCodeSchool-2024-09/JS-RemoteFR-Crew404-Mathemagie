@@ -22,7 +22,7 @@ function GamesHome() {
       <section className="BonusSection">
         <Link to="/bonus-game">
           <button type="button" className="bonusGame" id="bonusGame">
-            Mange Tes Maths ! 
+            Mange Tes Maths !
           </button>
         </Link>
       </section>
