@@ -5,7 +5,7 @@ function GamesHome() {
   return (
     <>
       <section id="title">
-        <h1>Choisis un jeu, Maël !🤓</h1>
+        <h1>Choisis un jeu, Utilisateur !🤓</h1>
       </section>
       <section id="gamesList">
         <Link to="/levelgame1">
@@ -24,8 +24,15 @@ function GamesHome() {
           Jeu Quotidien
         </button>
       </section>
+      <section className="BonusSection">
+        <Link to="/bonus-game">
+          <button type="button" className="bonusGame" id="bonusGame">
+            Mange Tes Maths !
+          </button>
+        </Link>
+      </section>
       <footer>
-        Codé avec le ❤️ par la team <strong>@Crew404</strong>
+        Codé avec le ❤️ par la team <strong>@Mathémagie</strong>
       </footer>
     </>
   );
