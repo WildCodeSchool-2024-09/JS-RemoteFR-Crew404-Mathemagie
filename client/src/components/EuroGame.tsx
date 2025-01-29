@@ -107,7 +107,6 @@ function EuroGame() {
     setAnswered(true);
   };
 
-  // biome-ignore lint/correctness/useExhaustiveDependencies: <explanation>
   useEffect(() => {
     if (answered) {
       const timer = setTimeout(() => {
@@ -121,7 +120,7 @@ function EuroGame() {
       }, 1000);
       return () => clearTimeout(timer);
     }
-  }, [answered, questionIndex, score, TOTAL_QUESTIONS]);
+  }, [answered, questionIndex, score]);
 
   const handleRestart = () => {
     setProgress(100);

@@ -1,8 +1,8 @@
 import { useEffect, useState } from "react";
 import "./CarGame.css";
 
-import Animals from "../../assets/images/Animals.png";
-import BusBus from "../../assets/images/BusBus.png";
+import animals from "../../assets/images/Animals.png";
+import busBus from "../../assets/images/BusBus.png";
 import moto from "../../assets/images/Moto.png";
 import berline from "../../assets/images/berline.png";
 import billets from "../../assets/images/billets.png";
@@ -34,7 +34,7 @@ const questions = [
   {
     question: "Comptez le nombre d'animaux ?",
     answer: 9,
-    image: Animals,
+    image: animals,
     options: [11, 8, 9, 6],
   },
   {
@@ -70,7 +70,7 @@ const questions = [
   {
     question: "Combien de vitres possède ce bus ?",
     answer: 10,
-    image: BusBus,
+    image: busBus,
     options: [8, 12, 9, 10],
   },
 ];
