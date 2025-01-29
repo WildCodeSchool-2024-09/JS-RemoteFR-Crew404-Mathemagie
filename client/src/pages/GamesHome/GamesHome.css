@@ -62,10 +62,9 @@ body {
   border-radius: 20px;
   border: 2px solid var(--purple);
   color: white;
-  transition:
-    transform 0.3s ease,
-    box-shadow 0.3s ease,
-    background-color 0.3s ease;
+  transition: transform 0.3s ease;
+  transition: box-shadow 0.3s ease;
+  transition: background-color 0.3s ease;
 }
 
 .gameCard:hover,
