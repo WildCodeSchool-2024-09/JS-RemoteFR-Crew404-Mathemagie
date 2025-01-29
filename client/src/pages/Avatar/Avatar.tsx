@@ -1,11 +1,10 @@
 import "./avatar.css";
 import { useState } from "react";
-import { Link } from "react-router-dom";
 
 function Avatar() {
   const [avatar, setAvatar] = useState({
     name: "",
-    photo: "",
+    photo: "/avatarphotos/cat.png",
     classe: "",
     day: "",
     month: "",
@@ -16,7 +15,6 @@ function Avatar() {
     e: React.ChangeEvent<HTMLInputElement | HTMLSelectElement>,
   ) => {
     const { name, value } = e.target;
-
     setAvatar((prevAvatar) => ({
       ...prevAvatar,
       [name]: value,
@@ -68,16 +66,17 @@ function Avatar() {
     setCurrentIndex(
       (prevIndex) => (prevIndex - 1 + images.length) % images.length,
     );
+    setAvatar((prevAvatar) => ({
+      ...prevAvatar,
+      photo: images[currentIndex + 1],
+    }));
   };
 
   const handleNext = () => {
     setCurrentIndex((prevIndex) => (prevIndex + 1) % images.length);
-  };
-
-  const handleImageClick = (src: string) => {
     setAvatar((prevAvatar) => ({
       ...prevAvatar,
-      photo: src,
+      photo: images[currentIndex + 1],
     }));
   };
 
@@ -94,12 +93,6 @@ function Avatar() {
                 src={src}
                 alt={`Animal ${index}`}
                 className={`animal ${index === currentIndex ? "active" : ""}`}
-                onClick={() => handleImageClick(src)}
-                onKeyDown={(e) => {
-                  if (e.key === "Enter" || e.key === " ") {
-                    handleImageClick(src);
-                  }
-                }}
               />
             ))}
           </section>
@@ -128,10 +121,11 @@ function Avatar() {
             className="input-bulle"
             value={avatar.name}
           />
-          <p>Dans quelle classe es-tu?</p>
+          <label htmlFor="classe">Dans quelle classe es-tu?</label>
           <input
             type="text"
             name="classe"
+            id="classe"
             onChange={handleChange}
             placeholder="Je suis en..."
             className="input-bulle"
@@ -182,11 +176,9 @@ function Avatar() {
           </div>
         </section>
         <section className="creation-button">
-          <Link to="/">
-            <button className="validate-button" type="submit">
-              Je valide!
-            </button>
-          </Link>
+          <button className="validate-button" type="submit">
+            Je valide!
+          </button>
         </section>
       </form>
     </>
