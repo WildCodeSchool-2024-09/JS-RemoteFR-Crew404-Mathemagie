@@ -21,7 +21,7 @@ function GamesHome() {
       </section>
       <section className="quizSection">
         <button type="button" id="dailyQuiz">
-          Quiz Quotidien
+          Jeu Quotidien
         </button>
       </section>
       <footer>
