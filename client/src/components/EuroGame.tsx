@@ -92,7 +92,7 @@ function EuroGame() {
   useEffect(() => {
     const timer = setInterval(() => {
       setProgress((prev) => Math.max(prev - 1, 0));
-    }, 210);
+    }, 500);
 
     return () => clearInterval(timer);
   }, []);
