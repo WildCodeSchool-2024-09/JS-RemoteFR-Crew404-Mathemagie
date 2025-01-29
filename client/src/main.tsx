@@ -26,6 +26,11 @@ import NumGame from "./pages/NumGame/NumGame";
 import RandomEquation from "./pages/RandomEquation/RandomEquation";
 import SignUpForm from "./pages/SignUpForm/SignUpForm";
 
+/**
+ * Components
+ */
+import EuroGame from "./components/EuroGame";
+
 /* ************************************************************************* */
 
 // Create router configuration with routes
@@ -74,6 +79,10 @@ const router = createBrowserRouter([
       {
         path: "/car-game",
         element: <CarGame />,
+      },
+      {
+        path: "/euro-game",
+        element: <EuroGame />,
       },
       {
         path: "/authpage",
