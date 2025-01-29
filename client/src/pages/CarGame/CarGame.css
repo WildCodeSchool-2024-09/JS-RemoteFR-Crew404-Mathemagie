@@ -32,17 +32,6 @@
   font-size: 20px;
 }
 
-.cars {
-  display: row;
-  justify-content: center;
-  margin: 20px 0;
-}
-
-.cars img {
-  width: 90px;
-  margin: 0 10px;
-}
-
 .answers {
   margin: 20px 0;
 }
