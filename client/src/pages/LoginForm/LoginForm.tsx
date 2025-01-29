@@ -9,12 +9,15 @@ function LoginForm() {
     password: "",
   });
 
+  //mon state qui alterne entre true et false pour afficher "Adresse mail ou mot de passe incorrect."
   const [modalLogin, setModalLogin] = useState(false);
 
+  //constante qui se déclenche plus bas si jamais il y a une erreur lors de la connexion
   const handleLogin = () => {
     setModalLogin(true);
   };
 
+  //stockage de l'input de l'utilisateur pour vérifier dans handleSubmit si le mdp et email sont corrects
   const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     const { name, value } = e.target;
 
@@ -24,6 +27,7 @@ function LoginForm() {
     }));
   };
 
+  //constante qui se déclenche lors du submit du formulaire
   const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     try {
