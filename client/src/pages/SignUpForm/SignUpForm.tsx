@@ -11,6 +11,7 @@ function SignUpForm() {
   });
 
   const [modal, setModal] = useState(false);
+  const [exists, setExists] = useState(false);
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     const { name, value } = e.target;
@@ -21,20 +22,35 @@ function SignUpForm() {
     }));
   };
 
+  const handleRedirection = () => {
+    window.location.href = "/login";
+  };
+
   const handleSignUp = () => {
     setModal(true);
     setTimeout(() => setModal(false), 2000);
+    setTimeout(() => handleRedirection(), 2000);
+  };
+
+  const handleAlreadyCreated = () => {
+    setExists(true);
+    setTimeout(() => setExists(false), 2000);
   };
 
   const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
-
-    const response = await axios.post(
-      `${import.meta.env.VITE_API_URL}/api/register`,
-      register,
-    );
-
-    console.info(response.data);
+    try {
+      const response = await axios.post(
+        `${import.meta.env.VITE_API_URL}/api/register`,
+        register,
+      );
+      if (response.status === 201) {
+        handleSignUp();
+      }
+    } catch (error) {
+      handleAlreadyCreated();
+      console.error(error);
+    }
   };
 
   const handleRegister = () => {
@@ -47,6 +63,9 @@ function SignUpForm() {
         <div className="sign-up-card">
           <p className={modal ? "modal" : "hidden-modal"}>
             Inscription réussie !
+          </p>
+          <p className={exists ? "alreadyCreated" : "hidden-alreadyCreated"}>
+            Ce compte existe déjà !
           </p>
           <h2 className="sign-up-title">Inscription</h2>
           <p className="sign-up-subtitle">Créez votre compte</p>
@@ -90,19 +109,15 @@ function SignUpForm() {
               required
               autoComplete="current-password"
             />
-            <button
-              type="submit"
-              className="btn-primary"
-              onClick={handleSignUp}
-            >
+            <button type="submit" className="btn-primary">
               S'inscrire
             </button>
             <button
               type="submit"
-              className="btn-primary"
+              className="haveAccount"
               onClick={handleRegister}
             >
-              Se connecter
+              J'ai déjà un compte
             </button>
           </form>
         </div>
