@@ -164,7 +164,6 @@ function NumGame() {
         ))}
       </div>
 
-      {/* 🔥 Message d'encouragement (sans bouton rejouer) */}
       {correctStreak >= 2 && (
         <div className="encouragement">
           <h2>Bravo ! Tu es sur une super lancée ! 🚀</h2>

@@ -1,4 +1,5 @@
 import { useState } from "react";
+import { useNavigate } from "react-router-dom";
 import "../LoginForm/LoginForm.css";
 import axios from "axios";
 import batman from "../../assets/images/batman.png";
@@ -8,10 +9,10 @@ function LoginForm() {
     email: "",
     password: "",
   });
+  const navigate = useNavigate();
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     const { name, value } = e.target;
-
     setLogin((prev) => ({
       ...prev,
       [name]: value,
@@ -20,16 +21,12 @@ function LoginForm() {
 
   const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
-
-    /**
-     * On a testé avec axios, point faible, trop fort.
-     */
     const response = await axios.post(
       `${import.meta.env.VITE_API_URL}/api/login`,
       login,
     );
-
     console.info(response.data);
+    navigate("/dashboard");
   };
 
   return (
@@ -61,22 +58,13 @@ function LoginForm() {
             onChange={handleChange}
             autoComplete="current-password"
           />
-          <button
-            type="submit"
-            className="btn-connect"
-            onClick={() => {
-              window.location.href = "/avatar";
-            }}
-          >
+          <button type="submit" className="btn-connect">
             Connexion
           </button>
-
           <button
             type="button"
             className="btn-signUp"
-            onClick={() => {
-              window.location.href = "/sign-up";
-            }}
+            onClick={() => navigate("/sign-up")}
           >
             Sign Up
           </button>
