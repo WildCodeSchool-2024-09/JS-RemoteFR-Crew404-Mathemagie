@@ -6,6 +6,7 @@ function RandomEquation() {
   const [answers, setAnswers] = useState<number[]>([]);
   const [correctAnswer, setCorrectAnswer] = useState<number[] | number>([]);
   const [score, setScore] = useState(Number(0));
+  const [feedback, setFeedback] = useState<string>("");
 
   const handleClick = useCallback(() => {
     // ici je génère mes deux valeurs entre 0 et 20
@@ -53,7 +54,13 @@ function RandomEquation() {
   const handleAnswer = (answer: number) => {
     if (answer === correctAnswer) {
       setScore(score + 1);
+      setFeedback("correct");
+    } else {
+      setFeedback("wrong");
     }
+
+    setTimeout(() => setFeedback(""), 1000);
+
     return handleClick();
   };
 
@@ -61,7 +68,9 @@ function RandomEquation() {
     <div id="game">
       <div className="interface">
         <p id="equationTitle">Quel est le résultat de :</p>
-        <p id="equation">{equation}</p>
+        <p id="equation" className={feedback}>
+          {equation}
+        </p>
         <p id="score">Score : {score}</p>
         <div id="answerList">
           {answers.map((answer) => (
