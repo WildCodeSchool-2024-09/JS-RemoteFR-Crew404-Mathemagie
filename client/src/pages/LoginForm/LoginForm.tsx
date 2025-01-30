@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { useNavigate } from "react-router-dom";
+import { Link } from "react-router-dom";
 import "../LoginForm/LoginForm.css";
 import axios from "axios";
 import batman from "../../assets/images/batman.png";
@@ -9,7 +9,12 @@ function LoginForm() {
     email: "",
     password: "",
   });
-  const navigate = useNavigate();
+
+  const [modalLogin, setModalLogin] = useState(false);
+
+  const handleLogin = () => {
+    setModalLogin(true);
+  };
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     const { name, value } = e.target;
@@ -21,12 +26,19 @@ function LoginForm() {
 
   const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
-    const response = await axios.post(
-      `${import.meta.env.VITE_API_URL}/api/login`,
-      login,
-    );
-    console.info(response.data);
-    navigate("/dashboard");
+
+    try {
+      const response = await axios.post(
+        `${import.meta.env.VITE_API_URL}/api/login`,
+        login,
+      );
+      if (response.status === 200) {
+        window.location.href = "/avatar";
+      }
+    } catch (error) {
+      console.error(error);
+      handleLogin();
+    }
   };
 
   return (
@@ -36,7 +48,6 @@ function LoginForm() {
         <p className="login-subtitle">
           Bienvenue ! Connectez-vous pour continuer.
         </p>
-
         <form className="login-form" onSubmit={handleSubmit}>
           <input
             type="email"
@@ -58,21 +69,22 @@ function LoginForm() {
             onChange={handleChange}
             autoComplete="current-password"
           />
+
+          <p className={modalLogin ? "modalLogin" : "hidden-modalLogin"}>
+            Adresse mail ou mot de passe incorrect.
+          </p>
+
           <button type="submit" className="btn-connect">
             Connexion
           </button>
-          <button
-            type="button"
-            className="btn-signUp"
-            onClick={() => navigate("/sign-up")}
-          >
+          <Link to="/sign-up" className="btn-signUp">
             Sign Up
-          </button>
+          </Link>
         </form>
 
-        <a href="/forgot-password" className="forgot-password">
+        <Link to="/forgot-password" className="forgot-password">
           Mot de passe oublié ?
-        </a>
+        </Link>
       </div>
       <div className="login-illustration">
         <img src={batman} alt="Illustration" />
