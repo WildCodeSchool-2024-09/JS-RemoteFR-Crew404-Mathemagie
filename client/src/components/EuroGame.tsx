@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 import "./EuroGame.css";
-import piece from "../assets/images/Pièce.png";
+import piece from "../assets/images/Piece.png";
 import ad from "../assets/images/ad.png";
 import ae from "../assets/images/ae.png";
 import cen from "../assets/images/cen.png";
