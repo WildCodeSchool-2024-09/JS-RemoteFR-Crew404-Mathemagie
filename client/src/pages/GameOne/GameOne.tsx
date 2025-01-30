@@ -7,6 +7,7 @@ function GameOne() {
   const [gameOver, setGameOver] = useState(false);
   const [reponseUtilisateur, setReponseUtilisateur] = useState("");
   const [vies, setVies] = useState(5);
+  const [retour, setRetour] = useState("");
 
   const questions = [
     { num1: 5, result: 10 },
@@ -25,6 +26,7 @@ function GameOne() {
       setPoint(point + 1);
     } else {
       setVies(vies - 1);
+      setRetour("wrong");
     }
 
     // Vérification état des vies
@@ -45,18 +47,33 @@ function GameOne() {
   return (
     <>
       <section className="jeu-container">
-        <h1>
-          Afin de débloquer le niveau <strong>2</strong>, voici quelques petites
-          additions ! Bonne chance !
-        </h1>
+        <p>
+          {Array.from({ length: vies }).map((_, index) => (
+            <span
+              key={`heart-${Date.now()}-${index}`}
+              className={`heart ${retour === "wrong" ? "shake" : ""}`}
+            >
+              ❤️
+            </span>
+          ))}
+        </p>
+        <h1>Retrouve le chiffre manquant pour compléter l'addition!</h1>
+
         <section className="jeu-entier">
           {!gameOver ? (
             <div>
               <section className="question-jeu-un">
                 <p>
-                  <strong>Question {questionIndex + 1}</strong>:{" "}
-                  {questions[questionIndex].result} ={" "}
-                  {questions[questionIndex].num1} + _
+                  Question {questionIndex + 1} sur 5 :
+                  <section className="questions-gameone">
+                    <div className="question-box">
+                      {questions[questionIndex].num1} + <strong> ?</strong>
+                    </div>{" "}
+                    =
+                    <div className="resultat-box">
+                      <strong> {questions[questionIndex].result} </strong>
+                    </div>
+                  </section>
                 </p>
               </section>
               <input
@@ -71,10 +88,7 @@ function GameOne() {
                 className="entrer-bouton"
               >
                 OK
-              </button>{" "}
-              <div>
-                <p>Vies restantes: {vies} ❤️</p>
-              </div>
+              </button>
             </div>
           ) : (
             <div>

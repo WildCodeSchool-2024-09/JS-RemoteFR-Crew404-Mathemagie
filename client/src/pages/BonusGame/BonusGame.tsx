@@ -15,9 +15,26 @@ function Bonus() {
   const [fallingObjects, setFallingObjects] = useState<FallingObject[]>([]);
   const [score, setScore] = useState(0);
   const { avatar } = useAvatar();
+  const [time, setTime] = useState(60);
+  const [gameOver, setGameOver] = useState(false);
+
+  // je gère le chrono
+  useEffect(() => {
+    if (time === 0) {
+      setGameOver(true); // Arrête le jeu
+      return;
+    }
+
+    const timer = setInterval(() => {
+      setTime((t) => t - 1);
+    }, 1000);
+
+    return () => clearInterval(timer);
+  }, [time]);
 
   // Je déplace mon avatar grâce aux touches
   useEffect(() => {
+    if (gameOver) return;
     const handleKeyDown = (e: KeyboardEvent) => {
       if (e.key === "ArrowLeft") {
         setCharacterPosition((pos) => Math.max(0, pos - 5));
@@ -28,10 +45,11 @@ function Bonus() {
 
     window.addEventListener("keydown", handleKeyDown);
     return () => window.removeEventListener("keydown", handleKeyDown);
-  }, []);
+  }, [gameOver]);
 
   // Mes chiffres tombent aléatoirement
   useEffect(() => {
+    if (gameOver) return;
     const interval = setInterval(() => {
       const number = Math.floor(Math.random() * 100);
       const isEven = number % 2 === 0; // je véirfie que mon chiffre est pair
@@ -50,10 +68,11 @@ function Bonus() {
     }, 2000); // mes chiffres tombent toutes les 2 secondes
 
     return () => clearInterval(interval);
-  }, []);
+  }, [gameOver]);
 
   // Fait descendre les objets et vérifie les collisions.
   useEffect(() => {
+    if (gameOver) return;
     const intervalTime = score < 100 ? 150 : 100; // La vitesse dépend du score (100)
     const interval = setInterval(() => {
       setFallingObjects((objs) =>
@@ -75,7 +94,7 @@ function Bonus() {
     }, intervalTime);
 
     return () => clearInterval(interval);
-  }, [characterPosition, score]);
+  }, [characterPosition, score, gameOver]);
 
   return (
     <>
@@ -83,34 +102,48 @@ function Bonus() {
         <h1> Attrape les nombres pairs ! </h1>
         <p>
           Attrape les nombres pairs et évite les nombres impairs pour gagner des
-          points.
+          points. <br /> Attention au chronomètre !
         </p>
-      </section>
-
-      <section className="bonus-container">
-        <section className="game-area">
-          <section
-            className="character"
-            style={{ left: `${characterPosition}%` }}
-          >
-            <img
-              src={avatar.photo || "/avatarphotos/cat.png"}
-              className="avatar"
-              alt="character"
-            />
-          </section>
-          {fallingObjects.map((obj) => (
-            <section
-              key={obj.id}
-              className={`falling-object ${obj.type}`}
-              style={{ left: `${obj.position}%`, top: `${obj.top}%` }}
-            >
-              {obj.content}
-            </section>
-          ))}
+        <section className="time-remaining">
+          ⏳ Temps restant : {time} secondes ⏳
         </section>
-        <section className="score">Score : {score}</section>
       </section>
+      {gameOver ? (
+        <section className="game-bonus-over">
+          <h2>
+            ⏳ <br /> Temps écoulé ! <br />⏳
+          </h2>
+          <p>
+            Ton score final : {score} <br /> 🎉
+          </p>
+        </section>
+      ) : (
+        <section className="bonus-container">
+          <section className="game-area">
+            <section
+              className="character"
+              style={{ left: `${characterPosition}%` }}
+            >
+              <img
+                src={avatar.photo || "/avatarphotos/cat.png"}
+                className="avatar"
+                alt="character"
+              />
+            </section>
+            {fallingObjects.map((obj) => (
+              <section
+                key={obj.id}
+                className={`falling-object ${obj.type}`}
+                style={{ left: `${obj.position}%`, top: `${obj.top}%` }}
+              >
+                {obj.content}
+              </section>
+            ))}
+          </section>
+
+          <section className="score-bonus">Score : {score}</section>
+        </section>
+      )}
     </>
   );
 }
