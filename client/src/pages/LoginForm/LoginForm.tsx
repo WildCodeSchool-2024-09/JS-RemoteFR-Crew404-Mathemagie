@@ -34,6 +34,7 @@ function LoginForm() {
       const response = await axios.post(
         `${import.meta.env.VITE_API_URL}/api/login`,
         login,
+        { withCredentials: true },
       );
       if (response.status === 200) {
         window.location.href = "/avatar";

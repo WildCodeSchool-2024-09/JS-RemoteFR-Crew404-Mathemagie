@@ -1,5 +1,5 @@
 import type { RequestHandler } from "express";
-
+import jwtMiddleware from "../../../middlewares/jwtMiddleware";
 // Import access to data
 import authRepository from "./authRepository";
 
@@ -17,10 +17,9 @@ const register: RequestHandler = async (req, res, next) => {
 
 const login: RequestHandler = async (req, res, next) => {
   try {
-    if (req.user) {
-      const { password, ...safeUser } = req.user;
-      res.status(200).json(safeUser);
-    }
+    const user = await authRepository.read(req.body.email);
+    const token = jwtMiddleware.createToken(user);
+    res.cookie("jwtToken", token, { httpOnly: true, secure: false }).json(user);
   } catch (err) {
     next(err);
   }

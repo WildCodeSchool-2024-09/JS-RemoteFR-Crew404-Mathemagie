@@ -16,11 +16,14 @@ router.post("/api/items", itemActions.add);
 import authMiddleware from "./middlewares/authMiddleware";
 import authActions from "./modules/item/auth/authAction";
 
-router.post("/api/login", authMiddleware.isRegistered, authActions.login);
+router.post(
+  "/api/login",
+  authMiddleware.isRegistered,
+  authActions.login,
+  authMiddleware.verifyPwd,
+  authMiddleware.verifyEmail,
+);
 router.post("/api/register", authMiddleware.hashPwd, authActions.register);
 /* ************************************************************************* */
-
-import userActions from "./modules/user/userActions";
-router.post("/api/avatar", userActions.addAvatar);
 
 export default router;
