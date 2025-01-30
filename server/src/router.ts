@@ -24,6 +24,8 @@ router.post(
   authMiddleware.verifyEmail,
 );
 router.post("/api/register", authMiddleware.hashPwd, authActions.register);
+import childrenActions from "./modules/item/children/childrenAction"; // Ensure this path is correct
+
 /* ************************************************************************* */
 
 export default router;
