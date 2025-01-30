@@ -19,11 +19,7 @@ function GamesHome() {
           </button>
         </Link>
       </section>
-      <section className="quizSection">
-        <button type="button" id="dailyQuiz">
-          Jeu Quotidien
-        </button>
-      </section>
+
       <section className="BonusSection">
         <Link to="/bonus-game">
           <button type="button" className="bonusGame" id="bonusGame">

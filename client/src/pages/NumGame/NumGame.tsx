@@ -156,7 +156,7 @@ function NumGame() {
           <button
             key={`choice-${choice}`}
             type="button"
-            className="choice-button"
+            className="choice-button-un"
             onClick={() => handleChoice(choice)}
           >
             {choice}

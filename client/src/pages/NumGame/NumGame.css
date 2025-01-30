@@ -93,7 +93,7 @@ p {
   margin-top: 1rem;
 }
 
-.choice-button {
+.choice-button-un {
   font-size: 1.5rem;
   padding: 1rem 2rem;
   background-color: #4059ad;
@@ -104,12 +104,12 @@ p {
   transition: background-color 0.3s ease, transform 0.2s ease;
 }
 
-.choice-button:hover {
+.choice-button-un:hover {
   background-color: #5e60ce;
   transform: scale(1.05);
 }
 
-.choice-button:active {
+.choice-button-un:active {
   background-color: #303f9f;
 }
 
