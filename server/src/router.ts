@@ -28,7 +28,4 @@ import childrenActions from "./modules/item/children/childrenAction"; // Ensure 
 
 /* ************************************************************************* */
 
-import userActions from "./modules/user/userActions";
-router.post("/api/avatar", userActions.addAvatar);
-
 export default router;
