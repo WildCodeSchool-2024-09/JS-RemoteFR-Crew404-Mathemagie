@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
 import "./CarGame.css";
 
+import Confetti from "react-confetti";
 import animals from "../../assets/images/Animals.png";
 import busBus from "../../assets/images/BusBus.png";
 import moto from "../../assets/images/Moto.png";
@@ -168,6 +169,7 @@ function CarGame() {
   if (questionIndex === TOTAL_QUESTIONS - 1 && answered) {
     return (
       <div className="game-container">
+        <Confetti />
         <h1>Félicitations !</h1>
         <p>
           Ton score : {score} / {TOTAL_QUESTIONS}
