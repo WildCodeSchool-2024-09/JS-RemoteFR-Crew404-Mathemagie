@@ -10,7 +10,10 @@ function SignUpForm() {
     password: "",
   });
 
+  // mon state qui alterne entre true et false pour afficher "inscription réussie" ou juste rien afficher
   const [modal, setModal] = useState(false);
+  // mon state qui alterne entre true et false pour afficher "ce compte existe déjà !" ou rien
+  const [exists, setExists] = useState(false);
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     const { name, value } = e.target;
@@ -21,24 +24,40 @@ function SignUpForm() {
     }));
   };
 
+  //le handleRegister qui se trigger selon la condition de dessous
+  const handleRegister = () => {
+    window.location.href = "/login";
+  };
+
+  //constante déclenchée si jamais le compte a bien été créé et qui me redirige vers le login
   const handleSignUp = () => {
     setModal(true);
     setTimeout(() => setModal(false), 2000);
+    setTimeout(() => handleRegister(), 2000);
   };
 
+  //constante déclenchée si le compte existe déjà
+  const handleAlreadyCreated = () => {
+    setExists(true);
+    setTimeout(() => setExists(false), 2000);
+  };
+
+  //constante qui se déclenche à l'envoi du formulaire, si tout est ok le message d'inscription s'affiche et me redirige vers la page connexion
+  //par contre si il y a une erreur (genre utilisateur déjà existant avec cet email) ça affiche le message d'erreur (via la constante handleAlreadyCreated)
   const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
-
-    const response = await axios.post(
-      `${import.meta.env.VITE_API_URL}/api/register`,
-      register,
-    );
-
-    console.info(response.data);
-  };
-
-  const handleRegister = () => {
-    window.location.href = "/login";
+    try {
+      const response = await axios.post(
+        `${import.meta.env.VITE_API_URL}/api/register`,
+        register,
+      );
+      if (response.status === 201) {
+        handleSignUp();
+      }
+    } catch (error) {
+      handleAlreadyCreated();
+      console.error(error);
+    }
   };
 
   return (
@@ -47,6 +66,9 @@ function SignUpForm() {
         <div className="sign-up-card">
           <p className={modal ? "modal" : "hidden-modal"}>
             Inscription réussie !
+          </p>
+          <p className={exists ? "alreadyCreated" : "hidden-alreadyCreated"}>
+            Ce compte existe déjà !
           </p>
           <h2 className="sign-up-title">Inscription</h2>
           <p className="sign-up-subtitle">Créez votre compte</p>
@@ -90,19 +112,15 @@ function SignUpForm() {
               required
               autoComplete="current-password"
             />
-            <button
-              type="submit"
-              className="btn-primary"
-              onClick={handleSignUp}
-            >
+            <button type="submit" className="btn-primary">
               S'inscrire
             </button>
             <button
               type="submit"
-              className="btn-primary"
+              className="haveAccount"
               onClick={handleRegister}
             >
-              Se connecter
+              J'ai déjà un compte
             </button>
           </form>
         </div>

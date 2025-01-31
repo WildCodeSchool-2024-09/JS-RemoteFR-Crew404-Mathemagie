@@ -20,7 +20,4 @@ router.post("/api/login", authMiddleware.isRegistered, authActions.login);
 router.post("/api/register", authMiddleware.hashPwd, authActions.register);
 /* ************************************************************************* */
 
-import userActions from "./modules/user/userActions";
-router.post("/api/avatar", userActions.addAvatar);
-
 export default router;
