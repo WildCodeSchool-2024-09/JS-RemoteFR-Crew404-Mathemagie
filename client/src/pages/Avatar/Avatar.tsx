@@ -46,7 +46,6 @@ function Avatar() {
       if (response.ok) {
         console.info("User created successfully");
         navigate(`/gameshome/${avatar.name}`);
-       
       } else {
         console.error("Error POST");
         const errorData = await response.json();

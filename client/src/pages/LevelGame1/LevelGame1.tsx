@@ -1,9 +1,8 @@
-import { Link ,useParams } from "react-router-dom";
+import { Link, useParams } from "react-router-dom";
 import "./LevelGame1.css";
 
-
 function LevelGame1() {
-    const { name } = useParams();
+  const { name } = useParams();
   return (
     <section className="jeu-niveau">
       <h1 className="jeu-niveau-title">Choisis un niveau {name} </h1>
