@@ -25,5 +25,4 @@ const getAvatar: RequestHandler = async (req, res, next) => {
   }
 };
 
-
-export default { addAvatar , getAvatar };
+export default { addAvatar, getAvatar };

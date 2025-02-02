@@ -44,6 +44,11 @@ const router = createBrowserRouter([
         path: "/gameshome/:name",
         element: <GamesHome />,
       },
+
+      {
+        path: "/bonus-game/:name",
+        element: <Bonus />,
+      },
       {
         path: "/", // The root path
         element: <GamesHome />,
@@ -53,23 +58,25 @@ const router = createBrowserRouter([
         element: <LoginForm />,
       },
       {
-        path: "/random-equation",
+        path: "/random-equation/:name",
         element: <RandomEquation />,
       },
+
       {
-        path: "/levelgame1",
+        path: "/levelgame1/:name",
         element: <LevelGame1 />,
       },
+
       {
-        path: "/levelgame2",
+        path: "/levelgame2/:name",
         element: <LevelGame2 />,
       },
       {
-        path: "/game-one",
+        path: "/game-one/:name",
         element: <GameOne />,
       },
       {
-        path: "/num-game",
+        path: "/num-game/:name",
         element: <NumGame />,
       },
       {
@@ -81,11 +88,15 @@ const router = createBrowserRouter([
         element: <ForgotPassword />,
       },
       {
+        path: "/car-game/:name",
+        element: <CarGame />,
+      },
+      {
         path: "/car-game",
         element: <CarGame />,
       },
       {
-        path: "/euro-game",
+        path: "/euro-game/:name",
         element: <EuroGame />,
       },
       {
@@ -95,11 +106,6 @@ const router = createBrowserRouter([
       {
         path: "/avatar",
         element: <Avatar />,
-      },
-
-      {
-        path: "/bonus-game",
-        element: <Bonus />,
       },
     ],
   },

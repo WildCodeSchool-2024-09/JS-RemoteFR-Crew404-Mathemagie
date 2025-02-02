@@ -14,7 +14,7 @@ function Avatar() {
   });
 
   const handleChange = (
-    e: React.ChangeEvent<HTMLInputElement | HTMLSelectElement>
+    e: React.ChangeEvent<HTMLInputElement | HTMLSelectElement>,
   ) => {
     const { name, value } = e.target;
     setAvatar((prevAvatar) => ({
@@ -40,13 +40,13 @@ function Avatar() {
             photo: avatar.photo,
             birthday: `${avatar.year}-${avatar.month}-${avatar.day}`,
           }),
-        }
+        },
       );
 
       if (response.ok) {
         console.info("User created successfully");
         navigate(`/gameshome/${avatar.name}`);
-    
+       
       } else {
         console.error("Error POST");
         const errorData = await response.json();
@@ -70,7 +70,7 @@ function Avatar() {
 
   const handlePrevious = () => {
     setCurrentIndex(
-      (prevIndex) => (prevIndex - 1 + images.length) % images.length
+      (prevIndex) => (prevIndex - 1 + images.length) % images.length,
     );
     setAvatar((prevAvatar) => ({
       ...prevAvatar,

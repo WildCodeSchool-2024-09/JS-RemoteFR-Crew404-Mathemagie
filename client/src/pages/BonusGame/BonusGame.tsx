@@ -12,7 +12,7 @@ interface FallingObject {
 }
 
 function Bonus() {
-    const { name } = useParams ();
+  const { name } = useParams();
   const [characterPosition, setCharacterPosition] = useState(50);
   const [fallingObjects, setFallingObjects] = useState<FallingObject[]>([]);
   const [score, setScore] = useState(0);

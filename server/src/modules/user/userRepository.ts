@@ -24,7 +24,10 @@ class userRepository {
 
   // CRUD - Read du Create, Read, Update, Delete
   async read(id: number) {
-    const [rows] = await DatabaseClient.query<Rows>("SELECT * FROM user WHERE id = ?", [id]);
+    const [rows] = await DatabaseClient.query<Rows>(
+      "SELECT * FROM user WHERE id = ?",
+      [id],
+    );
     return rows[0] as User[];
   }
 }
