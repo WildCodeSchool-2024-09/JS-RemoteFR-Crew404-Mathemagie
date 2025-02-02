@@ -21,20 +21,26 @@ function generateQuestion(seriesLength = 5, maxStart = 20, maxStep = 5) {
 }
 
 function NumGame() {
-  const TOTAL_QUESTIONS = 10; // Nombre total de questions
+  const TOTAL_QUESTIONS = 10;
   const [questionIndex, setQuestionIndex] = useState(0);
   const [lives, setLives] = useState(5);
   const [score, setScore] = useState(0);
   const [answered, setAnswered] = useState(false);
   const [currentQuestion, setCurrentQuestion] = useState(generateQuestion());
   const [feedback, setFeedback] = useState<null | "correct" | "wrong">(null);
+  const [xpBlocked, setXpBlocked] = useState(
+    localStorage.getItem("numGameCompleted") === "true",
+  );
+  const [correctStreak, setCorrectStreak] = useState(0);
 
   const handleChoice = (choice: number) => {
     if (choice === currentQuestion.correctAnswer) {
-      setScore(score + 1);
+      if (!xpBlocked) setScore(score + 1);
+      setCorrectStreak(correctStreak + 1);
       setFeedback("correct");
     } else {
       setLives(lives - 1);
+      setCorrectStreak(0);
       setFeedback("wrong");
     }
     setAnswered(true);
@@ -60,7 +66,11 @@ function NumGame() {
     setQuestionIndex(0);
     setAnswered(false);
     setFeedback(null);
+    setCorrectStreak(0);
     setCurrentQuestion(generateQuestion());
+
+    const hasAlreadyWon = localStorage.getItem("numGameCompleted") === "true";
+    setXpBlocked(hasAlreadyWon);
   };
 
   const handleGoHome = () => {
@@ -83,6 +93,11 @@ function NumGame() {
   }
 
   if (questionIndex >= TOTAL_QUESTIONS) {
+    if (score > 0) {
+      localStorage.setItem("numGameCompleted", "true");
+      setXpBlocked(true);
+    }
+
     return (
       <div className="game-container">
         <h1>Félicitations !</h1>
@@ -102,14 +117,17 @@ function NumGame() {
   return (
     <div className="game-container">
       <div className="lives">
-        {Array.from({ length: lives }).map((_, index) => (
-          <span
-            key={`heart-${index}-${Date.now()}`}
-            className={`heart ${feedback === "wrong" ? "shake" : ""}`}
-          >
-            ❤️
-          </span>
-        ))}
+        {Array.from({ length: lives }).map((_, index) => {
+          const uniqueKey = `heart-${index}-${Math.random()}`;
+          return (
+            <span
+              key={uniqueKey}
+              className={`heart ${feedback === "wrong" ? "shake" : ""}`}
+            >
+              ❤️
+            </span>
+          );
+        })}
       </div>
       <h1>Retrouve le chiffre manquant !</h1>
       <p>
@@ -118,7 +136,7 @@ function NumGame() {
       <div className="series">
         {currentQuestion.series.map((num, index) => (
           <div
-            key={`series-${num}-${currentQuestion.missingIndex}-${Date.now()}`}
+            key={`series-${num}-${currentQuestion.missingIndex === index ? "missing" : num}`}
             className={`series-item ${
               index === currentQuestion.missingIndex
                 ? feedback === "correct"
@@ -138,13 +156,20 @@ function NumGame() {
           <button
             key={`choice-${choice}`}
             type="button"
-            className="choice-button"
+            className="choice-button-un"
             onClick={() => handleChoice(choice)}
           >
             {choice}
           </button>
         ))}
       </div>
+
+      {/* 🔥 Message d'encouragement (sans bouton rejouer) */}
+      {correctStreak >= 2 && (
+        <div className="encouragement">
+          <h2>Bravo ! Tu es sur une super lancée ! 🚀</h2>
+        </div>
+      )}
     </div>
   );
 }

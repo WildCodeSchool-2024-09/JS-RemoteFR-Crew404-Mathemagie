@@ -1,21 +1,30 @@
-create table user (
-  id int unsigned primary key auto_increment not null,
-  email varchar(255) not null unique,
-  password varchar(255) not null
+-- SQLBook: Code
+
+
+CREATE TABLE parent (
+    id_parent INT PRIMARY KEY AUTO_INCREMENT NOT NULL,
+    lastname VARCHAR(255) NOT NULL,
+    firstname VARCHAR(255) NOT NULL,
+    password VARCHAR(255) NOT NULL,
+    email VARCHAR(255) NOT NULL UNIQUE
 );
 
-create table item (
-  id int unsigned primary key auto_increment not null,
-  title varchar(255) not null,
-  user_id int unsigned not null,
-  foreign key(user_id) references user(id)
+
+INSERT INTO parent (email, password, lastname, firstname)
+VALUES
+  ("jdoe@mail.com", "123456", "Doe", "John");
+
+
+
+
+CREATE TABLE user (
+  id_user INT AUTO_INCREMENT PRIMARY KEY,
+  prenom VARCHAR(50) NOT NULL,
+ classe VARCHAR(50) NOT NULL,
+ birthday DATE NOT NULL,
+photo VARCHAR(255) NOT NULL
 );
 
-insert into user(id, email, password)
-values
-  (1, "jdoe@mail.com", "123456");
+INSERT INTO user (prenom, classe, birthday, photo)
+VALUES ('Camille', 'CP', '2019-01-01', '/public/avatarphotos/cat.png');
 
-insert into item(id, title, user_id)
-values
-  (1, "Stuff", 1),
-  (2, "Doodads", 1);

@@ -1,124 +1,138 @@
-h1 {
+/* Global Styles */
+:root {
+  --purple: #6a0dad;
+  --titlesColor: #333;
+  --cardHover: #9a7bbd;
+  --backgroundLight: rgba(255, 255, 255, 0.459);
+}
+
+body {
   font-family: "Poppins", "Arial", sans-serif;
+  margin: 0;
+  padding: 0;
+  background-color: #f9f9f9;
+  color: #333;
+  line-height: 1.6;
 }
 
-#dailyQuiz,
-.gameCard {
-  font-family: "Fredoka", "Arial", sans-serif;
-}
-
+/* Title Section */
 #title {
   display: flex;
   flex-direction: column;
   align-items: center;
-  margin-top: 2rem;
-  margin-bottom: 3rem;
-  margin-left: auto;
-  margin-right: auto;
-  background-color: rgba(255, 255, 255, 0.459);
+  margin: 2rem auto;
+  background-color: var(--backgroundLight);
   border-radius: 40px;
-  border: solid 3px var(--purple);
+  border: 3px solid var(--purple);
   font-size: 22px;
   width: 90%;
+  max-width: 500px;
   padding: 1.5rem;
+  text-align: center;
+  transition: all 0.3s ease-in-out;
 }
 
 #title h1 {
-  font-size: 25px;
+  font-size: 28px;
   color: var(--titlesColor);
+  margin: 0;
 }
 
+/* Games List */
 #gamesList {
   display: flex;
   flex-direction: column;
   align-items: center;
   gap: 1.5rem;
-  width: 180px;
   margin: 0 auto;
+  width: 180px;
 }
 
-.gameCard {
+.BonusSection {
+  display: flex;
+  justify-content: center;
+}
+.gameCard,
+.bonusGame {
   background-color: var(--purple);
+  font-family: "Fredoka", "Arial", sans-serif;
   font-size: 20px;
   padding: 2rem;
   text-align: center;
   border-radius: 20px;
-  transition: 0.5s;
-  border: solid 2px var(--purple);
+  border: 2px solid var(--purple);
+  color: white;
+  transition: transform 0.3s ease;
+  transition: box-shadow 0.3s ease;
+  transition: background-color 0.3s ease;
+}
+
+.gameCard:hover,
+.bonusGame:hover {
+  cursor: pointer;
+  background-color: var(--cardHover);
+  box-shadow: 0px 8px 20px rgba(94, 96, 206, 0.29);
+  transform: translateY(-5px);
+}
+
+/* Quiz Section */
+.quizSection {
+  display: flex;
+  justify-content: center;
+  margin-top: 2rem;
 }
 
 #dailyQuiz {
-  margin: 0 auto;
-  display: flex;
-  margin-top: 2rem;
-  flex-direction: column;
-  align-items: center;
-  color: var(--titlesColor);
-  background-color: rgba(255, 255, 255, 0.459);
-  border: solid 4px var(--purple);
-  width: 80%;
-  padding: 2rem;
-  border-radius: 80px;
+  background-color: var(--backgroundLight);
+  border: 4px solid var(--purple);
+  padding: 1.5rem 3rem;
+  border-radius: 40px;
   font-weight: bold;
-  transition: 0.5s;
+  font-size: 22px;
+  color: var(--titlesColor);
+  transition: all 0.3s ease-in-out;
 }
 
-#dailyQuiz p {
-  font-size: 25px;
-  font-weight: bolder;
+#dailyQuiz:hover {
+  cursor: pointer;
+  background-color: var(--purple);
+  color: white;
+  box-shadow: 0px 8px 20px rgba(94, 96, 206, 0.29);
 }
 
+/* Footer */
 footer {
   margin-top: 4rem;
-  margin-bottom: 0.5rem;
+  text-align: center;
+  font-size: 14px;
+  color: #666;
 }
 
-/* RESPONSIVE DESKTOP */
-
+/* Responsive Design */
 @media (min-width: 768px) {
-  #statsBar {
-    font-size: 20px;
-    padding: 1.5rem;
-  }
-
   #title {
     padding: 2.5rem;
-    width: 30%;
+    width: 60%;
   }
 
   #title h1 {
     font-size: 30px;
   }
 
+  #gamesList {
+    flex-direction: row;
+    gap: 2rem;
+    width: auto;
+  }
+
   .gameCard {
     font-size: 22px;
-    padding: 3.5rem;
-    width: 20rem;
-  }
-
-  #gamesList {
-    width: 6rem;
-  }
-
-  .gameCard:hover {
-    cursor: pointer;
-    background-color: var(--cardHover);
-    box-shadow: 5px 5px 20px 3px rgba(94, 96, 206, 0.29);
+    padding: 2.5rem;
+    width: 200px;
   }
 
   #dailyQuiz {
-    font-size: 22px;
-    width: 25%;
-    padding: 3rem;
-  }
-
-  #dailyQuiz:hover {
-    cursor: pointer;
-    background-color: var(--purple);
-    color: white;
-    box-shadow: 5px 5px 20px 3px rgba(94, 96, 206, 0.29);
-  }
-  #dailyQuiz:hover p {
-    color: white;
+    font-size: 24px;
+    padding: 2rem 4rem;
   }
 }

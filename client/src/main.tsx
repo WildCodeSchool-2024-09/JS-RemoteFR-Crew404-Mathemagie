@@ -13,6 +13,7 @@ import Avatar from "./pages/Avatar/Avatar";
 // Import additional components for new routes
 // Try creating these components in the "pages" folder
 
+import Bonus from "./pages/BonusGame/BonusGame";
 import CarGame from "./pages/CarGame/CarGame";
 import ForgotPassword from "./pages/ForgotPassword/ForgotPassword";
 import GameOne from "./pages/GameOne/GameOne";
@@ -24,6 +25,11 @@ import NotFound from "./pages/Notfound/NotFound";
 import NumGame from "./pages/NumGame/NumGame";
 import RandomEquation from "./pages/RandomEquation/RandomEquation";
 import SignUpForm from "./pages/SignUpForm/SignUpForm";
+
+/**
+ * Components
+ */
+import EuroGame from "./components/EuroGame";
 
 /* ************************************************************************* */
 
@@ -75,12 +81,20 @@ const router = createBrowserRouter([
         element: <CarGame />,
       },
       {
+        path: "/euro-game",
+        element: <EuroGame />,
+      },
+      {
         path: "/authpage",
         element: <AuthPage />,
       },
       {
         path: "/avatar",
         element: <Avatar />,
+      },
+      {
+        path: "/bonus-game",
+        element: <Bonus />,
       },
     ],
   },

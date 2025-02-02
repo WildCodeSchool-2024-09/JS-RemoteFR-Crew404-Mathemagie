@@ -1,0 +1,133 @@
+@font-face {
+  font-family: "Fredoka";
+  src: url("./fredoka.ttf") format("truetype");
+  font-weight: normal;
+  font-style: normal;
+}
+
+.bonus-container {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  justify-items: center;
+}
+
+h1 {
+  font-size: 36px;
+  color: #4059ad;
+  font-family: "Fredoka", "Arial", sans-serif;
+}
+
+p {
+  font-family: "Fredoka", "Arial", sans-serif;
+}
+
+.game-area {
+  display: flex;
+  flex-direction: row;
+  position: relative;
+  width: 95%;
+  height: 75vh;
+  background: linear-gradient(135deg, #f8d7ff, #b2f0ff);
+  border-radius: 20px;
+  border: 2px solid #4059ad;
+  overflow: hidden;
+  margin: 40px;
+}
+
+.character {
+  position: absolute;
+  bottom: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  max-width: 90%;
+  overflow: hidden;
+  pointer-events: none;
+}
+
+.avatar {
+  width: 130px;
+  max-height: 100%;
+}
+
+.falling-object {
+  position: absolute;
+  font-size: 30px;
+  max-width: 80%;
+  max-height: 100%;
+  overflow: hidden;
+  color: #4059ad;
+  font-family: "Fredoka", "Arial", sans-serif;
+}
+
+/* score et info timer */
+.score-bonus {
+  padding: 1rem;
+  border-radius: 15px;
+  font-family: "Fredoka", "Arial", sans-serif;
+  font-size: 35px;
+  background: linear-gradient(135deg, #ffaf7b, #d76d77);
+  color: white;
+  font-weight: bold;
+  box-shadow: 0px 4px 10px rgba(215, 109, 119, 0.3);
+  text-align: center;
+}
+
+.time-remaining {
+  font-weight: bold;
+  font-size: 25px;
+  font-family: "Fredoka", "Arial", sans-serif;
+  color: #4059ad;
+  margin: auto;
+  text-align: center;
+}
+.game-bonus-over {
+  display: flex;
+  flex-direction: column;
+  border-radius: 20px;
+  background-color: rgb(255, 255, 255);
+  width: 60%;
+  justify-content: center;
+  align-items: center;
+  font-family: "Fredoka", "Arial", sans-serif;
+  color: #4059ad;
+  margin: auto;
+}
+
+.game-bonus-over h2 {
+  font-size: 25px;
+  margin: 20px;
+  text-align: center;
+}
+
+@media (min-width: 768px) {
+  .game-bonus-over h2 {
+    font-size: 36px;
+    margin: 20px;
+  }
+
+  .game-bonus-over p {
+    font-size: 25px;
+  }
+
+  .game-bonus-over {
+    width: 15%;
+  }
+
+  .falling-object {
+    font-size: 50px;
+  }
+
+  .bonus-container {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    justify-items: center;
+  }
+
+  .game-area {
+    width: 75%;
+  }
+}
