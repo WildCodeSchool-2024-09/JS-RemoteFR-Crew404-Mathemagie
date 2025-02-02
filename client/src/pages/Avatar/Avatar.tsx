@@ -1,7 +1,9 @@
 import "./avatar.css";
 import { useState } from "react";
+import { useNavigate } from "react-router-dom";
 
 function Avatar() {
+  const navigate = useNavigate();
   const [avatar, setAvatar] = useState({
     name: "",
     photo: "/avatarphotos/cat.png",
@@ -12,7 +14,7 @@ function Avatar() {
   });
 
   const handleChange = (
-    e: React.ChangeEvent<HTMLInputElement | HTMLSelectElement>,
+    e: React.ChangeEvent<HTMLInputElement | HTMLSelectElement>
   ) => {
     const { name, value } = e.target;
     setAvatar((prevAvatar) => ({
@@ -38,13 +40,19 @@ function Avatar() {
             photo: avatar.photo,
             birthday: `${avatar.year}-${avatar.month}-${avatar.day}`,
           }),
-        },
+        }
       );
+
+      console.log("Response status:", response.status);
+      console.log("Response ok:", response.ok);
 
       if (response.ok) {
         console.info("User created successfully");
+        navigate("/");
       } else {
         console.error("Error POST");
+        const errorData = await response.json();
+        console.error("Error data:", errorData);
       }
     } catch (err) {
       console.error("Error", err);
@@ -64,7 +72,7 @@ function Avatar() {
 
   const handlePrevious = () => {
     setCurrentIndex(
-      (prevIndex) => (prevIndex - 1 + images.length) % images.length,
+      (prevIndex) => (prevIndex - 1 + images.length) % images.length
     );
     setAvatar((prevAvatar) => ({
       ...prevAvatar,
