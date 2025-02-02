@@ -43,12 +43,10 @@ function Avatar() {
         }
       );
 
-      console.log("Response status:", response.status);
-      console.log("Response ok:", response.ok);
-
       if (response.ok) {
         console.info("User created successfully");
-        navigate("/");
+        navigate(`/gameshome/${avatar.name}`);
+    
       } else {
         console.error("Error POST");
         const errorData = await response.json();

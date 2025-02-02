@@ -41,6 +41,10 @@ const router = createBrowserRouter([
     element: <App />,
     children: [
       {
+        path: "/gameshome/:name",
+        element: <GamesHome />,
+      },
+      {
         path: "/", // The root path
         element: <GamesHome />,
       },
@@ -92,6 +96,7 @@ const router = createBrowserRouter([
         path: "/avatar",
         element: <Avatar />,
       },
+
       {
         path: "/bonus-game",
         element: <Bonus />,

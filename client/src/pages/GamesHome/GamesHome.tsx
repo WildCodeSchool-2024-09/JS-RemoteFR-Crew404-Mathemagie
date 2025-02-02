@@ -1,11 +1,13 @@
-import { Link } from "react-router-dom";
+import { Link , useParams } from "react-router-dom";
 import "../GamesHome/GamesHome.css";
 
 function GamesHome() {
+  
+  const { name } = useParams ();
   return (
     <>
       <section id="title">
-        <h1>Choisis un jeu, Utilisateur !🤓</h1>
+        <h1>Choisis un jeu, {name} 🤓</h1>
       </section>
       <section id="gamesList">
         <Link to="/levelgame1">
