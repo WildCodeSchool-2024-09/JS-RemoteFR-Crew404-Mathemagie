@@ -2,7 +2,7 @@ import { Link, useParams } from "react-router-dom";
 import "../GamesHome/GamesHome.css";
 
 function GamesHome() {
-  const { name } = useParams();
+  const { name , photo } = useParams();
   return (
     <>
       <section id="title">
@@ -28,6 +28,7 @@ function GamesHome() {
           </button>
         </Link>
       </section>
+      <img src={photo} alt="Avatar" className="avatar-image" />
       <footer>
         Codé avec le ❤️ par la team <strong>@Mathémagie</strong>
       </footer>

@@ -65,6 +65,7 @@ body {
   transition: transform 0.3s ease;
   transition: box-shadow 0.3s ease;
   transition: background-color 0.3s ease;
+  z-index: +1;
 }
 
 .gameCard:hover,
@@ -99,6 +100,16 @@ body {
   color: white;
   box-shadow: 0px 8px 20px rgba(94, 96, 206, 0.29);
 }
+
+.avatar-image {
+  width: 300px;
+  height: auto; 
+  position: relative;
+  margin: auto;
+opacity: 10%;
+  margin-top: -50px;
+}
+
 
 /* Footer */
 footer {
@@ -135,4 +146,13 @@ footer {
     font-size: 24px;
     padding: 2rem 4rem;
   }
+
+  .avatar-image {
+  width: 400px; /* Ajustez la taille selon vos besoins */
+  height: auto; 
+  position: relative;
+opacity: 100%;
+  margin-top: -50px; /* Ajustez la valeur selon vos besoins */
+
+}
 }
