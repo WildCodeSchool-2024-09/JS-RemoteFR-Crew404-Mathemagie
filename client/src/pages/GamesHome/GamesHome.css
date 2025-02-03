@@ -103,13 +103,12 @@ body {
 
 .avatar-image {
   width: 300px;
-  height: auto; 
+  height: auto;
   position: relative;
   margin: auto;
-opacity: 10%;
+  opacity: 10%;
   margin-top: -50px;
 }
-
 
 /* Footer */
 footer {
@@ -148,11 +147,10 @@ footer {
   }
 
   .avatar-image {
-  width: 400px; /* Ajustez la taille selon vos besoins */
-  height: auto; 
-  position: relative;
-opacity: 100%;
-  margin-top: -50px; /* Ajustez la valeur selon vos besoins */
-
-}
+    width: 400px; /* Ajustez la taille selon vos besoins */
+    height: auto;
+    position: relative;
+    opacity: 100%;
+    margin-top: -50px; /* Ajustez la valeur selon vos besoins */
+  }
 }

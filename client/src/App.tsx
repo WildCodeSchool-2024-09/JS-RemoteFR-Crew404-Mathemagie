@@ -1,4 +1,4 @@
-import { Link, Outlet, useParams, useLocation } from "react-router-dom";
+import { Link, Outlet, useLocation, useParams } from "react-router-dom";
 import "./App.css";
 import Home from "./assets/images/home.png";
 import { AvatarProvider } from "./pages/Context/AvatarContext";
