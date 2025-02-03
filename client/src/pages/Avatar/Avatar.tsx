@@ -1,7 +1,9 @@
 import "./avatar.css";
 import { useState } from "react";
+import { useNavigate } from "react-router-dom";
 
 function Avatar() {
+  const navigate = useNavigate();
   const [avatar, setAvatar] = useState({
     name: "",
     photo: "/avatarphotos/cat.png",
@@ -43,8 +45,11 @@ function Avatar() {
 
       if (response.ok) {
         console.info("User created successfully");
+        navigate(`/gameshome/${avatar.name}`);
       } else {
         console.error("Error POST");
+        const errorData = await response.json();
+        console.error("Error data:", errorData);
       }
     } catch (err) {
       console.error("Error", err);
