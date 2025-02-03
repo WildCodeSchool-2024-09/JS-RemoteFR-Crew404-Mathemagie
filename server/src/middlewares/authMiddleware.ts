@@ -1,3 +1,4 @@
+/// <reference path="../types/express/index.d.ts" />
 import * as argon2 from "argon2";
 import type { RequestHandler } from "express";
 
