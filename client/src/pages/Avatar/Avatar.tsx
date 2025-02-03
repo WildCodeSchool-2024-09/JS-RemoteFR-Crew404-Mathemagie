@@ -6,7 +6,7 @@ function Avatar() {
   const navigate = useNavigate();
   const [avatar, setAvatar] = useState({
     name: "",
-    photo: "/avatarphotos/cat.png",
+    photo: "/avatarphotos/chat/chat_bw.png",
     classe: "",
     day: "",
     month: "",
@@ -57,10 +57,10 @@ function Avatar() {
   };
 
   const images = [
-    "/avatarphotos/cat.png",
-    "/avatarphotos/fox.png",
-    "/avatarphotos/tiger.png",
-    "/avatarphotos/elephant.png",
+    "/avatarphotos/chat/chat_bw.png",
+    "/avatarphotos/renard/renard_bw.png",
+    "/avatarphotos/tigre/tigre_bw.png",
+    "/avatarphotos/elephant/elephant_bw.png",
     "/avatarphotos/cadenas.png",
   ];
 
