@@ -1,11 +1,12 @@
 import { useEffect, useState } from "react";
 import "./CarGame.css";
 
+import Confetti from "react-confetti";
 import animals from "../../assets/images/Animals.png";
 import busBus from "../../assets/images/BusBus.png";
 import moto from "../../assets/images/Moto.png";
-import berline from "../../assets/images/berline.png";
 import billets from "../../assets/images/billets.png";
+import caisse from "../../assets/images/caisse.png";
 import decapo from "../../assets/images/decapo.png";
 import enfants from "../../assets/images/enfants.png";
 import s from "../../assets/images/s.png";
@@ -13,26 +14,26 @@ import somme from "../../assets/images/somme.png";
 
 const questions = [
   {
-    question: "Combien de berlines y'a t-il ?",
-    answer: 6,
-    image: berline,
-    options: [4, 5, 2, 6],
+    question: "Il y'a combien de voitures ?",
+    answer: 10,
+    image: caisse,
+    options: [4, 5, 2, 10],
   },
   {
-    question: "Combien de berlines noires y'a t-il ?",
+    question: "Il y'a combien de voitures noires ?",
     answer: 2,
-    image: berline,
+    image: caisse,
     options: [4, 5, 2, 6],
   },
 
   {
-    question: "Combien de billets de 20€ y'a t-il ?",
+    question: "Compte les billets de 20€ ?",
     answer: 7,
     image: s,
     options: [7, 6, 5, 4],
   },
   {
-    question: "Comptez le nombre d'animaux ?",
+    question: "Compte le nombre d'animaux ?",
     answer: 9,
     image: animals,
     options: [11, 8, 9, 6],
@@ -44,7 +45,7 @@ const questions = [
     options: [90, 100, 73, 64],
   },
   {
-    question: "Quel est le nombre de cabriolets ?",
+    question: "Quel est le nombre de voitures décapotables ?",
     answer: 4,
     image: decapo,
     options: [2, 4, 6, 7],
@@ -56,7 +57,7 @@ const questions = [
     options: [8, 6, 3, 4],
   },
   {
-    question: "Quelle est la somme de ces billets ?",
+    question: "Quelle est la somme de ces 2 billets ?",
     answer: 35,
     image: billets,
     options: [32, 34, 43, 35],
@@ -83,14 +84,14 @@ function CarGame() {
   const [answered, setAnswered] = useState(false);
   const [currentQuestion, setCurrentQuestion] = useState(questions[0]);
   const [, setFeedback] = useState<null | "correct" | "wrong">(null);
-  const [timeLeft] = useState(100);
-  const [selectedAnswer, setSelectedAnswer] = useState<number | null>(null);
+  const [, setSelectedAnswer] = useState<number | null>(null);
 
   useEffect(() => {
     setCurrentQuestion(questions[questionIndex]);
   }, [questionIndex]);
 
   const handleChoice = (answer: number) => {
+    setSelectedAnswer(answer);
     if (answer === currentQuestion.answer) {
       setScore(score + 1);
       setFeedback("correct");
@@ -108,62 +109,87 @@ function CarGame() {
           setQuestionIndex(questionIndex + 1);
           setAnswered(false);
           setFeedback(null);
-        } else if (lives <= 0) {
-          alert(`Fin du jeu ! Votre score final est : ${score}`);
+          setSelectedAnswer(null);
+        } else if (questionIndex === TOTAL_QUESTIONS - 1 && lives >= 0) {
+          <div className="game-container">
+            <h1>Félicitations !</h1>
+            <p>
+              Ton score : {score} / {TOTAL_QUESTIONS}
+            </p>
+            <button
+              type="button"
+              onClick={() => {
+                window.location.href = "/euro-game";
+              }}
+              className="game-button"
+            >
+              Rejouer
+            </button>
+            <button
+              type="button"
+              onClick={() => {
+                window.location.href = "/home";
+              }}
+              className="game-button"
+            >
+              Retourner à l'accueil
+            </button>
+          </div>;
         }
-      }, 1000);
+      }, 2000);
       return () => clearTimeout(timer);
     }
   }, [answered, questionIndex, lives, score]);
-
-  const handleRestart = () => {
-    setLives(6);
-    setScore(0);
-    setQuestionIndex(0);
-    setAnswered(false);
-    setFeedback(null);
-    setCurrentQuestion(questions[0]);
-  };
-
-  const handleGoHome = () => {
-    window.location.href = "/home";
-  };
-
-  const validateAnswer = () => {
-    if (selectedAnswer === currentQuestion.answer) {
-      setScore(score + 1);
-    } else {
-      setLives(lives - 1);
-    }
-    setSelectedAnswer(null);
-  };
 
   if (lives <= 0) {
     return (
       <div className="game-container">
         <h1>Oh non ! Tu as perdu toutes tes vies.</h1>
         <p>Ton score final : {score}</p>
-        <button type="button" onClick={handleRestart} className="game-button">
+        <button
+          type="button"
+          onClick={() => window.location.reload()}
+          className="game-button"
+        >
           Rejouer
         </button>
-        <button type="button" onClick={handleGoHome} className="game-button">
+        <button
+          type="button"
+          onClick={() => {
+            window.location.href = "/home";
+          }}
+          className="game-button"
+        >
           Retourner à l'accueil
         </button>
       </div>
     );
   }
 
-  if (questionIndex >= TOTAL_QUESTIONS) {
+  if (questionIndex === TOTAL_QUESTIONS - 1 && answered) {
     return (
       <div className="game-container">
+        <Confetti />
         <h1>Félicitations !</h1>
         <p>
           Ton score : {score} / {TOTAL_QUESTIONS}
         </p>
-        <button type="button" onClick={handleRestart} className="game-button">
-          Rejouer
+        <button
+          type="button"
+          onClick={() => {
+            window.location.href = "/euro-game";
+          }}
+          className="game-button"
+        >
+          Passer au niveau 2
         </button>
-        <button type="button" onClick={handleGoHome} className="game-button">
+        <button
+          type="button"
+          onClick={() => {
+            window.location.href = "/home";
+          }}
+          className="game-button"
+        >
           Retourner à l'accueil
         </button>
       </div>
@@ -172,10 +198,6 @@ function CarGame() {
 
   return (
     <div className="car-game-container">
-      <h1>
-        Jeu 1<p>Associez les objets au bon chiffre</p>
-      </h1>
-
       <div className="lives">
         {Array.from({ length: lives }).map((_, index) => (
           <span key={index.toString()} className="heart">
@@ -184,12 +206,15 @@ function CarGame() {
         ))}
       </div>
 
-      <div className="question">
+      <h1>Associe les objets au bon chiffre !</h1>
+
+      <div className="question" style={{ color: "#4059ad" }}>
         {currentQuestion.question}
         <img
           src={currentQuestion.image}
           alt="Question"
           className="question-image"
+          width="600px"
         />
       </div>
       <div className="answers">
@@ -198,17 +223,20 @@ function CarGame() {
             key={num}
             type="button"
             onClick={() => handleChoice(num)}
-            disabled={lives === 0}
+            disabled={answered}
+            className={
+              answered
+                ? num === currentQuestion.answer
+                  ? "correct"
+                  : "wrong"
+                : ""
+            }
           >
             {num}
           </button>
         ))}
       </div>
-      <div className="timer">Temps restant : {timeLeft} sec</div>
-      <div className="hearts"> ❤️ : {lives}</div>
-      <button type="button" onClick={validateAnswer}>
-        Valider
-      </button>
+      <div className="score-cargame">Score : {score}</div>
     </div>
   );
 }

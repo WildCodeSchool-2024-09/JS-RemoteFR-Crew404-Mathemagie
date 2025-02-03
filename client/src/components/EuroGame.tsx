@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
 import "./EuroGame.css";
-import piece from "../assets/images/Pièce.png";
+import Confetti from "react-confetti";
+import piece from "../assets/images/Piece.png";
 import ad from "../assets/images/ad.png";
 import ae from "../assets/images/ae.png";
 import cen from "../assets/images/cen.png";
@@ -92,7 +93,7 @@ function EuroGame() {
   useEffect(() => {
     const timer = setInterval(() => {
       setProgress((prev) => Math.max(prev - 1, 0));
-    }, 210);
+    }, 500);
 
     return () => clearInterval(timer);
   }, []);
@@ -114,13 +115,11 @@ function EuroGame() {
           setQuestionIndex(questionIndex + 1);
           setAnswered(false);
           setFeedback(null);
-        } else {
-          alert(`Fin du jeu ! Votre score final est : ${score}`);
         }
       }, 1000);
       return () => clearTimeout(timer);
     }
-  }, [answered, questionIndex, score]);
+  }, [answered, questionIndex]);
 
   const handleRestart = () => {
     setProgress(100);
@@ -150,9 +149,10 @@ function EuroGame() {
     );
   }
 
-  if (questionIndex >= TOTAL_QUESTIONS) {
+  if (questionIndex === TOTAL_QUESTIONS - 1 && answered) {
     return (
       <div className="game-container">
+        <Confetti />
         <h1>Félicitations !</h1>
         <p>
           Ton score : {score} / {TOTAL_QUESTIONS}
@@ -169,9 +169,7 @@ function EuroGame() {
 
   return (
     <div className="car-game-container">
-      <h1>
-        Jeu 2<p>Associez les objets au bon chiffre avant la fin du chrono</p>
-      </h1>
+      <h1>Associez les objets au bon chiffre avant la fin du chrono</h1>
 
       {progress > 0 && (
         <div
@@ -191,7 +189,7 @@ function EuroGame() {
         />
       )}
 
-      <div className="question">
+      <div className="question" style={{ color: "#4059ad" }}>
         {currentQuestion.question}
         <img
           src={currentQuestion.image}
@@ -211,7 +209,7 @@ function EuroGame() {
           </button>
         ))}
       </div>
-      <div className="score">Score : {score}</div>
+      <div className="score-eurogame">Score : {score}</div>
       {feedback && (
         <div className={`feedback ${feedback}`}>
           {feedback === "correct" ? "Bonne réponse !" : "Mauvaise réponse !"}
