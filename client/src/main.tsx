@@ -15,6 +15,7 @@ import Avatar from "./pages/Avatar/Avatar";
 
 import Bonus from "./pages/BonusGame/BonusGame";
 import CarGame from "./pages/CarGame/CarGame";
+import Dashboard from "./pages/DashBoard/DashBoard";
 import ForgotPassword from "./pages/ForgotPassword/ForgotPassword";
 import GameOne from "./pages/GameOne/GameOne";
 import GamesHome from "./pages/GamesHome/GamesHome";
@@ -52,6 +53,10 @@ const router = createBrowserRouter([
       {
         path: "/", // The root path
         element: <GamesHome />,
+      },
+      {
+        path: "/dashboard",
+        element: <Dashboard />,
       },
       {
         path: "/login",
