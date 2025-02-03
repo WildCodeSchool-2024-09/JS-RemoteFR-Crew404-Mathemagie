@@ -1,5 +1,6 @@
 import "./BonusGame.css";
 import { useEffect, useState } from "react";
+import { useParams } from "react-router-dom";
 import { useAvatar } from "../Context/AvatarContext";
 
 interface FallingObject {
@@ -11,6 +12,7 @@ interface FallingObject {
 }
 
 function Bonus() {
+  const { name } = useParams();
   const [characterPosition, setCharacterPosition] = useState(50);
   const [fallingObjects, setFallingObjects] = useState<FallingObject[]>([]);
   const [score, setScore] = useState(0);
@@ -111,7 +113,7 @@ function Bonus() {
       {gameOver ? (
         <section className="game-bonus-over">
           <h2>
-            ⏳ <br /> Temps écoulé ! <br />⏳
+            ⏳ <br /> Temps écoulé {name}! <br />⏳
           </h2>
           <p>
             Ton score final : {score} <br /> 🎉

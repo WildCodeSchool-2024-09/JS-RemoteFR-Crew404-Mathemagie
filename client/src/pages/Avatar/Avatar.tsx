@@ -1,10 +1,12 @@
 import "./avatar.css";
 import { useState } from "react";
+import { useNavigate } from "react-router-dom";
 
 function Avatar() {
+  const navigate = useNavigate();
   const [avatar, setAvatar] = useState({
     name: "",
-    photo: "/avatarphotos/cat.png",
+    photo: "/avatarphotos/chat/chat_bw.png",
     classe: "",
     day: "",
     month: "",
@@ -43,8 +45,11 @@ function Avatar() {
 
       if (response.ok) {
         console.info("User created successfully");
+        navigate(`/gameshome/${avatar.name}`);
       } else {
         console.error("Error POST");
+        const errorData = await response.json();
+        console.error("Error data:", errorData);
       }
     } catch (err) {
       console.error("Error", err);
@@ -52,10 +57,10 @@ function Avatar() {
   };
 
   const images = [
-    "/avatarphotos/cat.png",
-    "/avatarphotos/fox.png",
-    "/avatarphotos/tiger.png",
-    "/avatarphotos/elephant.png",
+    "/avatarphotos/chat/chat_bw.png",
+    "/avatarphotos/renard/renard_bw.png",
+    "/avatarphotos/tigre/tigre_bw.png",
+    "/avatarphotos/elephant/elephant_bw.png",
     "/avatarphotos/cadenas.png",
   ];
 
