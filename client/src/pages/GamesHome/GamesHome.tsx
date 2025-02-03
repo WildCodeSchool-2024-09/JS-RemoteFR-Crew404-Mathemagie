@@ -2,7 +2,7 @@ import { Link, useParams } from "react-router-dom";
 import "../GamesHome/GamesHome.css";
 
 function GamesHome() {
-  const { name , photo } = useParams();
+  const { name, photo } = useParams();
   return (
     <>
       <section id="title">
