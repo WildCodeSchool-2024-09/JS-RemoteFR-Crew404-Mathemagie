@@ -1,18 +1,33 @@
-import { Link, Outlet } from "react-router-dom";
+import { Link, Outlet, useLocation, useParams } from "react-router-dom";
 import "./App.css";
 import Home from "./assets/images/home.png";
 import { AvatarProvider } from "./pages/Context/AvatarContext";
 
 function App() {
+  const { name } = useParams();
+  const location = useLocation();
+
+  const pathsToHideStatsBar = [
+    "/signup",
+    "/login",
+    "/notfound",
+    "/forgotpassword",
+    "/auth",
+    "/avatar",
+  ];
+
+  const shouldHideStatsBar = pathsToHideStatsBar.includes(location.pathname);
   return (
     <div className="layout">
-      <header id="statsBar">
-        <Link to="/">
-          <img src={Home} alt="Page d'accueil" className="Home" />
-        </Link>
-        <p>Niveau X</p>
-        <p>X/X</p>
-      </header>
+      {!shouldHideStatsBar && (
+        <header id="statsBar">
+          <Link to="/">
+            <img src={Home} alt="Page d'accueil" className="Home" />
+          </Link>
+          <p> Tes points cumulés : </p>
+          <p>{name}</p>
+        </header>
+      )}
       <AvatarProvider>
         <Outlet />
       </AvatarProvider>

@@ -41,12 +41,12 @@ const router = createBrowserRouter([
     element: <App />,
     children: [
       {
-        path: "/gameshome/:name",
+        path: "/gameshome/:name/:photo",
         element: <GamesHome />,
       },
 
       {
-        path: "/bonus-game/:name",
+        path: "/bonus-game/:name/",
         element: <Bonus />,
       },
       {
@@ -58,25 +58,25 @@ const router = createBrowserRouter([
         element: <LoginForm />,
       },
       {
-        path: "/random-equation/:name",
+        path: "/random-equation/:name/",
         element: <RandomEquation />,
       },
 
       {
-        path: "/levelgame1/:name",
+        path: "/levelgame1/:name/",
         element: <LevelGame1 />,
       },
 
       {
-        path: "/levelgame2/:name",
+        path: "/levelgame2/:name/",
         element: <LevelGame2 />,
       },
       {
-        path: "/game-one/:name",
+        path: "/game-one/:name/",
         element: <GameOne />,
       },
       {
-        path: "/num-game/:name",
+        path: "/num-game/:name/",
         element: <NumGame />,
       },
       {

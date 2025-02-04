@@ -31,16 +31,19 @@ body {
 
 #statsBar {
   display: flex;
-  justify-content: space-around;
-  color: white;
+  justify-content: space-between;
   background-color: var(--purple);
   padding: 1.5rem;
   font-weight: bold;
 }
 
 #statsBar p {
-  margin-top: 15px;
   color: white;
+  font-size: 15px;
+}
+
+.avatar-nav {
+  width: 0px;
 }
 
 .Home {
@@ -61,11 +64,27 @@ footer {
 
 @media (min-width: 768px) {
   .Home {
-    width: 45px;
+    width: 55px;
+    margin-left: 50px;
   }
 
   footer {
     margin-top: 50px;
     margin-bottom: 20px;
+  }
+
+  .avatar-nav {
+    width: 70px;
+    margin-right: 80px;
+  }
+
+  #statsBar {
+    justify-content: space-between;
+  }
+
+  #statsBar p {
+    color: white;
+    font-size: 25px;
+    margin-right: 30px;
   }
 }
