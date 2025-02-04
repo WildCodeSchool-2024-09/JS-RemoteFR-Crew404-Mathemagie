@@ -30,6 +30,7 @@ import SignUpForm from "./pages/SignUpForm/SignUpForm";
  * Components
  */
 import EuroGame from "./components/EuroGame";
+import ProtectedRoute from "./pages/ProtectedRoute/ProtectedRoute";
 
 /* ************************************************************************* */
 
@@ -49,10 +50,10 @@ const router = createBrowserRouter([
         path: "/bonus-game/:name",
         element: <Bonus />,
       },
-      {
-        path: "/", // The root path
-        element: <GamesHome />,
-      },
+      // {
+      //   path: "/", // The root path
+      //   element: <GamesHome />,
+      // },
       {
         path: "/login",
         element: <LoginForm />,
@@ -106,6 +107,15 @@ const router = createBrowserRouter([
       {
         path: "/avatar",
         element: <Avatar />,
+      },
+      {
+        element: <ProtectedRoute />,
+        children: [
+          {
+            path: "/cart",
+            element: <GamesHome />,
+          },
+        ],
       },
     ],
   },
