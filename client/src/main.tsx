@@ -15,6 +15,7 @@ import Avatar from "./pages/Avatar/Avatar";
 
 import Bonus from "./pages/BonusGame/BonusGame";
 import CarGame from "./pages/CarGame/CarGame";
+import Dashboard from "./pages/DashBoard/DashBoard";
 import ForgotPassword from "./pages/ForgotPassword/ForgotPassword";
 import GameOne from "./pages/GameOne/GameOne";
 import GamesHome from "./pages/GamesHome/GamesHome";
@@ -42,12 +43,12 @@ const router = createBrowserRouter([
     element: <App />,
     children: [
       {
-        path: "/gameshome/:name",
+        path: "/gameshome/:name/:photo",
         element: <GamesHome />,
       },
 
       {
-        path: "/bonus-game/:name",
+        path: "/bonus-game/:name/",
         element: <Bonus />,
       },
       // {
@@ -55,29 +56,33 @@ const router = createBrowserRouter([
       //   element: <GamesHome />,
       // },
       {
+        path: "/dashboard",
+        element: <Dashboard />,
+      },
+      {
         path: "/login",
         element: <LoginForm />,
       },
       {
-        path: "/random-equation/:name",
+        path: "/random-equation/:name/",
         element: <RandomEquation />,
       },
 
       {
-        path: "/levelgame1/:name",
+        path: "/levelgame1/:name/",
         element: <LevelGame1 />,
       },
 
       {
-        path: "/levelgame2/:name",
+        path: "/levelgame2/:name/",
         element: <LevelGame2 />,
       },
       {
-        path: "/game-one/:name",
+        path: "/game-one/:name/",
         element: <GameOne />,
       },
       {
-        path: "/num-game/:name",
+        path: "/num-game/:name/",
         element: <NumGame />,
       },
       {
