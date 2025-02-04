@@ -1,4 +1,4 @@
-import { Link, Outlet, useLocation, useParams } from "react-router-dom";
+import { Outlet, useLocation, useParams, useNavigate } from "react-router-dom";
 import "./App.css";
 import Home from "./assets/images/home.png";
 import { AvatarProvider } from "./pages/Context/AvatarContext";
@@ -6,6 +6,7 @@ import { AvatarProvider } from "./pages/Context/AvatarContext";
 function App() {
   const { name } = useParams();
   const location = useLocation();
+  const navigate = useNavigate();
 
   const pathsToHideStatsBar = [
     "/signup",
@@ -17,13 +18,24 @@ function App() {
   ];
 
   const shouldHideStatsBar = pathsToHideStatsBar.includes(location.pathname);
+
+  const handleHomeClick = () => {
+    const savedAvatar = localStorage.getItem("avatar");
+    const avatar = savedAvatar ? JSON.parse(savedAvatar) : null;
+    if (avatar) {
+      navigate(`/gameshome/${avatar.name}/${encodeURIComponent(avatar.photo)}`);
+    } else {
+      console.error("Avatar non trouvé !");
+    }
+  };
+
   return (
     <div className="layout">
       {!shouldHideStatsBar && (
         <header id="statsBar">
-          <Link to="/">
+          <button onClick={handleHomeClick}>
             <img src={Home} alt="Page d'accueil" className="Home" />
-          </Link>
+          </button>
           <p> Tes points cumulés : </p>
           <p>{name}</p>
         </header>
