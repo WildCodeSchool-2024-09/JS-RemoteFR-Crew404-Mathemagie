@@ -1,5 +1,6 @@
 import { Outlet, useLocation, useNavigate, useParams } from "react-router-dom";
 import "./App.css";
+import { FcGraduationCap } from "react-icons/fc";
 import { AvatarProvider } from "./pages/Context/AvatarContext";
 
 function App() {
@@ -38,7 +39,13 @@ function App() {
             <img src="/home.png" alt="Page d'accueil" className="Home" />
           </button>
           <p> Tes points cumulés : </p>
-          <p>{name}</p>
+
+          <a href="/Dashboard" className="lien-dashboard">
+            <div className="icon-container">
+              <FcGraduationCap size={40} />
+            </div>{" "}
+            {name}
+          </a>
         </header>
       )}
       <AvatarProvider>

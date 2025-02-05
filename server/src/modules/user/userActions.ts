@@ -1,9 +1,35 @@
-import type { RequestHandler } from "express";
+import type { NextFunction, Request, Response } from "express";
 import userRepository from "./userRepository";
 
-const addAvatar: RequestHandler = async (req, res, next) => {
+// Typing for request body and parameters
+interface AddAvatarBody {
+  name: string;
+  classe: string;
+  birthday: string;
+  photo: string;
+}
+
+interface AddAvatarParams {
+  id: string;
+}
+
+type AvatarResponse = { message: string };
+
+const addAvatar = async (
+  req: Request<AddAvatarParams, Response, AddAvatarBody>,
+  res: Response,
+  next: NextFunction,
+): Promise<void> => {
   try {
-    const userId = Number(req.params.id);
+    const users = await userRepository.getAllUsers();
+
+    if (users.length >= 5) {
+      res
+        .status(400)
+        .json({ message: "Nombre maximum de profils atteint (5)." });
+      return;
+    }
+
     const user = await userRepository.create(req.body);
     res.status(201).json(user);
   } catch (err) {
@@ -11,7 +37,11 @@ const addAvatar: RequestHandler = async (req, res, next) => {
   }
 };
 
-const getAvatar: RequestHandler = async (req, res, next) => {
+const getAvatar = async (
+  req: Request<AddAvatarParams>,
+  res: Response,
+  next: NextFunction,
+) => {
   try {
     const userId = Number(req.params.id);
     const user = await userRepository.read(userId);
@@ -25,4 +55,13 @@ const getAvatar: RequestHandler = async (req, res, next) => {
   }
 };
 
-export default { addAvatar, getAvatar };
+const getAllUsers = async (req: Request, res: Response, next: NextFunction) => {
+  try {
+    const users = await userRepository.getAllUsers();
+    res.status(200).json(users);
+  } catch (err) {
+    next(err);
+  }
+};
+
+export default { addAvatar, getAvatar, getAllUsers };

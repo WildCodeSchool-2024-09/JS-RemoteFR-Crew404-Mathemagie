@@ -21,6 +21,8 @@ router.post("/api/register", authMiddleware.hashPwd, authActions.register);
 /* ************************************************************************* */
 
 import userActions from "./modules/user/userActions";
+
+router.get("/api/users", userActions.getAllUsers);
 router.get("/api/avatar/:id", userActions.getAvatar);
 router.post("/api/avatar", userActions.addAvatar);
 

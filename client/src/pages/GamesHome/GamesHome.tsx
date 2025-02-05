@@ -3,6 +3,8 @@ import "../GamesHome/GamesHome.css";
 
 function GamesHome() {
   const { name, photo } = useParams();
+  const decodedPhoto = photo ? decodeURIComponent(photo) : "";
+
   return (
     <>
       <section id="title">
@@ -28,7 +30,11 @@ function GamesHome() {
           </button>
         </Link>
       </section>
-      <img src={photo} alt="Avatar" className="avatar-image" />
+
+      {decodedPhoto && (
+        <img src={decodedPhoto} alt="Avatar" className="avatar-image" />
+      )}
+
       <footer>
         Codé avec le ❤️ par la team <strong>@Mathémagie</strong>
       </footer>

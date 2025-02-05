@@ -1,7 +1,6 @@
 import type React from "react";
 import { createContext, useContext, useState } from "react";
 
-// Définir un type pour l'utilisateur (ici un avatar avec nom et photo)
 type User = {
   name: string;
   photo: string;

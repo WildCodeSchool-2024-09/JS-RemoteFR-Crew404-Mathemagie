@@ -30,6 +30,10 @@ class userRepository {
     );
     return rows[0] as User[];
   }
+  async getAllUsers() {
+    const [rows] = await DatabaseClient.query<Rows>("SELECT * FROM user");
+    return rows as User[];
+  }
 }
 
 export default new userRepository();
