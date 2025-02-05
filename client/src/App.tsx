@@ -1,6 +1,7 @@
 import { Link, Outlet, useLocation, useParams } from "react-router-dom";
 import "./App.css";
 import Home from "./assets/images/home.png";
+import { AuthProvider } from "./pages/Context/AuthContext";
 import { AvatarProvider } from "./pages/Context/AvatarContext";
 
 function App() {
@@ -28,9 +29,11 @@ function App() {
           <p>{name}</p>
         </header>
       )}
-      <AvatarProvider>
-        <Outlet />
-      </AvatarProvider>
+      <AuthProvider>
+        <AvatarProvider>
+          <Outlet />
+        </AvatarProvider>
+      </AuthProvider>
     </div>
   );
 }

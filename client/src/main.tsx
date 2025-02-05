@@ -24,6 +24,7 @@ import LevelGame2 from "./pages/LevelGame2/LevelGame2";
 import LoginForm from "./pages/LoginForm/LoginForm";
 import NotFound from "./pages/Notfound/NotFound";
 import NumGame from "./pages/NumGame/NumGame";
+import ProtectedRoute from "./pages/ProtectedRoute/ProtectedRoute";
 import RandomEquation from "./pages/RandomEquation/RandomEquation";
 import SignUpForm from "./pages/SignUpForm/SignUpForm";
 
@@ -45,44 +46,13 @@ const router = createBrowserRouter([
         path: "/gameshome/:name/:photo",
         element: <GamesHome />,
       },
-
       {
-        path: "/bonus-game/:name/",
-        element: <Bonus />,
-      },
-      {
-        path: "/", // The root path
-        element: <GamesHome />,
-      },
-      {
-        path: "/dashboard",
-        element: <Dashboard />,
+        path: "/avatar",
+        element: <Avatar />,
       },
       {
         path: "/login",
         element: <LoginForm />,
-      },
-      {
-        path: "/random-equation/:name/",
-        element: <RandomEquation />,
-      },
-
-      {
-        path: "/levelgame1/:name/",
-        element: <LevelGame1 />,
-      },
-
-      {
-        path: "/levelgame2/:name/",
-        element: <LevelGame2 />,
-      },
-      {
-        path: "/game-one/:name/",
-        element: <GameOne />,
-      },
-      {
-        path: "/num-game/:name/",
-        element: <NumGame />,
       },
       {
         path: "/sign-up",
@@ -93,24 +63,59 @@ const router = createBrowserRouter([
         element: <ForgotPassword />,
       },
       {
-        path: "/car-game/:name",
-        element: <CarGame />,
-      },
-      {
-        path: "/car-game",
-        element: <CarGame />,
-      },
-      {
-        path: "/euro-game/:name",
-        element: <EuroGame />,
-      },
-      {
         path: "/authpage",
         element: <AuthPage />,
       },
       {
-        path: "/avatar",
-        element: <Avatar />,
+        element: <ProtectedRoute />,
+        children: [
+          {
+            path: "/",
+            element: <GamesHome />,
+          },
+          {
+            path: "/bonus-game/:name/",
+            element: <Bonus />,
+          },
+          {
+            path: "/dashboard",
+            element: <Dashboard />,
+          },
+          {
+            path: "/random-equation/:name/",
+            element: <RandomEquation />,
+          },
+
+          {
+            path: "/levelgame1/:name/",
+            element: <LevelGame1 />,
+          },
+
+          {
+            path: "/levelgame2/:name/",
+            element: <LevelGame2 />,
+          },
+          {
+            path: "/game-one/:name/",
+            element: <GameOne />,
+          },
+          {
+            path: "/num-game/:name/",
+            element: <NumGame />,
+          },
+          {
+            path: "/car-game/:name",
+            element: <CarGame />,
+          },
+          {
+            path: "/car-game",
+            element: <CarGame />,
+          },
+          {
+            path: "/euro-game/:name",
+            element: <EuroGame />,
+          },
+        ],
       },
     ],
   },

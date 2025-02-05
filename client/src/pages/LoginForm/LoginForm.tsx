@@ -2,6 +2,7 @@ import { useState } from "react";
 import "../LoginForm/LoginForm.css";
 import axios from "axios";
 import batman from "../../assets/images/batman.png";
+import { useAuth } from "../Context/AuthContext";
 
 function LoginForm() {
   const [login, setLogin] = useState({
@@ -10,12 +11,10 @@ function LoginForm() {
   });
 
   //mon state qui alterne entre true et false pour afficher "Adresse mail ou mot de passe incorrect."
+
   const [modalLogin, setModalLogin] = useState(false);
 
-  //constante qui se déclenche plus bas si jamais il y a une erreur lors de la connexion
-  const handleLogin = () => {
-    setModalLogin(true);
-  };
+  const { handleLogin } = useAuth();
 
   //stockage de l'input de l'utilisateur pour vérifier dans handleSubmit si le mdp et email sont corrects
   const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
@@ -41,7 +40,13 @@ function LoginForm() {
       }
     } catch (error) {
       console.error(error);
-      handleLogin();
+      handleLogin({
+        ...login,
+        id: 0,
+        avatar: "",
+        role: "",
+      });
+      setModalLogin(true);
     }
   };
 
