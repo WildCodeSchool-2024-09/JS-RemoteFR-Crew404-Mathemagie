@@ -91,7 +91,7 @@ function CarGame() {
   }, [questionIndex]);
 
   const handleChoice = (answer: number | string) => {
-    setSelectedAnswer(typeof answer === 'number' ? answer : null);
+    setSelectedAnswer(typeof answer === "number" ? answer : null);
     if (answer === currentQuestion.answer) {
       setScore(score + 1);
       setFeedback("correct");
