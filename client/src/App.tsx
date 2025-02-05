@@ -1,6 +1,5 @@
-import { Outlet, useLocation, useParams, useNavigate } from "react-router-dom";
+import { Outlet, useLocation, useNavigate, useParams } from "react-router-dom";
 import "./App.css";
-import Home from "./assets/images/home.png";
 import { AvatarProvider } from "./pages/Context/AvatarContext";
 
 function App() {
@@ -21,8 +20,10 @@ function App() {
 
   const handleHomeClick = () => {
     const savedAvatar = localStorage.getItem("avatar");
-    const avatar = savedAvatar ? JSON.parse(savedAvatar) : null;
-    if (avatar) {
+
+    if (savedAvatar) {
+      const avatar = JSON.parse(savedAvatar);
+
       navigate(`/gameshome/${avatar.name}/${encodeURIComponent(avatar.photo)}`);
     } else {
       console.error("Avatar non trouvé !");
@@ -33,8 +34,8 @@ function App() {
     <div className="layout">
       {!shouldHideStatsBar && (
         <header id="statsBar">
-          <button onClick={handleHomeClick}>
-            <img src={Home} alt="Page d'accueil" className="Home" />
+          <button type="button" onClick={handleHomeClick}>
+            <img src="/home.png" alt="Page d'accueil" className="Home" />
           </button>
           <p> Tes points cumulés : </p>
           <p>{name}</p>

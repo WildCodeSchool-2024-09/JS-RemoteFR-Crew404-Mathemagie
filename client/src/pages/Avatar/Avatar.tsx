@@ -45,6 +45,8 @@ function Avatar() {
 
       if (response.ok) {
         console.info("User created successfully");
+        localStorage.removeItem("avatar");
+        localStorage.setItem("avatar", JSON.stringify(avatar));
         navigate(
           `/gameshome/${avatar.name}/${encodeURIComponent(avatar.photo)}`,
         );
