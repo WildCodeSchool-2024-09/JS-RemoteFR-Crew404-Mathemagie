@@ -14,21 +14,20 @@ function Dashboard() {
   const navigate = useNavigate();
 
   useEffect(() => {
-    // Récupérer les profils des enfants depuis l'API
     axios
-      .get(`${import.meta.env.VITE_API_URL}/api/children`, {
+      .get(`${import.meta.env.VITE_API_URL}/api/users`, {
         withCredentials: true,
       })
       .then((response) => {
         setChildren(response.data);
       })
       .catch((error) => {
-        console.error("Erreur lors de la récupération des enfants", error);
+        console.error("Erreur lors de la récupération des utilisateurs", error);
       });
   }, []);
 
   const handleSelectProfile = (child: ChildProfile) => {
-    navigate(`/gameshome/${child.name}`);
+    navigate(`/gameshome/${child.name}/${encodeURIComponent(child.photo)}`);
   };
 
   const handleAddChild = () => {
@@ -39,39 +38,41 @@ function Dashboard() {
     <div className="dashboard-background">
       <div className="dashboard-container">
         <div className="profile-list">
-          {children.map((child) => (
+          {children.map((user) => (
             <button
               type="button"
-              key={child.id}
+              key={user.id}
               className="profile-card"
-              onClick={() => handleSelectProfile(child)}
+              onClick={() => handleSelectProfile(user)}
               onKeyUp={(e) => {
                 if (e.key === "Enter" || e.key === " ") {
-                  handleSelectProfile(child);
+                  handleSelectProfile(user);
                 }
               }}
             >
               <img
-                src={child.photo}
-                alt={child.name}
+                src={user.photo}
+                alt={user.name}
                 className="profile-avatar"
               />
-              <p className="profile-name">{child.name}</p>
+              <p className="profile-name">{user.name}</p>
             </button>
           ))}
-          {/* Bouton "Ajouter un Profil" avec une couleur dynamique pour le texte */}
-          <button
-            type="button"
-            className="profile-card add-profile"
-            onClick={handleAddChild}
-            onKeyUp={(e) => {
-              if (e.key === "Enter" || e.key === " ") {
-                handleAddChild();
-              }
-            }}
-          >
-            <p className="ajout"> Ajouter un profil</p>
-          </button>
+
+          {children.length < 5 && (
+            <button
+              type="button"
+              className="profile-card add-profile"
+              onClick={handleAddChild}
+              onKeyUp={(e) => {
+                if (e.key === "Enter" || e.key === " ") {
+                  handleAddChild();
+                }
+              }}
+            >
+              <p className="ajout"> Ajouter un profil</p>
+            </button>
+          )}
         </div>
       </div>
     </div>

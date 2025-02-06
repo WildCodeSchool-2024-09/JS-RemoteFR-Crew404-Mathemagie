@@ -1,11 +1,12 @@
-import { Link, Outlet, useLocation, useParams } from "react-router-dom";
+import { Outlet, useLocation, useNavigate, useParams } from "react-router-dom";
 import "./App.css";
-import Home from "./assets/images/home.png";
+import { FcGraduationCap } from "react-icons/fc";
 import { AvatarProvider } from "./pages/Context/AvatarContext";
 
 function App() {
   const { name } = useParams();
   const location = useLocation();
+  const navigate = useNavigate();
 
   const pathsToHideStatsBar = [
     "/signup",
@@ -17,15 +18,34 @@ function App() {
   ];
 
   const shouldHideStatsBar = pathsToHideStatsBar.includes(location.pathname);
+
+  const handleHomeClick = () => {
+    const savedAvatar = localStorage.getItem("avatar");
+
+    if (savedAvatar) {
+      const avatar = JSON.parse(savedAvatar);
+
+      navigate(`/gameshome/${avatar.name}/${encodeURIComponent(avatar.photo)}`);
+    } else {
+      console.error("Avatar non trouvé !");
+    }
+  };
+
   return (
     <div className="layout">
       {!shouldHideStatsBar && (
         <header id="statsBar">
-          <Link to="/">
-            <img src={Home} alt="Page d'accueil" className="Home" />
-          </Link>
+          <button type="button" onClick={handleHomeClick}>
+            <img src="/home.png" alt="Page d'accueil" className="Home" />
+          </button>
           <p> Tes points cumulés : </p>
-          <p>{name}</p>
+
+          <a href="/Dashboard" className="lien-dashboard">
+            <div className="icon-container">
+              <FcGraduationCap size={40} />
+            </div>{" "}
+            {name}
+          </a>
         </header>
       )}
       <AvatarProvider>

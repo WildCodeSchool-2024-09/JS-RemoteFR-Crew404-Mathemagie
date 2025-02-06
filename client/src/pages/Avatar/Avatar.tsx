@@ -7,7 +7,7 @@ function Avatar() {
   const [avatar, setAvatar] = useState({
     name: "",
     photo: "/avatarphotos/chat/chat_bw.png",
-    classe: "",
+    grade: "",
     day: "",
     month: "",
     year: "",
@@ -36,7 +36,7 @@ function Avatar() {
           },
           body: JSON.stringify({
             name: avatar.name,
-            classe: avatar.classe,
+            grade: avatar.grade,
             photo: avatar.photo,
             birthday: `${avatar.year}-${avatar.month}-${avatar.day}`,
           }),
@@ -44,7 +44,8 @@ function Avatar() {
       );
 
       if (response.ok) {
-        console.info("User created successfully");
+        localStorage.removeItem("avatar");
+        localStorage.setItem("avatar", JSON.stringify(avatar));
         navigate(
           `/gameshome/${avatar.name}/${encodeURIComponent(avatar.photo)}`,
         );
@@ -128,15 +129,15 @@ function Avatar() {
             className="input-bulle"
             value={avatar.name}
           />
-          <label htmlFor="classe">Dans quelle classe es-tu?</label>
+          <label htmlFor="grade">Dans quelle classe es-tu?</label>
           <input
             type="text"
-            name="classe"
-            id="classe"
+            name="grade"
+            id="grade"
             onChange={handleChange}
             placeholder="Je suis en..."
             className="input-bulle"
-            value={avatar.classe}
+            value={avatar.grade}
           />
           <p>Quelle est ta date de naissance?</p>
           <div className="anniv">

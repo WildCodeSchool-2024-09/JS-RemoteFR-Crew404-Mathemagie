@@ -5,7 +5,7 @@ import { createContext, useContext, useState } from "react";
 interface Avatar {
   name: string;
   photo: string;
-  classe: string;
+  grade: string;
   day: string;
   month: string;
   year: string;
@@ -22,7 +22,7 @@ export const AvatarProvider = ({ children }: { children: React.ReactNode }) => {
   const [avatar, setAvatar] = useState<Avatar>({
     name: "",
     photo: "",
-    classe: "",
+    grade: "",
     day: "",
     month: "",
     year: "",
