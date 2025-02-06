@@ -1,9 +1,12 @@
 import { useEffect, useState } from "react";
-import "./EuroGame.css";
 import Confetti from "react-confetti";
+import { Link } from "react-router-dom";
+import { useAvatar } from "../Context/AvatarContext";
 import questionsEuroGame from "../services/questionEuroGame";
+import "./EuroGame.css";
 
 function EuroGame() {
+  const { avatar } = useAvatar();
   const TOTAL_QUESTIONS = 10;
   const [questionIndex, setQuestionIndex] = useState(0);
   const [progress, setProgress] = useState(100);
@@ -57,10 +60,6 @@ function EuroGame() {
     setCurrentQuestion(questionsEuroGame[0]);
   };
 
-  const handleGoHome = () => {
-    window.location.href = "/home";
-  };
-
   if (progress <= 0) {
     return (
       <div className="game-container">
@@ -69,9 +68,9 @@ function EuroGame() {
         <button type="button" onClick={handleRestart} className="game-button">
           Rejouer
         </button>
-        <button type="button" onClick={handleGoHome} className="game-button">
+        <Link to={`/gamehome/${avatar.id_user}`} className="game-button">
           Retourner à l'accueil
-        </button>
+        </Link>
       </div>
     );
   }
@@ -87,9 +86,13 @@ function EuroGame() {
         <button type="button" onClick={handleRestart} className="game-button">
           Rejouer
         </button>
-        <button type="button" onClick={handleGoHome} className="game-button">
+        <Link
+          className="game-button-primary"
+          type="button"
+          to={`/gameshome/${avatar.id_user}`}
+        >
           Retourner à l'accueil
-        </button>
+        </Link>
       </div>
     );
   }
