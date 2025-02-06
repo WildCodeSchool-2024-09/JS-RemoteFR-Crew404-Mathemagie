@@ -4,7 +4,7 @@ import userRepository from "./userRepository";
 // Typing for request body and parameters
 interface AddAvatarBody {
   name: string;
-  classe: string;
+  grade: string;
   birthday: string;
   photo: string;
 }

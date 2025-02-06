@@ -5,7 +5,7 @@ import "./DashBoard.css";
 
 interface ChildProfile {
   id: string;
-  prenom: string;
+  name: string;
   photo: string;
 }
 
@@ -27,7 +27,7 @@ function Dashboard() {
   }, []);
 
   const handleSelectProfile = (child: ChildProfile) => {
-    navigate(`/gameshome/${child.prenom}/${encodeURIComponent(child.photo)}`);
+    navigate(`/gameshome/${child.name}/${encodeURIComponent(child.photo)}`);
   };
 
   const handleAddChild = () => {
@@ -52,10 +52,10 @@ function Dashboard() {
             >
               <img
                 src={user.photo}
-                alt={user.prenom}
+                alt={user.name}
                 className="profile-avatar"
               />
-              <p className="profile-name">{user.prenom}</p>
+              <p className="profile-name">{user.name}</p>
             </button>
           ))}
 

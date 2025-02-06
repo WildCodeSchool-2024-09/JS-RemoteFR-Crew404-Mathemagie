@@ -36,7 +36,7 @@ function Avatar() {
           },
           body: JSON.stringify({
             name: avatar.name,
-            classe: avatar.classe,
+            grade: avatar.grade,
             photo: avatar.photo,
             birthday: `${avatar.year}-${avatar.month}-${avatar.day}`,
           }),
@@ -44,7 +44,6 @@ function Avatar() {
       );
 
       if (response.ok) {
-        console.info("User created successfully");
         localStorage.removeItem("avatar");
         localStorage.setItem("avatar", JSON.stringify(avatar));
         navigate(
@@ -133,12 +132,12 @@ function Avatar() {
           <label htmlFor="classe">Dans quelle classe es-tu?</label>
           <input
             type="text"
-            name="classe"
+            name="grade"
             id="classe"
             onChange={handleChange}
             placeholder="Je suis en..."
             className="input-bulle"
-            value={avatar.classe}
+            value={avatar.grade}
           />
           <p>Quelle est ta date de naissance?</p>
           <div className="anniv">
