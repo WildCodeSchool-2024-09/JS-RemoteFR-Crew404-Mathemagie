@@ -2,6 +2,10 @@
 import { StrictMode } from "react";
 import { createRoot } from "react-dom/client";
 import { RouterProvider, createBrowserRouter } from "react-router-dom";
+import { ToastContainer } from "react-toastify";
+import { AuthProvider } from "./Context/AuthContext";
+import { AvatarProvider } from "./Context/AvatarContext";
+import api from "./services/api";
 import "./index.css";
 /* ************************************************************************* */
 
@@ -24,6 +28,7 @@ import LevelGame2 from "./pages/LevelGame2/LevelGame2";
 import LoginForm from "./pages/LoginForm/LoginForm";
 import NotFound from "./pages/Notfound/NotFound";
 import NumGame from "./pages/NumGame/NumGame";
+import ProtectedRoute from "./pages/ProtectedRoute/ProtectedRoute";
 import RandomEquation from "./pages/RandomEquation/RandomEquation";
 import SignUpForm from "./pages/SignUpForm/SignUpForm";
 
@@ -43,47 +48,31 @@ const router = createBrowserRouter([
     element: <App />,
     children: [
       {
-        path: "/gameshome/:name/:photo",
+        path: "/gameshome/:id",
         element: <GamesHome />,
+        loader: async ({ params }) => {
+          try {
+            const response = await api.get(`/api/avatar/${params.id}`);
+            /**
+             * !todo
+             * Si c'est mon petit, alors tu return response.data,
+             * sinon, go ma liste d'enfant
+             */
+            return response.data;
+          } catch (error) {
+            console.error(error);
+            window.location.href = "/login";
+            return null;
+          }
+        },
       },
-
       {
-        path: "/bonus-game/:name/",
-        element: <Bonus />,
-      },
-      // {
-      //   path: "/", // The root path
-      //   element: <GamesHome />,
-      // },
-      {
-        path: "/dashboard",
-        element: <Dashboard />,
+        path: "/avatar",
+        element: <Avatar />,
       },
       {
         path: "/login",
         element: <LoginForm />,
-      },
-      {
-        path: "/random-equation/:name/",
-        element: <RandomEquation />,
-      },
-
-      {
-        path: "/levelgame1/:name/",
-        element: <LevelGame1 />,
-      },
-
-      {
-        path: "/levelgame2/:name/",
-        element: <LevelGame2 />,
-      },
-      {
-        path: "/game-one/:name/",
-        element: <GameOne />,
-      },
-      {
-        path: "/num-game/:name/",
-        element: <NumGame />,
       },
       {
         path: "/sign-up",
@@ -94,24 +83,58 @@ const router = createBrowserRouter([
         element: <ForgotPassword />,
       },
       {
-        path: "/car-game/:name",
-        element: <CarGame />,
-      },
-      {
-        path: "/car-game",
-        element: <CarGame />,
-      },
-      {
-        path: "/euro-game/:name",
-        element: <EuroGame />,
-      },
-      {
         path: "/authpage",
         element: <AuthPage />,
       },
       {
-        path: "/avatar",
-        element: <Avatar />,
+        element: <ProtectedRoute />,
+        children: [
+          {
+            path: "/",
+            element: <GamesHome />,
+          },
+          {
+            path: "/bonus-game/:name/",
+            element: <Bonus />,
+          },
+          {
+            path: "/dashboard",
+            element: <Dashboard />,
+          },
+          {
+            path: "/random-equation/:name/",
+            element: <RandomEquation />,
+          },
+          {
+            path: "/levelgame1/:name/",
+            element: <LevelGame1 />,
+          },
+
+          {
+            path: "/levelgame2/:name/",
+            element: <LevelGame2 />,
+          },
+          {
+            path: "/game-one/:name/",
+            element: <GameOne />,
+          },
+          {
+            path: "/num-game/:name/",
+            element: <NumGame />,
+          },
+          {
+            path: "/car-game/:name",
+            element: <CarGame />,
+          },
+          {
+            path: "/car-game",
+            element: <CarGame />,
+          },
+          {
+            path: "/euro-game/:name",
+            element: <EuroGame />,
+          },
+        ],
       },
       {
         element: <ProtectedRoute />,
@@ -142,7 +165,12 @@ if (rootElement == null) {
 // Render the app inside the root element
 createRoot(rootElement).render(
   <StrictMode>
-    <RouterProvider router={router} />
+    <AuthProvider>
+      <AvatarProvider>
+        <RouterProvider router={router} />
+        <ToastContainer />
+      </AvatarProvider>
+    </AuthProvider>
   </StrictMode>,
 );
 
