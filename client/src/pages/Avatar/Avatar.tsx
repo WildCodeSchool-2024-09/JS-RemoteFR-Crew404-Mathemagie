@@ -7,7 +7,7 @@ function Avatar() {
   const [avatar, setAvatar] = useState({
     name: "",
     photo: "/avatarphotos/chat/chat_bw.png",
-    classe: "",
+    grade: "",
     day: "",
     month: "",
     year: "",
