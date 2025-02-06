@@ -2,7 +2,7 @@ import { Link, useParams } from "react-router-dom";
 import "./LevelGame2.css";
 
 function LevelGame2() {
-  const {name}= useParams();
+  const { name } = useParams();
   return (
     <section className="jeu-niveau">
       <h1 className="jeu-niveau-title">Choisis un niveau</h1>
