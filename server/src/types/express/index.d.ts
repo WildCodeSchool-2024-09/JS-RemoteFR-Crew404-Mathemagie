@@ -11,6 +11,7 @@ declare global {
       /* ************************************************************************* */
       user?: {
         id: number;
+        id_user?: number;
         email: string;
         password: string;
         lastname: string;

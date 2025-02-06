@@ -1,7 +1,7 @@
 import "./BonusGame.css";
 import { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
-import { useAvatar } from "../Context/AvatarContext";
+import { useAvatar } from "../../Context/AvatarContext";
 
 interface FallingObject {
   id: number;
@@ -127,7 +127,7 @@ function Bonus() {
               style={{ left: `${characterPosition}%` }}
             >
               <img
-                src={avatar.photo || "/avatarphotos/cat.png"}
+                src={avatar.picture || "/avatarphotos/chat/chat_bw.png"}
                 className="avatar"
                 alt="character"
               />
@@ -136,7 +136,10 @@ function Bonus() {
               <section
                 key={obj.id}
                 className={`falling-object ${obj.type}`}
-                style={{ left: `${obj.position}%`, top: `${obj.top}%` }}
+                style={{
+                  left: `${obj.position}%`,
+                  top: `${obj.top}%`,
+                }}
               >
                 {obj.content}
               </section>

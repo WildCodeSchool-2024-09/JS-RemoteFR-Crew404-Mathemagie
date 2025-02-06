@@ -1,6 +1,4 @@
 -- SQLBook: Code
-
-
 CREATE TABLE parent (
     id_parent INT PRIMARY KEY AUTO_INCREMENT NOT NULL,
     lastname VARCHAR(255) NOT NULL,
@@ -9,18 +7,26 @@ CREATE TABLE parent (
     email VARCHAR(255) NOT NULL UNIQUE
 );
 
-
-
-
+-- mail = jdoe@mail.com, password = "azerty"
+INSERT INTO parent (email, password, lastname, firstname)
+VALUES
+  ("jdoe@mail.com", "$argon2id$v=19$m=65536,t=3,p=4$rcJ6ooNfO/qMKTiH3DZpdg$yWTge77Bj1NtSlZqI0SknSRgRiD5CQw03SRC9QeVaRo", "Doe", "John"),
+  ("janedoe@mail.com", "$argon2id$v=19$m=65536,t=3,p=4$rcJ6ooNfO/qMKTiH3DZpdg$yWTge77Bj1NtSlZqI0SknSRgRiD5CQw03SRC9QeVaRo", "Doe", "Jane");
 
 
 CREATE TABLE user (
   id_user INT AUTO_INCREMENT PRIMARY KEY,
-name  VARCHAR(50) NOT NULL,
- grade VARCHAR(50) NOT NULL,
- birthday DATE NOT NULL,
-photo VARCHAR(255) NOT NULL
+  name VARCHAR(50) NOT NULL,
+  grade VARCHAR(50) NOT NULL,
+  birthday DATE NOT NULL,
+  picture VARCHAR(255) NOT NULL,
+  id_parent INT,
+  CONSTRAINT fk_parent
+  FOREIGN KEY (id_parent) REFERENCES parent(id_parent)
 );
 
-
+INSERT INTO user (name, grade, birthday, picture, id_parent)
+VALUES ('Camille', 'CP', '2019-01-01', '/avatarphotos/chat/chat_bw.png', 1),
+("Anthony", "CE2", "2003-10-26", '/avatarphotos/chat/chat_bw.png', 1),
+("Julyyyyy", "Grande Section", "2003-10-26", '/avatarphotos/chat/chat_bw.png', 2);
 

@@ -1,10 +1,13 @@
-import { Outlet, useLocation, useNavigate, useParams } from "react-router-dom";
-import "./App.css";
 import { FcGraduationCap } from "react-icons/fc";
-import { AvatarProvider } from "./pages/Context/AvatarContext";
+import { Link, Outlet, useLocation, useNavigate } from "react-router-dom";
+import { useAvatar } from "./Context/AvatarContext";
+import "./App.css";
 
 function App() {
-  const { name } = useParams();
+  // Import de mon context
+  const { avatar } = useAvatar();
+
+  // Redirection via react router dom
   const location = useLocation();
   const navigate = useNavigate();
 
@@ -17,40 +20,30 @@ function App() {
     "/avatar",
   ];
 
+  // Si la page actuelle est dans la liste des pages à cacher, on cache la barre de stats
   const shouldHideStatsBar = pathsToHideStatsBar.includes(location.pathname);
-
-  const handleHomeClick = () => {
-    const savedAvatar = localStorage.getItem("avatar");
-
-    if (savedAvatar) {
-      const avatar = JSON.parse(savedAvatar);
-
-      navigate(`/gameshome/${avatar.name}/${encodeURIComponent(avatar.photo)}`);
-    } else {
-      console.error("Avatar non trouvé !");
-    }
-  };
 
   return (
     <div className="layout">
       {!shouldHideStatsBar && (
         <header id="statsBar">
-          <button type="button" onClick={handleHomeClick}>
+          <button
+            type="button"
+            onClick={() => navigate(`/gameshome/${avatar.id_user}`)}
+          >
             <img src="/home.png" alt="Page d'accueil" className="Home" />
           </button>
           <p> Tes points cumulés : </p>
 
-          <a href="/Dashboard" className="lien-dashboard">
+          <Link to="/dashboard" className="lien-dashboard">
             <div className="icon-container">
               <FcGraduationCap size={40} />
             </div>{" "}
-            {name}
-          </a>
+            {avatar.name}
+          </Link>
         </header>
       )}
-      <AvatarProvider>
-        <Outlet />
-      </AvatarProvider>
+      <Outlet />
     </div>
   );
 }

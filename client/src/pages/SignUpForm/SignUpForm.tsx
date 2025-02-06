@@ -1,6 +1,7 @@
-import "../SignUpForm/SignUpForm.css";
 import axios from "axios";
 import { useState } from "react";
+import { Link } from "react-router-dom";
+import "../SignUpForm/SignUpForm.css";
 
 function SignUpForm() {
   const [register, setRegister] = useState({
@@ -115,13 +116,9 @@ function SignUpForm() {
             <button type="submit" className="btn-primary">
               S'inscrire
             </button>
-            <button
-              type="submit"
-              className="haveAccount"
-              onClick={handleRegister}
-            >
+            <Link to="/login" className="haveAccount">
               J'ai déjà un compte
-            </button>
+            </Link>
           </form>
         </div>
       </div>

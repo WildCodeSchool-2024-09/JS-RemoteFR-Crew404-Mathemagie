@@ -1,12 +1,14 @@
-import "./avatar.css";
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
+import api from "../../services/api";
+import { errorToast, successToast } from "../../services/toasts";
+import "./avatar.css";
 
 function Avatar() {
   const navigate = useNavigate();
   const [avatar, setAvatar] = useState({
     name: "",
-    photo: "/avatarphotos/chat/chat_bw.png",
+    picture: "/avatarphotos/chat/chat_bw.png",
     grade: "",
     day: "",
     month: "",
@@ -27,32 +29,22 @@ function Avatar() {
     e.preventDefault();
 
     try {
-      const response = await fetch(
-        `${import.meta.env.VITE_API_URL}/api/avatar`,
-        {
-          method: "POST",
-          headers: {
-            "Content-Type": "application/json",
-          },
-          body: JSON.stringify({
-            name: avatar.name,
-            grade: avatar.grade,
-            photo: avatar.photo,
-            birthday: `${avatar.year}-${avatar.month}-${avatar.day}`,
-          }),
-        },
-      );
+      const response = await api.post("/api/avatar", {
+        name: avatar.name,
+        grade: avatar.grade,
+        picture: avatar.picture,
+        birthday: `${avatar.year}-${avatar.month}-${avatar.day}`,
+      });
 
-      if (response.ok) {
+      if (response.status === 201) {
+        successToast("Super, le profil est créé !");
         localStorage.removeItem("avatar");
         localStorage.setItem("avatar", JSON.stringify(avatar));
-        navigate(
-          `/gameshome/${avatar.name}/${encodeURIComponent(avatar.photo)}`,
-        );
+
+        navigate(`/gameshome/${response.data.id}`);
       } else {
-        console.error("Error POST");
-        const errorData = await response.json();
-        console.error("Error data:", errorData);
+        errorToast("Oups, une erreur est survenue !");
+        console.error(response);
       }
     } catch (err) {
       console.error("Error", err);
@@ -76,7 +68,7 @@ function Avatar() {
     );
     setAvatar((prevAvatar) => ({
       ...prevAvatar,
-      photo: images[currentIndex + 1],
+      picture: images[currentIndex + 1],
     }));
   };
 
@@ -84,7 +76,7 @@ function Avatar() {
     setCurrentIndex((prevIndex) => (prevIndex + 1) % images.length);
     setAvatar((prevAvatar) => ({
       ...prevAvatar,
-      photo: images[currentIndex + 1],
+      picture: images[currentIndex + 1],
     }));
   };
 
