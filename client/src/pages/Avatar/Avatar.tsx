@@ -1,14 +1,15 @@
-import "./avatar.css";
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import api from "../../services/api";
+import "./avatar.css";
+import { errorToast, successToast } from "../../services/toasts";
 
 function Avatar() {
   const navigate = useNavigate();
   const [avatar, setAvatar] = useState({
     name: "",
     photo: "/avatarphotos/chat/chat_bw.png",
-    classe: "",
+    grade: "",
     day: "",
     month: "",
     year: "",
@@ -30,33 +31,19 @@ function Avatar() {
     try {
       const response = await api.post("/api/avatar", {
         name: avatar.name,
-        classe: avatar.classe,
+        classe: avatar.grade,
         photo: avatar.photo,
         birthday: `${avatar.year}-${avatar.month}-${avatar.day}`,
       });
 
-      // const response = await fetch(
-      //   `${import.meta.env.VITE_API_URL}/api/avatar`,
-      //   {
-      //     method: "POST",
-      //     headers: {
-      //       "Content-Type": "application/json",
-      //     },
-      //     body: JSON.stringify({
-      //       name: avatar.name,
-      //       classe: avatar.classe,
-      //       photo: avatar.photo,
-      //       birthday: `${avatar.year}-${avatar.month}-${avatar.day}`,
-      //     }),
-      //   },
-      // );
-
       if (response.status === 201) {
-        console.info("User created successfully");
+        successToast("Super, le profil est créé !");
+        localStorage.removeItem("avatar");
+        localStorage.setItem("avatar", JSON.stringify(avatar));
 
         navigate(`/gameshome/${response.data.id}`);
       } else {
-        console.error("Error POST");
+        errorToast("Oups, une erreur est survenue !");
         console.error(response);
       }
     } catch (err) {
@@ -134,15 +121,15 @@ function Avatar() {
             className="input-bulle"
             value={avatar.name}
           />
-          <label htmlFor="classe">Dans quelle classe es-tu?</label>
+          <label htmlFor="grade">Dans quelle classe es-tu?</label>
           <input
             type="text"
-            name="classe"
-            id="classe"
+            name="grade"
+            id="grade"
             onChange={handleChange}
             placeholder="Je suis en..."
             className="input-bulle"
-            value={avatar.classe}
+            value={avatar.grade}
           />
           <p>Quelle est ta date de naissance?</p>
           <div className="anniv">

@@ -27,4 +27,13 @@ const getAvatar: RequestHandler = async (req, res, next) => {
   }
 };
 
-export default { addAvatar, getAvatar };
+const getAllUsers: RequestHandler = async (req, res, next) => {
+  try {
+    const users = await userRepository.getAllUsers();
+    res.status(200).json(users);
+  } catch (err) {
+    next(err);
+  }
+};
+
+export default { addAvatar, getAvatar, getAllUsers };

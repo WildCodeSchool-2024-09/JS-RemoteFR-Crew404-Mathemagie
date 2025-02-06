@@ -13,7 +13,7 @@ export const AvatarProvider = ({ children }: { children: React.ReactNode }) => {
   const [avatar, setAvatar] = useState<Avatar>({
     name: "",
     photo: "",
-    classe: "",
+    grade: "",
     day: "",
     month: "",
     year: "",

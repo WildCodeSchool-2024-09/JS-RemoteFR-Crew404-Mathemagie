@@ -32,8 +32,8 @@ body {
 #statsBar {
   display: flex;
   justify-content: space-between;
+  align-items: center;
   background-color: var(--purple);
-  padding: 1.5rem;
   font-weight: bold;
 }
 
@@ -44,6 +44,21 @@ body {
 
 .avatar-nav {
   width: 0px;
+}
+
+.icon-container {
+  align-items: center;
+  margin-right: 20px;
+  height: 20px;
+}
+
+.lien-dashboard {
+  display: flex;
+  color: white;
+  font-family: "Poppins", serif;
+  margin-right: 20px;
+  font-size: 20px;
+  text-decoration: none;
 }
 
 .Home {

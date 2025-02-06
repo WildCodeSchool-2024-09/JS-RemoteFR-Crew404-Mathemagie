@@ -3,7 +3,7 @@ export interface Avatar {
   name: string;
   prenom?: string;
   photo: string;
-  classe: string;
+  grade: string;
   day: string;
   month: string;
   year: string;

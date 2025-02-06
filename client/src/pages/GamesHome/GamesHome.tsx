@@ -33,6 +33,7 @@ function GamesHome() {
         </Link>
       </section>
       <img src={user.photo} alt="Avatar" className="avatar-image" />
+
       <footer>
         Codé avec le ❤️ par la team <strong>@Mathémagie</strong>
       </footer>
