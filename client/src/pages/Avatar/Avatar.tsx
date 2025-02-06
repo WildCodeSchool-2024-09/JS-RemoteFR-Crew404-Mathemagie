@@ -1,6 +1,7 @@
 import "./avatar.css";
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
+import api from "../../services/api";
 
 function Avatar() {
   const navigate = useNavigate();
@@ -27,31 +28,36 @@ function Avatar() {
     e.preventDefault();
 
     try {
-      const response = await fetch(
-        `${import.meta.env.VITE_API_URL}/api/avatar`,
-        {
-          method: "POST",
-          headers: {
-            "Content-Type": "application/json",
-          },
-          body: JSON.stringify({
-            name: avatar.name,
-            classe: avatar.classe,
-            photo: avatar.photo,
-            birthday: `${avatar.year}-${avatar.month}-${avatar.day}`,
-          }),
-        },
-      );
+      const response = await api.post("/api/avatar", {
+        name: avatar.name,
+        classe: avatar.classe,
+        photo: avatar.photo,
+        birthday: `${avatar.year}-${avatar.month}-${avatar.day}`,
+      });
 
-      if (response.ok) {
+      // const response = await fetch(
+      //   `${import.meta.env.VITE_API_URL}/api/avatar`,
+      //   {
+      //     method: "POST",
+      //     headers: {
+      //       "Content-Type": "application/json",
+      //     },
+      //     body: JSON.stringify({
+      //       name: avatar.name,
+      //       classe: avatar.classe,
+      //       photo: avatar.photo,
+      //       birthday: `${avatar.year}-${avatar.month}-${avatar.day}`,
+      //     }),
+      //   },
+      // );
+
+      if (response.status === 201) {
         console.info("User created successfully");
-        navigate(
-          `/gameshome/${avatar.name}/${encodeURIComponent(avatar.photo)}`,
-        );
+
+        navigate(`/gameshome/${response.data.id}`);
       } else {
         console.error("Error POST");
-        const errorData = await response.json();
-        console.error("Error data:", errorData);
+        console.error(response);
       }
     } catch (err) {
       console.error("Error", err);

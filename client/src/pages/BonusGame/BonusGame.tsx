@@ -1,7 +1,7 @@
 import "./BonusGame.css";
 import { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
-import { useAvatar } from "../Context/AvatarContext";
+import { useAvatar } from "../../Context/AvatarContext";
 
 interface FallingObject {
   id: number;

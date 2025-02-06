@@ -1,20 +1,11 @@
 import type React from "react";
 import { createContext, useContext, useState } from "react";
-
-// Définir le type de l'avatar
-interface Avatar {
-  name: string;
-  photo: string;
-  classe: string;
-  day: string;
-  month: string;
-  year: string;
-}
+import type { Avatar } from "../types/types";
 
 // Créer un contexte avec une valeur par défaut
 const AvatarContext = createContext<{
   avatar: Avatar;
-  setAvatar: React.Dispatch<React.SetStateAction<Avatar>>;
+  handleAvatar: (avatar: Avatar) => void;
 } | null>(null);
 
 // Créer un Provider pour partager l'état de l'avatar
@@ -28,8 +19,15 @@ export const AvatarProvider = ({ children }: { children: React.ReactNode }) => {
     year: "",
   });
 
+  /**
+   * Ici, on s'assure que seul la méthode handleAvatar est capable de modifier mon avatar
+   */
+  const handleAvatar = (avatar: Avatar) => {
+    setAvatar(avatar);
+  };
+
   return (
-    <AvatarContext.Provider value={{ avatar, setAvatar }}>
+    <AvatarContext.Provider value={{ avatar, handleAvatar }}>
       {children}
     </AvatarContext.Provider>
   );

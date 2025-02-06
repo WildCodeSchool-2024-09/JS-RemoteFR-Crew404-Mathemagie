@@ -3,9 +3,11 @@ import userRepository from "./userRepository";
 
 const addAvatar: RequestHandler = async (req, res, next) => {
   try {
-    const userId = Number(req.params.id);
-    const user = await userRepository.create(req.body);
-    res.status(201).json(user);
+    const userId = await userRepository.create(
+      req.body,
+      req.body.user.id_parent,
+    );
+    res.status(201).json({ id: userId });
   } catch (err) {
     next(err);
   }

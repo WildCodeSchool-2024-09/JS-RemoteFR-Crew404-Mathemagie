@@ -50,10 +50,8 @@ export function AuthProvider({ children }: ChildrenType) {
 
 export const useAuth = () => {
   const value = useContext(AuthContext);
-
   if (value == null) {
     throw new Error("useAuth has to be used within <AuthProvider />");
   }
-
   return value;
 };

@@ -1,11 +1,12 @@
-import { Link, Outlet, useLocation, useParams } from "react-router-dom";
-import "./App.css";
+import { Link, Outlet, useLocation } from "react-router-dom";
+import { useAvatar } from "./Context/AvatarContext";
 import Home from "./assets/images/home.png";
-import { AuthProvider } from "./pages/Context/AuthContext";
-import { AvatarProvider } from "./pages/Context/AvatarContext";
+import "./App.css";
 
 function App() {
-  const { name } = useParams();
+  // Import de mon context
+  const { avatar } = useAvatar();
+  // Redirection via react router dom
   const location = useLocation();
 
   const pathsToHideStatsBar = [
@@ -26,14 +27,10 @@ function App() {
             <img src={Home} alt="Page d'accueil" className="Home" />
           </Link>
           <p> Tes points cumulés : </p>
-          <p>{name}</p>
+          <p>{avatar.prenom}</p>
         </header>
       )}
-      <AuthProvider>
-        <AvatarProvider>
-          <Outlet />
-        </AvatarProvider>
-      </AuthProvider>
+      <Outlet />
     </div>
   );
 }
