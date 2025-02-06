@@ -36,7 +36,6 @@ import SignUpForm from "./pages/SignUpForm/SignUpForm";
  * Components
  */
 import EuroGame from "./components/EuroGame";
-import ProtectedRoute from "./pages/ProtectedRoute/ProtectedRoute";
 
 /* ************************************************************************* */
 
