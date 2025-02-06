@@ -95,3 +95,10 @@ h1 {
     transform: translateX(-5px);
   }
 }
+
+.question {
+  font-size: 2rem; /* Ajustez cette valeur selon vos besoins */
+  font-weight: bold;
+  text-align: center;
+  margin: 20px 0;
+}
