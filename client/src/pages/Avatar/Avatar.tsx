@@ -1,14 +1,14 @@
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import api from "../../services/api";
-import "./avatar.css";
 import { errorToast, successToast } from "../../services/toasts";
+import "./avatar.css";
 
 function Avatar() {
   const navigate = useNavigate();
   const [avatar, setAvatar] = useState({
     name: "",
-    photo: "/avatarphotos/chat/chat_bw.png",
+    picture: "/avatarphotos/chat/chat_bw.png",
     grade: "",
     day: "",
     month: "",
@@ -31,8 +31,8 @@ function Avatar() {
     try {
       const response = await api.post("/api/avatar", {
         name: avatar.name,
-        classe: avatar.grade,
-        photo: avatar.photo,
+        grade: avatar.grade,
+        picture: avatar.picture,
         birthday: `${avatar.year}-${avatar.month}-${avatar.day}`,
       });
 
@@ -68,7 +68,7 @@ function Avatar() {
     );
     setAvatar((prevAvatar) => ({
       ...prevAvatar,
-      photo: images[currentIndex + 1],
+      picture: images[currentIndex + 1],
     }));
   };
 
@@ -76,7 +76,7 @@ function Avatar() {
     setCurrentIndex((prevIndex) => (prevIndex + 1) % images.length);
     setAvatar((prevAvatar) => ({
       ...prevAvatar,
-      photo: images[currentIndex + 1],
+      picture: images[currentIndex + 1],
     }));
   };
 

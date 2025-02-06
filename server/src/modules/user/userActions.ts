@@ -29,7 +29,7 @@ const getAvatar: RequestHandler = async (req, res, next) => {
 
 const getAllUsers: RequestHandler = async (req, res, next) => {
   try {
-    const users = await userRepository.getAllUsers();
+    const users = await userRepository.getAllUsers(req.body.user.id_parent);
     res.status(200).json(users);
   } catch (err) {
     next(err);

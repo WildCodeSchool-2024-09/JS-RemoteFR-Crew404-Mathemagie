@@ -16,17 +16,17 @@ VALUES
 
 CREATE TABLE user (
   id_user INT AUTO_INCREMENT PRIMARY KEY,
-  prenom VARCHAR(50) NOT NULL,
-  classe VARCHAR(50) NOT NULL,
+  name VARCHAR(50) NOT NULL,
+  grade VARCHAR(50) NOT NULL,
   birthday DATE NOT NULL,
-  photo VARCHAR(255) NOT NULL,
+  picture VARCHAR(255) NOT NULL,
   id_parent INT,
   CONSTRAINT fk_parent
   FOREIGN KEY (id_parent) REFERENCES parent(id_parent)
 );
 
-INSERT INTO user (prenom, classe, birthday, photo, id_parent)
-VALUES ('Camille', 'CP', '2019-01-01', '/public/avatarphotos/cat.png', 1),
-("Anthony", "CE2", "2003-10-26", '/public/avatarphotos/cat.png', 1),
-("Julyyyyy", "Grande Section", "2003-10-26", '/public/avatarphotos/cat.png', 2);
+INSERT INTO user (name, grade, birthday, picture, id_parent)
+VALUES ('Camille', 'CP', '2019-01-01', '/avatarphotos/chat/chat_bw.png', 1),
+("Anthony", "CE2", "2003-10-26", '/avatarphotos/chat/chat_bw.png', 1),
+("Julyyyyy", "Grande Section", "2003-10-26", '/avatarphotos/chat/chat_bw.png', 2);
 

@@ -10,15 +10,15 @@ function GamesHome() {
   return (
     <>
       <section id="title">
-        <h1>Choisis un jeu, {user.prenom} 🤓</h1>
+        <h1>Choisis un jeu, {user.name} 🤓</h1>
       </section>
       <section id="gamesList">
-        <Link to={`/levelgame1/${user.prenom}`}>
+        <Link to={`/levelgame1/${user.name}`}>
           <button type="button" className="gameCard" id="petitsCalculs">
             Petits Calculs
           </button>
         </Link>
-        <Link to={`/levelgame2/${user.prenom}`}>
+        <Link to={`/levelgame2/${user.name}`}>
           <button type="button" className="gameCard" id="objetsChiffres">
             Objets & Chiffres
           </button>
@@ -26,13 +26,13 @@ function GamesHome() {
       </section>
 
       <section className="BonusSection">
-        <Link to={`/bonus-game/${user.prenom}`}>
+        <Link to={`/bonus-game/${user.name}`}>
           <button type="button" className="bonusGame" id="bonusGame">
             Mange Tes Maths !
           </button>
         </Link>
       </section>
-      <img src={user.photo} alt="Avatar" className="avatar-image" />
+      <img src={user.picture} alt="Avatar" className="avatar-image" />
 
       <footer>
         Codé avec le ❤️ par la team <strong>@Mathémagie</strong>

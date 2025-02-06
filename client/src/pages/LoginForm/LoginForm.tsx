@@ -37,7 +37,7 @@ function LoginForm() {
         handleLogin(response.data);
         // pour l'instant, je redirige vers /avatar, in fine, nous allons être redirigé vers /dashboard
         successToast(`Bonjour ${response.data.firstname} !`);
-        nav("/avatar");
+        nav("/dashboard");
       }
     } catch (error) {
       console.error(error);

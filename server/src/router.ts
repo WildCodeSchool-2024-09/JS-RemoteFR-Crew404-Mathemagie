@@ -30,9 +30,9 @@ router.use(jwtMiddleware.verifyToken);
 /* ************************************************************************* */
 import userActions from "./modules/user/userActions";
 
+router.post("/api/avatar", userActions.addAvatar);
 router.get("/api/users", userActions.getAllUsers);
 router.get("/api/avatar/:id", userActions.getAvatar);
-router.post("/api/avatar", userActions.addAvatar);
 /**
  * sans middleware, je peux voir absolument tous les enfants inscrit sur la platforme
  * Il faut donc faire une requete sql pour savoir si le user connecté (req.body.user.id_parent) est le parent de l'enfant qu'il souhaite accéder, si oui, next(), sinon res.sendStatus(401) (Unautorized)

@@ -7,7 +7,7 @@ type User = {
   name: string;
   grade: string;
   birthday: string;
-  photo: string;
+  picture: string;
   id_parent: number;
 };
 
@@ -16,8 +16,8 @@ class userRepository {
 
   async create(user: Omit<User, "id">, id_parent: number) {
     const [result] = await DatabaseClient.query<Result>(
-      "INSERT INTO user (name, grade, birthday, photo,  id_parent) values (?, ?, ?, ?, ?)",
-      [user.name, user.grade, user.birthday, user.photo, id_parent],
+      "INSERT INTO user (name, grade, birthday, picture,  id_parent) values (?, ?, ?, ?, ?)",
+      [user.name, user.grade, user.birthday, user.picture, id_parent],
     );
 
     return result.insertId;
@@ -39,8 +39,11 @@ class userRepository {
     );
     return rows as User[];
   }
-  async getAllUsers() {
-    const [rows] = await DatabaseClient.query<Rows>("SELECT * FROM user");
+  async getAllUsers(id: number) {
+    const [rows] = await DatabaseClient.query<Rows>(
+      "SELECT * FROM user WHERE id_parent = ?",
+      [id],
+    );
     return rows as User[];
   }
 }

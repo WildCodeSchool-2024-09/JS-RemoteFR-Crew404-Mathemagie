@@ -11,8 +11,9 @@ const AvatarContext = createContext<{
 // Créer un Provider pour partager l'état de l'avatar
 export const AvatarProvider = ({ children }: { children: React.ReactNode }) => {
   const [avatar, setAvatar] = useState<Avatar>({
+    id_user: 0,
     name: "",
-    photo: "",
+    picture: "",
     grade: "",
     day: "",
     month: "",

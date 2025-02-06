@@ -1,12 +1,13 @@
-import axios from "axios";
 import { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
+import api from "../../services/api";
+import { errorToast } from "../../services/toasts";
 import "./DashBoard.css";
 
 interface ChildProfile {
-  id: string;
+  id_user: string;
   name: string;
-  photo: string;
+  picture: string;
 }
 
 function Dashboard() {
@@ -14,20 +15,20 @@ function Dashboard() {
   const navigate = useNavigate();
 
   useEffect(() => {
-    axios
-      .get(`${import.meta.env.VITE_API_URL}/api/users`, {
-        withCredentials: true,
-      })
-      .then((response) => {
+    async function fetchUsers() {
+      try {
+        const response = await api.get("/api/users");
         setChildren(response.data);
-      })
-      .catch((error) => {
-        console.error("Erreur lors de la récupération des utilisateurs", error);
-      });
+      } catch (error) {
+        errorToast("Oups, une erreur est survenue");
+        console.error(error);
+      }
+    }
+    fetchUsers();
   }, []);
 
   const handleSelectProfile = (child: ChildProfile) => {
-    navigate(`/gameshome/${child.name}/${encodeURIComponent(child.photo)}`);
+    navigate(`/gameshome/${child.id_user}`);
   };
 
   const handleAddChild = () => {
@@ -41,7 +42,7 @@ function Dashboard() {
           {children.map((user) => (
             <button
               type="button"
-              key={user.id}
+              key={user.id_user}
               className="profile-card"
               onClick={() => handleSelectProfile(user)}
               onKeyUp={(e) => {
@@ -51,7 +52,7 @@ function Dashboard() {
               }}
             >
               <img
-                src={user.photo}
+                src={user.picture}
                 alt={user.name}
                 className="profile-avatar"
               />
