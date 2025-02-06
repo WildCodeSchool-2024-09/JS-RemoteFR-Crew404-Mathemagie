@@ -80,7 +80,7 @@ footer {
 @media (min-width: 768px) {
   .Home {
     width: 55px;
-    margin-left: 50px;
+    margin: 2px 1rem;
   }
 
   footer {

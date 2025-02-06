@@ -1,4 +1,5 @@
 import { createContext, useContext, useState } from "react";
+import { successToast } from "../services/toasts";
 
 type AuthContextType = {
   parent: Parent | null;
@@ -32,6 +33,10 @@ export function AuthProvider({ children }: ChildrenType) {
   const handleLogout = () => {
     setParent(null);
     setIsLogged(false);
+    successToast("À bientôt !");
+    setTimeout(() => {
+      window.location.href = "/login";
+    }, 2000);
   };
 
   return (

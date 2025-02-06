@@ -115,7 +115,7 @@ p {
 
 button {
   font-size: 1.2rem;
-  padding: 0.8rem 1.5rem;
+  /* padding: 0.8rem 1.5rem; */
   background-color: #5e60ce;
   color: white;
   border: none;

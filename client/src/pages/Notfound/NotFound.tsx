@@ -1,3 +1,4 @@
+import { Link } from "react-router-dom";
 import "../Notfound/NotFound.css";
 
 function NotFound() {
@@ -14,15 +15,9 @@ function NotFound() {
           alt="Maintenance icon"
         />
       </div>
-      <button
-        type="button"
-        className="home-button"
-        onClick={() => {
-          window.location.href = "/sign-up";
-        }}
-      >
+      <Link className="home-button" to="/dashboard">
         Retour à l'accueil
-      </button>
+      </Link>
     </div>
   );
 }

@@ -1,11 +1,13 @@
 import { FcGraduationCap } from "react-icons/fc";
 import { Link, Outlet, useLocation, useNavigate } from "react-router-dom";
+import { useAuth } from "./Context/AuthContext";
 import { useAvatar } from "./Context/AvatarContext";
 import "./App.css";
 
 function App() {
   // Import de mon context
   const { avatar } = useAvatar();
+  const { handleLogout } = useAuth();
 
   // Redirection via react router dom
   const location = useLocation();
@@ -27,12 +29,17 @@ function App() {
     <div className="layout">
       {!shouldHideStatsBar && (
         <header id="statsBar">
-          <button
-            type="button"
-            onClick={() => navigate(`/gameshome/${avatar.id_user}`)}
-          >
-            <img src="/home.png" alt="Page d'accueil" className="Home" />
-          </button>
+          <div>
+            <button
+              type="button"
+              onClick={() => navigate(`/gameshome/${avatar.id_user}`)}
+            >
+              <img src="/home.png" alt="Page d'accueil" className="Home" />
+            </button>
+            <button type="button" onClick={handleLogout}>
+              <img src="/logout.png" alt="Déconnexion" className="Home" />
+            </button>
+          </div>
           <p> Tes points cumulés : </p>
 
           <Link to="/dashboard" className="lien-dashboard">
