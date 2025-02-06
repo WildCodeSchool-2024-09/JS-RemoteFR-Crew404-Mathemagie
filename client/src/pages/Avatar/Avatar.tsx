@@ -129,11 +129,11 @@ function Avatar() {
             className="input-bulle"
             value={avatar.name}
           />
-          <label htmlFor="classe">Dans quelle classe es-tu?</label>
+          <label htmlFor="grade">Dans quelle classe es-tu?</label>
           <input
             type="text"
             name="grade"
-            id="classe"
+            id="grade"
             onChange={handleChange}
             placeholder="Je suis en..."
             className="input-bulle"
