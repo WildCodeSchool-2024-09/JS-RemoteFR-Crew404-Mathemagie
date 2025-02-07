@@ -18,7 +18,11 @@ const register: RequestHandler = async (req, res, next) => {
 const login: RequestHandler = async (req, res, next) => {
   try {
     const user = await authRepository.read(req.body.email);
-    const token = jwtMiddleware.createToken(user);
+    const token = jwtMiddleware.createToken({
+      id_user: user.id_user,
+      id_parent: user.id_parent,
+      email: user.email,
+    });
     res.cookie("jwtToken", token, { httpOnly: true, secure: false }).json(user);
   } catch (err) {
     next(err);

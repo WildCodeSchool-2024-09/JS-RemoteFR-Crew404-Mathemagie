@@ -1,13 +1,13 @@
 import { FcGraduationCap } from "react-icons/fc";
 import { Link, Outlet, useLocation, useNavigate } from "react-router-dom";
-import { useAuth } from "./Context/AuthContext";
+// import { useAuth } from "./Context/AuthContext";
 import { useAvatar } from "./Context/AvatarContext";
 import "./App.css";
 
 function App() {
   // Import de mon context
   const { avatar } = useAvatar();
-  const { handleLogout } = useAuth();
+  // const { handleLogout } = useAuth();
 
   // Redirection via react router dom
   const location = useLocation();
@@ -36,9 +36,9 @@ function App() {
             >
               <img src="/home.png" alt="Page d'accueil" className="Home" />
             </button>
-            <button type="button" onClick={handleLogout}>
+            {/* <button type="button" onClick={handleLogout}>
               <img src="/logout.png" alt="Déconnexion" className="Home" />
-            </button>
+            </button> */}
           </div>
           <p> Tes points cumulés : </p>
 
