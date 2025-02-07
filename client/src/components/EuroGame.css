@@ -46,6 +46,18 @@ h1 {
   justify-content: center;
 }
 
+.game-button {
+  font-size: 1.1rem;
+  padding: 1rem 2rem;
+  background-color: #4059ad;
+  color: white;
+  border: none;
+  border-radius: 15px;
+  font-weight: bold;
+  transition: 0.5s;
+  cursor: pointer;
+}
+
 .game-button-primary {
   font-size: 1.1rem;
   padding: 1rem 2rem;
