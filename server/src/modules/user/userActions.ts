@@ -3,9 +3,11 @@ import userRepository from "./userRepository";
 
 const addAvatar: RequestHandler = async (req, res, next) => {
   try {
-    const userId = Number(req.params.id);
-    const user = await userRepository.create(req.body);
-    res.status(201).json(user);
+    const userId = await userRepository.create(
+      req.body,
+      req.body.user.id_parent,
+    );
+    res.status(201).json({ id: userId });
   } catch (err) {
     next(err);
   }
@@ -25,4 +27,13 @@ const getAvatar: RequestHandler = async (req, res, next) => {
   }
 };
 
-export default { addAvatar, getAvatar };
+const getAllUsers: RequestHandler = async (req, res, next) => {
+  try {
+    const users = await userRepository.getAllUsers(req.body.user.id_parent);
+    res.status(200).json(users);
+  } catch (err) {
+    next(err);
+  }
+};
+
+export default { addAvatar, getAvatar, getAllUsers };

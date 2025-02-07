@@ -7,16 +7,12 @@ import authRepository from "../modules/item/auth/authRepository";
 const isRegistered: RequestHandler = async (req, res, next) => {
   const user = await authRepository.read(req.body.email);
 
-  console.info(user);
-
   if (!user) {
     res.status(401).json({ message: "Invalid email or password" });
     return;
   }
 
   if (await argon2.verify(user.password, req.body.password)) {
-    console.info("Password is correct");
-
     req.user = user;
     next();
   } else {

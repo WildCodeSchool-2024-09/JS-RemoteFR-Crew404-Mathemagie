@@ -3,8 +3,8 @@
   border-radius: 20px;
   color: black;
   text-align: center;
-  padding: 20px;
-  margin-top: 20px;
+  padding: 1rem;
+  margin-top: 1rem;
 }
 
 .car-game-container p {
@@ -29,7 +29,7 @@
 
 .question-image {
   display: block;
-  width: 500px;
+  width: 250px;
   margin: 30px auto;
   justify-content: center;
   align-items: end;
@@ -94,4 +94,11 @@ h1 {
   75% {
     transform: translateX(-5px);
   }
+}
+
+.question {
+  font-size: 2rem; /* Ajustez cette valeur selon vos besoins */
+  font-weight: bold;
+  text-align: center;
+  margin: 20px 0;
 }

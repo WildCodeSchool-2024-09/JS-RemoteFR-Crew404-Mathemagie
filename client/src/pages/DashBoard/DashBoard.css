@@ -31,11 +31,12 @@
   background: white;
   border-radius: 10px;
   box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-  padding: 15px;
+  padding: 25px;
   width: 100%;
   border: none;
   cursor: pointer;
   transition: transform 0.2s ease-in-out;
+  overflow: hidden;
 }
 
 .profile-card:active {

@@ -1,12 +1,13 @@
-import axios from "axios";
 import { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
+import api from "../../services/api";
+import { errorToast } from "../../services/toasts";
 import "./DashBoard.css";
 
 interface ChildProfile {
-  id: string;
+  id_user: string;
   name: string;
-  photo: string;
+  picture: string;
 }
 
 function Dashboard() {
@@ -14,21 +15,20 @@ function Dashboard() {
   const navigate = useNavigate();
 
   useEffect(() => {
-    // Récupérer les profils des enfants depuis l'API
-    axios
-      .get(`${import.meta.env.VITE_API_URL}/api/children`, {
-        withCredentials: true,
-      })
-      .then((response) => {
+    async function fetchUsers() {
+      try {
+        const response = await api.get("/api/users");
         setChildren(response.data);
-      })
-      .catch((error) => {
-        console.error("Erreur lors de la récupération des enfants", error);
-      });
+      } catch (error) {
+        errorToast("Oups, une erreur est survenue");
+        console.error(error);
+      }
+    }
+    fetchUsers();
   }, []);
 
   const handleSelectProfile = (child: ChildProfile) => {
-    navigate(`/gameshome/${child.name}`);
+    navigate(`/gameshome/${child.id_user}`);
   };
 
   const handleAddChild = () => {
@@ -39,39 +39,41 @@ function Dashboard() {
     <div className="dashboard-background">
       <div className="dashboard-container">
         <div className="profile-list">
-          {children.map((child) => (
+          {children.map((user) => (
             <button
               type="button"
-              key={child.id}
+              key={user.id_user}
               className="profile-card"
-              onClick={() => handleSelectProfile(child)}
+              onClick={() => handleSelectProfile(user)}
               onKeyUp={(e) => {
                 if (e.key === "Enter" || e.key === " ") {
-                  handleSelectProfile(child);
+                  handleSelectProfile(user);
                 }
               }}
             >
               <img
-                src={child.photo}
-                alt={child.name}
+                src={user.picture}
+                alt={user.name}
                 className="profile-avatar"
               />
-              <p className="profile-name">{child.name}</p>
+              <p className="profile-name">{user.name}</p>
             </button>
           ))}
-          {/* Bouton "Ajouter un Profil" avec une couleur dynamique pour le texte */}
-          <button
-            type="button"
-            className="profile-card add-profile"
-            onClick={handleAddChild}
-            onKeyUp={(e) => {
-              if (e.key === "Enter" || e.key === " ") {
-                handleAddChild();
-              }
-            }}
-          >
-            <p className="ajout"> Ajouter un profil</p>
-          </button>
+
+          {children.length < 5 && (
+            <button
+              type="button"
+              className="profile-card add-profile"
+              onClick={handleAddChild}
+              onKeyUp={(e) => {
+                if (e.key === "Enter" || e.key === " ") {
+                  handleAddChild();
+                }
+              }}
+            >
+              <p className="ajout"> Ajouter un profil</p>
+            </button>
+          )}
         </div>
       </div>
     </div>
