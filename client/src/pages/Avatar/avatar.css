@@ -115,6 +115,12 @@ body {
   justify-items: center;
 }
 
+label[for="grade"] {
+  font-family: "Fredoka", serif;
+  color: #5e60ce;
+  font-size: 18px;
+}
+
 .input-bulle {
   background-color: white;
   border: 1px solid #6c757d;

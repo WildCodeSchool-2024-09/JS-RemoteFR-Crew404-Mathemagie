@@ -32,6 +32,8 @@ body {
   font-weight: bold;
   margin-bottom: 0.5rem;
   color: #4059ad;
+
+  font-family: "Fredoka", serif;
 }
 
 .login-subtitle {

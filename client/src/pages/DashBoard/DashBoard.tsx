@@ -1,5 +1,7 @@
 import { useEffect, useState } from "react";
-import { useNavigate } from "react-router-dom";
+import { BsFillEnvelopePlusFill } from "react-icons/bs";
+import { Link, useNavigate } from "react-router-dom";
+import { useAuth } from "../../Context/AuthContext";
 import api from "../../services/api";
 import { errorToast } from "../../services/toasts";
 import "./DashBoard.css";
@@ -13,6 +15,7 @@ interface ChildProfile {
 function Dashboard() {
   const [children, setChildren] = useState<ChildProfile[]>([]);
   const navigate = useNavigate();
+  const { handleLogout } = useAuth();
 
   useEffect(() => {
     async function fetchUsers() {
@@ -75,6 +78,15 @@ function Dashboard() {
             </button>
           )}
         </div>
+        <Link to="/contact">
+          <div className="contact-button">
+            <button type="button">Nous contacter</button>
+            <BsFillEnvelopePlusFill size={30} />
+          </div>
+        </Link>
+        <button type="button" onClick={handleLogout}>
+          <img src="/logout.png" alt="Déconnexion" className="Home" />
+        </button>
       </div>
     </div>
   );

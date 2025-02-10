@@ -19,8 +19,8 @@ import Avatar from "./pages/Avatar/Avatar";
 
 import Bonus from "./pages/BonusGame/BonusGame";
 import CarGame from "./pages/CarGame/CarGame";
+import Contact from "./pages/Contact/Contact";
 import Dashboard from "./pages/DashBoard/DashBoard";
-import ForgotPassword from "./pages/ForgotPassword/ForgotPassword";
 import GameOne from "./pages/GameOne/GameOne";
 import GamesHome from "./pages/GamesHome/GamesHome";
 import LevelGame1 from "./pages/LevelGame1/LevelGame1";
@@ -78,10 +78,6 @@ const router = createBrowserRouter([
         element: <SignUpForm />,
       },
       {
-        path: "/forgot-password",
-        element: <ForgotPassword />,
-      },
-      {
         path: "/authpage",
         element: <AuthPage />,
       },
@@ -99,6 +95,10 @@ const router = createBrowserRouter([
           {
             path: "/dashboard",
             element: <Dashboard />,
+          },
+          {
+            path: "/contact",
+            element: <Contact />,
           },
           {
             path: "/random-equation/:name/",

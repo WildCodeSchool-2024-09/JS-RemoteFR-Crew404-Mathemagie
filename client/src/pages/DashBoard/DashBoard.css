@@ -57,6 +57,10 @@
   text-align: center;
 }
 
+.contact-button-text {
+  font-family: "Fredoka", serif;
+}
+
 .add-profile {
   background: #5e60ce;
   color: white;
