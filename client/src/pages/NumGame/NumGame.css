@@ -1,5 +1,4 @@
-.game-container {
-  margin-top: 150px;
+.num-game-container {
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -19,6 +18,7 @@ p {
   font-size: 1.2rem;
   color: #4059ad;
   text-align: center;
+  margin-bottom: 1.5rem;
 }
 
 .lives {
@@ -113,26 +113,87 @@ p {
   background-color: #303f9f;
 }
 
-button {
+button,
+.game-button {
   font-size: 1.2rem;
-  /* padding: 0.8rem 1.5rem; */
   background-color: #5e60ce;
   color: white;
   border: none;
-  border-radius: 5px;
+  border-radius: 8px;
   cursor: pointer;
-  transition: background-color 0.3s ease;
+  transition: background-color 0.3s ease, transform 0.2s ease;
   margin: 10px 0;
+  padding: 12px 20px;
+  text-decoration: none;
+  display: inline-block;
+  text-align: center;
+  box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
 }
 
-button:hover {
+button:hover,
+.game-button:hover {
   background-color: #4059ad;
+  transform: scale(1.05);
 }
 
-button:focus {
+button:focus,
+.game-button:focus {
   outline: none;
 }
 
-button:active {
+button:active,
+.game-button:active {
   background-color: #303f9f;
+}
+
+.encouragement {
+  margin-top: 4rem;
+  color: #4059ad;
+  font-size: 1.3rem;
+}
+
+@media (max-width: 768px) {
+  .num-game-container h1 {
+    font-size: 2rem;
+  }
+
+  .series-item {
+    font-size: 1.5rem;
+    margin-top: 2rem;
+  }
+
+  .encouragement {
+    margin-top: 4rem;
+    font-size: 1rem;
+    width: 70%;
+    text-align: center;
+  }
+}
+
+@media (min-width: 768px) {
+  .num-game-container {
+    padding: 40px;
+  }
+
+  .series {
+    justify-content: space-around;
+  }
+
+  .series-item {
+    font-size: 2.5rem;
+    padding: 15px 20px;
+  }
+
+  .choices {
+    justify-content: center;
+  }
+
+  .choice-button-un {
+    font-size: 1.8rem;
+    padding: 1.2rem 2.5rem;
+  }
+
+  .encouragement {
+    font-size: 1.5rem;
+  }
 }

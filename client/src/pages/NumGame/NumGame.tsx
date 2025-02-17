@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import "../NumGame/NumGame.css";
+import "./NumGame.css";
 
 function generateQuestion(seriesLength = 5, maxStart = 20, maxStep = 5) {
   const start = Math.floor(Math.random() * maxStart) + 1;
@@ -28,18 +28,16 @@ function NumGame() {
   const [answered, setAnswered] = useState(false);
   const [currentQuestion, setCurrentQuestion] = useState(generateQuestion());
   const [feedback, setFeedback] = useState<null | "correct" | "wrong">(null);
-  const [xpBlocked, setXpBlocked] = useState(
-    localStorage.getItem("numGameCompleted") === "true",
-  );
   const [correctStreak, setCorrectStreak] = useState(0);
+  const [gameOver, setGameOver] = useState(false);
 
   const handleChoice = (choice: number) => {
     if (choice === currentQuestion.correctAnswer) {
-      if (!xpBlocked) setScore(score + 1);
-      setCorrectStreak(correctStreak + 1);
+      setScore((prev) => prev + 1);
+      setCorrectStreak((prev) => prev + 1);
       setFeedback("correct");
     } else {
-      setLives(lives - 1);
+      setLives((prev) => prev - 1);
       setCorrectStreak(0);
       setFeedback("wrong");
     }
@@ -50,12 +48,15 @@ function NumGame() {
     if (answered) {
       if (questionIndex < TOTAL_QUESTIONS - 1 && lives > 0) {
         const timer = setTimeout(() => {
-          setQuestionIndex(questionIndex + 1);
+          setQuestionIndex((prev) => prev + 1);
           setAnswered(false);
           setFeedback(null);
           setCurrentQuestion(generateQuestion());
         }, 1000);
         return () => clearTimeout(timer);
+      }
+      if (questionIndex >= TOTAL_QUESTIONS - 1 || lives <= 0) {
+        setGameOver(true);
       }
     }
   }, [answered, questionIndex, lives]);
@@ -68,39 +69,21 @@ function NumGame() {
     setFeedback(null);
     setCorrectStreak(0);
     setCurrentQuestion(generateQuestion());
-
-    const hasAlreadyWon = localStorage.getItem("numGameCompleted") === "true";
-    setXpBlocked(hasAlreadyWon);
+    setGameOver(false);
   };
 
   const handleGoHome = () => {
     window.location.href = "/home";
   };
 
-  if (lives <= 0) {
+  if (gameOver) {
     return (
-      <div className="game-container">
-        <h1>Oh non ! Tu as perdu toutes tes vies.</h1>
-        <p>Ton score final : {score}</p>
-        <button type="button" onClick={handleRestart} className="game-button">
-          Rejouer
-        </button>
-        <button type="button" onClick={handleGoHome} className="game-button">
-          Retourner à l'accueil
-        </button>
-      </div>
-    );
-  }
-
-  if (questionIndex >= TOTAL_QUESTIONS) {
-    if (score > 0) {
-      localStorage.setItem("numGameCompleted", "true");
-      setXpBlocked(true);
-    }
-
-    return (
-      <div className="game-container">
-        <h1>Félicitations !</h1>
+      <div className="num-game-container">
+        <h1>
+          {lives > 0
+            ? "Félicitations !"
+            : "Oh non ! Tu as perdu toutes tes vies."}
+        </h1>
         <p>
           Ton score : {score} / {TOTAL_QUESTIONS}
         </p>
@@ -115,7 +98,11 @@ function NumGame() {
   }
 
   return (
-    <div className="game-container">
+    <div className="num-game-container">
+      <h1>Retrouve le chiffre manquant !</h1>
+      <p>
+        Question {questionIndex + 1} sur {TOTAL_QUESTIONS}
+      </p>
       <div className="lives">
         {Array.from({ length: lives }).map((_, index) => {
           const uniqueKey = `heart-${index}-${Math.random()}`;
@@ -129,23 +116,11 @@ function NumGame() {
           );
         })}
       </div>
-      <h1>Retrouve le chiffre manquant !</h1>
-      <p>
-        Question {questionIndex + 1} sur {TOTAL_QUESTIONS}
-      </p>
       <div className="series">
         {currentQuestion.series.map((num, index) => (
           <div
-            key={`series-${num}-${currentQuestion.missingIndex === index ? "missing" : num}`}
-            className={`series-item ${
-              index === currentQuestion.missingIndex
-                ? feedback === "correct"
-                  ? "correct"
-                  : feedback === "wrong"
-                    ? "wrong"
-                    : "missing"
-                : ""
-            }`}
+            key={`series-${index}-${num}`}
+            className={`series-item ${index === currentQuestion.missingIndex ? (feedback === "correct" ? "correct" : feedback === "wrong" ? "wrong" : "missing") : ""}`}
           >
             {index === currentQuestion.missingIndex ? "?" : num}
           </div>
@@ -163,8 +138,6 @@ function NumGame() {
           </button>
         ))}
       </div>
-
-      {/* 🔥 Message d'encouragement (sans bouton rejouer) */}
       {correctStreak >= 2 && (
         <div className="encouragement">
           <h2>Bravo ! Tu es sur une super lancée ! 🚀</h2>
