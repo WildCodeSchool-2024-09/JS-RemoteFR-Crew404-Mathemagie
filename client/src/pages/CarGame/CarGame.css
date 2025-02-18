@@ -1,17 +1,102 @@
+/* Conteneur principal */
 .car-game-container {
-  background: linear-gradient(135deg, #f8d7ff, #b2f0ff);
-  border-radius: 20px;
-  color: black;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 20px;
   text-align: center;
-  padding: 1rem;
-  margin-top: 1rem;
 }
 
-.car-game-container p {
-  color: #5e60ce;
+/* Écran de fin de jeu */
+.car-game-container--end {
+  background-color: #f0f0f0;
+  border-radius: 10px;
+  padding: 40px;
+  max-width: 600px;
+  margin: 0 auto;
 }
 
-.score-cargame {
+/* Boutons */
+.car-game-button {
+  background-color: #4059ad;
+  color: white;
+  padding: 10px 20px;
+  margin: 10px;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  font-size: 1rem;
+}
+
+.car-game-button:hover {
+  background-color: #2c3e75;
+}
+
+/* Vies */
+.car-game-lives {
+  margin-bottom: 20px;
+}
+
+.car-game-heart {
+  font-size: 1.5rem;
+  margin: 0 5px;
+}
+
+.car-game-container h1 {
+  font-size: 1.1rem;
+  color: #4059ad;
+  text-align: center;
+}
+
+.car-game-container h1 p {
+  font-size: 1rem;
+  color: #4059ad;
+  text-align: center;
+}
+
+/* Question */
+.car-game-question {
+  margin-bottom: 20px;
+}
+
+.car-game-question-image {
+  max-width: 90%;
+  height: auto;
+  margin-top: 10px;
+}
+
+/* Réponses */
+.car-game-answers {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 5px;
+  margin-bottom: 20px;
+}
+
+.car-game-answer {
+  background-color: #4059ad;
+  color: white;
+  padding: 10px 20px;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  font-size: 1rem;
+}
+
+.car-game-answer:hover {
+  background-color: #2c3e75;
+}
+
+.car-game-answer--correct {
+  background-color: green;
+}
+
+.car-game-answer--wrong {
+  background-color: red;
+}
+
+/* Score */
+.car-game-score {
   background-color: var(--purple);
   font-family: "Fredoka", "Arial", sans-serif;
   font-size: 20px;
@@ -27,78 +112,41 @@
   transition: background-color 0.3s ease;
 }
 
-.question-image {
-  display: block;
-  width: 250px;
-  margin: 30px auto;
-  justify-content: center;
-  align-items: end;
-}
-
-.answers {
-  margin: 20px 0;
-}
-
-.answers button {
-  color: var(--titlesColor);
-  background-color: rgba(255, 255, 255, 0.459);
-  border: solid 4px var(--purple);
-  padding: 1rem;
-  width: 7rem;
-  margin: 1rem;
-  border-radius: 15px;
-  font-weight: bold;
-  font-size: 15px;
-  transition: 0.5s;
-  cursor: pointer;
-}
-
-.timer {
-  padding: 2px;
-}
-
-h1 {
-  font-size: 2.5rem;
-  color: #4059ad;
-  margin-bottom: 1rem;
-  text-align: center;
-}
-
-.lives {
-  display: flex;
-  gap: 0.5rem;
-  margin-bottom: 1rem;
-}
-
-.heart {
-  font-size: 24px;
-  color: red;
-  transition: transform 0.3s ease;
-}
-
-.heart.shake {
-  animation: shake 0.5s ease;
-}
-
-@keyframes shake {
-  0%,
-  100% {
-    transform: translateX(0);
+/* Responsive Design */
+@media (max-width: 768px) {
+  .car-game-container {
+    padding: 1px;
   }
-  25% {
-    transform: translateX(-5px);
+  .car-game-answers {
+    grid-template-columns: repeat(2, 1fr);
   }
-  50% {
-    transform: translateX(5px);
-  }
-  75% {
-    transform: translateX(-5px);
-  }
-}
 
-.question {
-  font-size: 2rem; /* Ajustez cette valeur selon vos besoins */
-  font-weight: bold;
-  text-align: center;
-  margin: 20px 0;
+  .car-game-question-image {
+    width: 50%;
+  }
+
+  .car-game-score {
+    width: 30%;
+    font-size: 19px;
+  }
+
+  h1 {
+    font-size: 0.4rem;
+    color: #4059ad;
+    text-align: center;
+  }
+
+  .car-game-lives {
+    font-size: 0.1rem;
+  }
+
+  .car-game-container h1 {
+    font-size: 1.4rem;
+    color: #4059ad;
+    text-align: center;
+  }
+
+  .car-game-question{
+    margin-bottom: 1px;
+  }
 }

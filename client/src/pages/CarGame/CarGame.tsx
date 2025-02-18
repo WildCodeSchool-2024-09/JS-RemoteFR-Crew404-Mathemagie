@@ -40,49 +40,26 @@ function CarGame() {
           setFeedback(null);
           setSelectedAnswer(null);
         } else if (questionIndex === TOTAL_QUESTIONS - 1 && lives >= 0) {
-          <div className="game-container">
-            <h1>Félicitations !</h1>
-            <p>
-              Ton score : {score} / {TOTAL_QUESTIONS}
-            </p>
-            <button
-              type="button"
-              onClick={() => {
-                window.location.href = "/euro-game";
-              }}
-              className="game-button"
-            >
-              Rejouer
-            </button>
-            <button
-              type="button"
-              onClick={() => {
-                window.location.href = "/home";
-              }}
-              className="game-button"
-            >
-              Retourner à l'accueil
-            </button>
-          </div>;
+          // Fin du jeu
         }
       }, 2000);
       return () => clearTimeout(timer);
     }
-  }, [answered, questionIndex, lives, score]);
+  }, [answered, questionIndex, lives]);
 
   if (lives <= 0) {
     return (
-      <div className="game-container">
+      <div className="car-game-container car-game-container--end">
         <h1>Oh non ! Tu as perdu toutes tes vies.</h1>
         <p>Ton score final : {score}</p>
         <button
           type="button"
           onClick={() => window.location.reload()}
-          className="game-button"
+          className="car-game-button"
         >
           Rejouer
         </button>
-        <Link to="/home" className="game-button">
+        <Link to="/home" className="car-game-button">
           Retourner à l'accueil
         </Link>
       </div>
@@ -91,7 +68,7 @@ function CarGame() {
 
   if (questionIndex === TOTAL_QUESTIONS - 1 && answered) {
     return (
-      <div className="game-container">
+      <div className="car-game-container car-game-container--end">
         <Confetti />
         <h1>Félicitations !</h1>
         <p>
@@ -102,7 +79,7 @@ function CarGame() {
           onClick={() => {
             window.location.href = "/euro-game";
           }}
-          className="game-button"
+          className="car-game-button"
         >
           Passer au niveau 2
         </button>
@@ -111,7 +88,7 @@ function CarGame() {
           onClick={() => {
             window.location.href = "/home";
           }}
-          className="game-button"
+          className="car-game-button"
         >
           Retourner à l'accueil
         </button>
@@ -121,9 +98,9 @@ function CarGame() {
 
   return (
     <div className="car-game-container">
-      <div className="lives">
+      <div className="car-game-lives">
         {Array.from({ length: lives }).map((_, index) => (
-          <span key={index.toString()} className="heart">
+          <span key={index.toString()} className="car-game-heart">
             ❤️
           </span>
         ))}
@@ -131,19 +108,18 @@ function CarGame() {
 
       <h1>Associe les objets au bon chiffre !</h1>
 
-      <div
-        className="question"
-        style={{ color: "#4059ad", fontSize: "1.5rem" }}
-      >
-        {currentQuestion.question}
+      <div className="car-game-question">
+        <p style={{ color: "#4059ad", fontSize: "1.5rem" }}>
+          {currentQuestion.question}
+        </p>
         <img
           src={currentQuestion.image}
           alt="Question"
-          className="question-image"
-          width="600px"
+          className="car-game-question-image"
+          width="450px"
         />
       </div>
-      <div className="answers">
+      <div className="car-game-answers">
         {currentQuestion.options.map((num) => (
           <button
             key={num}
@@ -153,16 +129,16 @@ function CarGame() {
             className={
               answered
                 ? num === currentQuestion.answer
-                  ? "correct"
-                  : "wrong"
-                : ""
+                  ? "car-game-answer--correct"
+                  : "car-game-answer--wrong"
+                : "car-game-answer"
             }
           >
             {num}
           </button>
         ))}
       </div>
-      <div className="score-cargame">Score : {score}</div>
+      <div className="car-game-score">Score : {score}</div>
     </div>
   );
 }
