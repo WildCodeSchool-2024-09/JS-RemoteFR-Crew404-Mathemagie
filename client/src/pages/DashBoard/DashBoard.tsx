@@ -88,12 +88,12 @@ function Dashboard() {
           )}
         </div>
         <Link to="/contact">
-          <div className="contact-button">
+          <div className="contact-button-dash">
             <button type="button">Nous contacter</button>
-            <BsFillEnvelopePlusFill size={30} />
+            <BsFillEnvelopePlusFill size={40} />
           </div>
         </Link>
-        <button type="button" onClick={handleLogout}>
+        <button className="logout" type="button" onClick={handleLogout}>
           <img src="/logout.png" alt="Déconnexion" className="Home" />
         </button>
       </div>

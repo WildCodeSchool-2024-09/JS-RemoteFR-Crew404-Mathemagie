@@ -1,8 +1,10 @@
+
 import { useCallback, useEffect, useState } from "react";
 import "./NumGame.css";
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
 import { useAvatar } from "../../Context/AvatarContext";
+
 
 function generateQuestion(seriesLength = 5, maxStart = 20, maxStep = 5) {
   const start = Math.floor(Math.random() * maxStart) + 1;
@@ -138,6 +140,7 @@ function NumGame() {
         Question {questionIndex + 1} sur {TOTAL_QUESTIONS}
       </p>
       <div className="lives">
+
         {Array.from({ length: lives }).map(() => (
           <span
             key={crypto.randomUUID()} // Utilisation d'un identifiant unique
@@ -146,10 +149,12 @@ function NumGame() {
             ❤️
           </span>
         ))}
+
       </div>
       <div className="series">
         {currentQuestion.series.map((num) => (
           <div
+
             key={`series-${num}`} // Utilisation de la valeur num au lieu de l'index
             className={`series-item ${
               currentQuestion.series.indexOf(num) ===
@@ -161,6 +166,7 @@ function NumGame() {
                     : "missing"
                 : ""
             }`}
+
           >
             {num === currentQuestion.series[currentQuestion.missingIndex]
               ? "?"
