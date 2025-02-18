@@ -1,32 +1,35 @@
 import type { RequestHandler } from "express";
 import userRepository from "./userRepository";
 
+// 🔹 Ajouter un utilisateur (Avatar)
 const addAvatar: RequestHandler = async (req, res, next) => {
   try {
-    const userId = await userRepository.create(
-      req.body,
-      req.body.user.id_parent,
-    );
+    const userId = await userRepository.create(req.body, req.body.user.id_parent);
     res.status(201).json({ id: userId });
   } catch (err) {
     next(err);
   }
 };
 
+// 🔹 Récupérer les informations d'un utilisateur
 const getAvatar: RequestHandler = async (req, res, next) => {
   try {
     const userId = Number(req.params.id);
-    const user = await userRepository.read(userId);
-    if (user) {
-      res.status(200).json(user);
-    } else {
-      res.status(404).json({ message: "User not found" });
+    if (isNaN(userId)) {
+      return;
     }
+
+    const user = await userRepository.read(userId);
+    if (!user) {
+      return;
+    }
+    res.status(200).json(user);
   } catch (err) {
     next(err);
   }
 };
 
+// 🔹 Récupérer tous les utilisateurs liés à un parent
 const getAllUsers: RequestHandler = async (req, res, next) => {
   try {
     const users = await userRepository.getAllUsers(req.body.user.id_parent);
@@ -36,4 +39,48 @@ const getAllUsers: RequestHandler = async (req, res, next) => {
   }
 };
 
-export default { addAvatar, getAvatar, getAllUsers };
+// 🔹 Récupérer le niveau actuel d'un utilisateur
+const getCurrentLevel: RequestHandler = async (req, res, next) => {
+  try {
+    const userId = Number(req.params.id);
+    if (isNaN(userId)) {
+      return;
+    }
+
+    const user = await userRepository.getCurrentLevel(userId);
+    if (!user) {
+      return;
+    }
+
+    res.status(200).json({ current_level: user.current_level });
+  } catch (err) {
+    next(err);
+  }
+};
+
+// 🔹 Mettre à jour le niveau d'un utilisateur
+const levelUp: RequestHandler = async (req, res, next) => {
+  try {
+    const userId = Number(req.params.id);
+    const { newLevel } = req.body;
+    if (isNaN(userId) || newLevel < 1 || newLevel > 2) {
+      res.status(400).json({ message: "Niveau invalide" });
+      return;
+    }
+
+    const updatedLevel = await userRepository.updateLevel(userId, newLevel);
+
+    if (!updatedLevel) {
+      res.status(404).json({ message: "Utilisateur non trouvé" });
+      return;
+    }
+
+    res.status(200).json(updatedLevel);
+  } catch (err) {
+    next(err);
+  }
+};
+
+
+
+export default { addAvatar, getAvatar, getAllUsers, getCurrentLevel, levelUp };

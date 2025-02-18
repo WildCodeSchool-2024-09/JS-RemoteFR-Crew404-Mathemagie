@@ -40,7 +40,12 @@ router.get("/api/avatar/:id", userActions.getAvatar);
 router.get(
   "/api/avatar/:id",
   childrenMiddleware.findChildren,
-  userActions.getAvatar,
+  userActions.getAvatar
 );
+
+// gestion des niveaux des utilisateurs
+
+router.get("/api/users/:id", userActions.getCurrentLevel);
+router.post("/api/users/:id/level-up", userActions.levelUp);
 
 export default router;

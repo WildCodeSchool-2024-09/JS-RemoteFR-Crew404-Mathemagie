@@ -63,7 +63,7 @@ function GameOne() {
           {!gameOver ? (
             <div>
               <section className="question-jeu-un">
-                <p>
+                <section>
                   Question {questionIndex + 1} sur 5 :
                   <section className="questions-gameone">
                     <div className="question-box">
@@ -74,7 +74,7 @@ function GameOne() {
                       <strong> {questions[questionIndex].result} </strong>
                     </div>
                   </section>
-                </p>
+                </section>
               </section>
               <input
                 type="number"

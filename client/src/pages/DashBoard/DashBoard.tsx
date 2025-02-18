@@ -43,24 +43,33 @@ function Dashboard() {
       <div className="dashboard-container">
         <div className="profile-list">
           {children.map((user) => (
-            <button
-              type="button"
-              key={user.id_user}
-              className="profile-card"
-              onClick={() => handleSelectProfile(user)}
-              onKeyUp={(e) => {
-                if (e.key === "Enter" || e.key === " ") {
-                  handleSelectProfile(user);
-                }
-              }}
-            >
-              <img
-                src={user.picture}
-                alt={user.name}
-                className="profile-avatar"
-              />
-              <p className="profile-name">{user.name}</p>
-            </button>
+            <>
+              <button
+                type="button"
+                key={user.id_user}
+                className="profile-card"
+                onClick={() => handleSelectProfile(user)}
+                onKeyUp={(e) => {
+                  if (e.key === "Enter" || e.key === " ") {
+                    handleSelectProfile(user);
+                  }
+                }}
+              >
+                <img
+                  src={user.picture}
+                  alt={user.name}
+                  className="profile-avatar"
+                />
+                <p className="profile-name">{user.name}</p>
+              </button>
+              <Link
+                to={`/avatar/${user.id_user}`}
+                key={user.id_user}
+                type="button"
+              >
+                Modifier
+              </Link>
+            </>
           ))}
 
           {children.length < 5 && (

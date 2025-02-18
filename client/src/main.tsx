@@ -14,6 +14,7 @@ import App from "./App";
 
 import AuthPage from "./pages/Auth/AuthPage";
 import Avatar from "./pages/Avatar/Avatar";
+import AvatarUpdate from "./pages/UpdateAvatar/UpdateAvatar";
 // Import additional components for new routes
 // Try creating these components in the "pages" folder
 
@@ -68,6 +69,18 @@ const router = createBrowserRouter([
       {
         path: "/avatar",
         element: <Avatar />,
+      },
+      {
+        path: "/avatar/:id",
+        element: <AvatarUpdate />,
+        loader: async ({ params }) => {
+          try {
+            const response = await api.get(`/api/avatar/${params.id}`);
+            return response.data;
+          } catch (error) {
+            console.error(error);
+          }
+        },
       },
       {
         path: "/login",
