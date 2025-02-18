@@ -4,7 +4,10 @@ import userRepository from "./userRepository";
 // 🔹 Ajouter un utilisateur (Avatar)
 const addAvatar: RequestHandler = async (req, res, next) => {
   try {
-    const userId = await userRepository.create(req.body, req.body.user.id_parent);
+    const userId = await userRepository.create(
+      req.body,
+      req.body.user.id_parent,
+    );
     res.status(201).json({ id: userId });
   } catch (err) {
     next(err);
@@ -15,7 +18,7 @@ const addAvatar: RequestHandler = async (req, res, next) => {
 const getAvatar: RequestHandler = async (req, res, next) => {
   try {
     const userId = Number(req.params.id);
-    if (isNaN(userId)) {
+    if (Number.isNaN(userId)) {
       return;
     }
 
@@ -43,7 +46,7 @@ const getAllUsers: RequestHandler = async (req, res, next) => {
 const getCurrentLevel: RequestHandler = async (req, res, next) => {
   try {
     const userId = Number(req.params.id);
-    if (isNaN(userId)) {
+    if (Number.isNaN(userId)) {
       return;
     }
 
@@ -58,29 +61,33 @@ const getCurrentLevel: RequestHandler = async (req, res, next) => {
   }
 };
 
-// 🔹 Mettre à jour le niveau d'un utilisateur
 const levelUp: RequestHandler = async (req, res, next) => {
   try {
     const userId = Number(req.params.id);
+
     const { newLevel } = req.body;
-    if (isNaN(userId) || newLevel < 1 || newLevel > 2) {
+
+    if (Number.isNaN(userId) || Number.isNaN(Number(newLevel))) {
       res.status(400).json({ message: "Niveau invalide" });
       return;
     }
 
-    const updatedLevel = await userRepository.updateLevel(userId, newLevel);
+    await userRepository.updateLevel(userId, newLevel);
 
-    if (!updatedLevel) {
+    const updatedUser = await userRepository.getCurrentLevel(userId);
+
+    if (!updatedUser) {
       res.status(404).json({ message: "Utilisateur non trouvé" });
       return;
     }
 
-    res.status(200).json(updatedLevel);
+    res.status(200).json({
+      message: "Niveau mis à jour avec succès",
+      current_level: updatedUser.current_level,
+    });
   } catch (err) {
     next(err);
   }
 };
-
-
 
 export default { addAvatar, getAvatar, getAllUsers, getCurrentLevel, levelUp };
