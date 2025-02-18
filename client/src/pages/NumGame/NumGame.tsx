@@ -1,12 +1,15 @@
-import { useEffect, useState } from "react";
+import { useCallback, useEffect, useState } from "react";
 import "./NumGame.css";
+import axios from "axios";
+import { useNavigate } from "react-router-dom";
+import { useAvatar } from "../../Context/AvatarContext";
 
 function generateQuestion(seriesLength = 5, maxStart = 20, maxStep = 5) {
   const start = Math.floor(Math.random() * maxStart) + 1;
   const step = Math.floor(Math.random() * maxStep) + 1;
   const series = Array.from(
     { length: seriesLength },
-    (_, i) => start + i * step,
+    (_, index) => start + index * step,
   );
 
   const missingIndex = Math.floor(Math.random() * seriesLength);
@@ -21,6 +24,9 @@ function generateQuestion(seriesLength = 5, maxStart = 20, maxStep = 5) {
 }
 
 function NumGame() {
+  const navigate = useNavigate();
+  const { avatar, handleLevel } = useAvatar();
+
   const TOTAL_QUESTIONS = 10;
   const [questionIndex, setQuestionIndex] = useState(0);
   const [lives, setLives] = useState(5);
@@ -61,6 +67,34 @@ function NumGame() {
     }
   }, [answered, questionIndex, lives]);
 
+  // 🏆 Mise à jour du niveau de l'utilisateur avec Axios
+  const handleGameOver = useCallback(async () => {
+    if (!avatar || !avatar.id_user) {
+      console.error("❌ Erreur : Impossible de récupérer l'utilisateur.");
+      return;
+    }
+
+    const newLevel = score >= 8 ? 2 : 1;
+
+    try {
+      const response = await axios.post(
+        `http://localhost:3310/api/users/${avatar.id_user}/level-up`,
+        { newLevel },
+        { withCredentials: true },
+      );
+      handleLevel(newLevel);
+      console.info("✅ Niveau mis à jour avec succès :", response.data);
+    } catch (error) {
+      console.error("❌ Erreur lors de la mise à jour du niveau :", error);
+    }
+  }, [avatar, score, handleLevel]);
+
+  useEffect(() => {
+    if (gameOver) {
+      handleGameOver();
+    }
+  }, [gameOver, handleGameOver]);
+
   const handleRestart = () => {
     setLives(5);
     setScore(0);
@@ -73,7 +107,7 @@ function NumGame() {
   };
 
   const handleGoHome = () => {
-    window.location.href = "/home";
+    navigate(`/levelgame1/${avatar.name}`);
   };
 
   if (gameOver) {
@@ -104,25 +138,33 @@ function NumGame() {
         Question {questionIndex + 1} sur {TOTAL_QUESTIONS}
       </p>
       <div className="lives">
-        {Array.from({ length: lives }).map((_, index) => {
-          const uniqueKey = `heart-${index}-${Math.random()}`;
-          return (
-            <span
-              key={uniqueKey}
-              className={`heart ${feedback === "wrong" ? "shake" : ""}`}
-            >
-              ❤️
-            </span>
-          );
-        })}
+        {Array.from({ length: lives }).map(() => (
+          <span
+            key={crypto.randomUUID()} // Utilisation d'un identifiant unique
+            className={`heart ${feedback === "wrong" ? "shake" : ""}`}
+          >
+            ❤️
+          </span>
+        ))}
       </div>
       <div className="series">
-        {currentQuestion.series.map((num, index) => (
+        {currentQuestion.series.map((num) => (
           <div
-            key={`series-${index}-${num}`}
-            className={`series-item ${index === currentQuestion.missingIndex ? (feedback === "correct" ? "correct" : feedback === "wrong" ? "wrong" : "missing") : ""}`}
+            key={`series-${num}`} // Utilisation de la valeur num au lieu de l'index
+            className={`series-item ${
+              currentQuestion.series.indexOf(num) ===
+              currentQuestion.missingIndex
+                ? feedback === "correct"
+                  ? "correct"
+                  : feedback === "wrong"
+                    ? "wrong"
+                    : "missing"
+                : ""
+            }`}
           >
-            {index === currentQuestion.missingIndex ? "?" : num}
+            {num === currentQuestion.series[currentQuestion.missingIndex]
+              ? "?"
+              : num}
           </div>
         ))}
       </div>

@@ -2,7 +2,7 @@ import { createContext, useContext, useState } from "react";
 
 type User = {
   name: string;
-  photo: string;
+  picture: string;
 };
 
 interface UserContextType {

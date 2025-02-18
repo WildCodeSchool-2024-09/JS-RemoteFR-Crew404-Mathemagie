@@ -20,8 +20,10 @@ CREATE TABLE user (
   grade VARCHAR(50) NOT NULL,
   birthday DATE NOT NULL,
   picture VARCHAR(255) NOT NULL,
-  id_parent INT,
+  id_parent INT, 
+  current_level INT DEFAULT 1,
   CONSTRAINT fk_parent
+
   FOREIGN KEY (id_parent) REFERENCES parent(id_parent)
 );
 
