@@ -5,7 +5,7 @@ import { errorToast, successToast } from "../../services/toasts";
 import type { Avatar } from "../../types/types";
 import "./updateAvatar.css";
 
-function updateAvatar() {
+function UpdateAvatar() {
   const navigate = useNavigate();
   const data = useLoaderData() as Avatar;
   const [avatar, setAvatar] = useState({
@@ -27,9 +27,6 @@ function updateAvatar() {
   const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
 
-    /**
-     * Je dois modifier ce bloc de code pour correspondre à un update d'utilisateur
-     */
     try {
       const response = await api.post("/api/updateavatar", {
         name: avatar.name,
@@ -38,7 +35,7 @@ function updateAvatar() {
       });
 
       if (response.status === 201) {
-        successToast("Super, le profil est créé !");
+        successToast("Super, le profil est mis à jour !");
         localStorage.removeItem("avatar");
         localStorage.setItem("avatar", JSON.stringify(avatar));
 
@@ -60,7 +57,6 @@ function updateAvatar() {
     "/avatarphotos/cadenas.png",
   ];
 
-  // Je gère la partie du carroussel pour les images
   const [currentIndex, setCurrentIndex] = useState(0);
 
   const handlePrevious = () => {
@@ -69,7 +65,7 @@ function updateAvatar() {
     );
     setAvatar((prevAvatar) => ({
       ...prevAvatar,
-      picture: images[currentIndex + 1],
+      picture: images[(currentIndex - 1 + images.length) % images.length],
     }));
   };
 
@@ -77,7 +73,7 @@ function updateAvatar() {
     setCurrentIndex((prevIndex) => (prevIndex + 1) % images.length);
     setAvatar((prevAvatar) => ({
       ...prevAvatar,
-      picture: images[currentIndex + 1],
+      picture: images[(currentIndex + 1) % images.length],
     }));
   };
 
@@ -85,19 +81,15 @@ function updateAvatar() {
     <>
       <section className="pagetotale">
         <section className="caroussel">
-          {" "}
           <h2> Choisis ton Avatar</h2>
           <section className="caroussel-images">
-            {images.map((src, index) => (
-              <img
-                key={src}
-                src={src}
-                alt={`Animal ${index}`}
-                className={`animal ${index === currentIndex ? "active" : ""}`}
-              />
-            ))}
+            <img
+              src={images[currentIndex]}
+              alt={`Animal ${currentIndex}`}
+              className="animal active"
+            />
           </section>
-          <div className=" button-controls">
+          <div className="button-controls">
             <button
               type="button"
               onClick={handlePrevious}
@@ -143,4 +135,4 @@ function updateAvatar() {
   );
 }
 
-export default updateAvatar;
+export default UpdateAvatar;
