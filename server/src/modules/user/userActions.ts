@@ -6,7 +6,7 @@ const addAvatar: RequestHandler = async (req, res, next) => {
   try {
     const userId = await userRepository.create(
       req.body,
-      req.body.user.id_parent
+      req.body.user.id_parent,
     );
     res.status(201).json({ id: userId });
   } catch (err) {

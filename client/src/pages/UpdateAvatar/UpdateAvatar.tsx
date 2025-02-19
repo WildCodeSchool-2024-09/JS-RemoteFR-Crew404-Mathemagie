@@ -1,9 +1,9 @@
 import { useState } from "react";
 import { useLoaderData, useNavigate } from "react-router-dom";
+import { useAvatar } from "../../Context/AvatarContext";
 import api from "../../services/api";
 import { errorToast, successToast } from "../../services/toasts";
 import type { Avatar } from "../../types/types";
-import { useAvatar } from "../../Context/AvatarContext";
 import "./updateAvatar.css";
 
 function UpdateAvatar() {
@@ -74,7 +74,7 @@ function UpdateAvatar() {
   const handlePrevious = () => {
     setCurrentIndex(
       (prevIndex) =>
-        (prevIndex - 1 + unlockedImages.length) % unlockedImages.length
+        (prevIndex - 1 + unlockedImages.length) % unlockedImages.length,
     );
     setAvatar((prevAvatar) => ({
       ...prevAvatar,
@@ -94,7 +94,7 @@ function UpdateAvatar() {
   };
 
   const handleChange = (
-    e: React.ChangeEvent<HTMLInputElement | HTMLSelectElement>
+    e: React.ChangeEvent<HTMLInputElement | HTMLSelectElement>,
   ) => {
     const { name, value } = e.target;
     setAvatar((prevAvatar) => ({ ...prevAvatar, [name]: value }));
@@ -105,7 +105,7 @@ function UpdateAvatar() {
     try {
       const response = await api.put(
         `/api/updateavatar/${contextAvatar.id_user}`,
-        avatar
+        avatar,
       );
 
       if (response.status === 200) {

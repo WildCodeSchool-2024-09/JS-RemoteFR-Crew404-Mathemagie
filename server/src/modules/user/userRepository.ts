@@ -17,7 +17,7 @@ class UserRepository {
   async create(user: Omit<User, "id">, id_parent: number) {
     const [result] = await DatabaseClient.query<Result>(
       "INSERT INTO user (name, grade, birthday, picture, id_parent, current_level) VALUES (?, ?, ?, ?, ?, 1)",
-      [user.name, user.grade, user.birthday, user.picture, id_parent]
+      [user.name, user.grade, user.birthday, user.picture, id_parent],
     );
     return result.insertId;
   }
@@ -26,7 +26,7 @@ class UserRepository {
   async read(id_user: number) {
     const [rows] = await DatabaseClient.query<Rows>(
       "SELECT * FROM user WHERE id_user = ?",
-      [id_user]
+      [id_user],
     );
     return rows.length ? (rows[0] as User) : null;
   }
@@ -35,7 +35,7 @@ class UserRepository {
   async findMyChildren(id_parent: number) {
     const [rows] = await DatabaseClient.query<Rows>(
       "SELECT * FROM user WHERE id_parent = ?",
-      [id_parent]
+      [id_parent],
     );
     return rows as User[];
   }
@@ -44,7 +44,7 @@ class UserRepository {
   async getAllUsers(id_parent: number) {
     const [rows] = await DatabaseClient.query<Rows>(
       "SELECT * FROM user WHERE id_parent = ?",
-      [id_parent]
+      [id_parent],
     );
     return rows as User[];
   }
@@ -53,7 +53,7 @@ class UserRepository {
   async getCurrentLevel(id_user: number) {
     const [rows] = await DatabaseClient.query<Rows>(
       "SELECT current_level FROM user WHERE id_user = ?",
-      [id_user]
+      [id_user],
     );
     return rows.length ? rows[0] : null;
   }
@@ -68,7 +68,7 @@ class UserRepository {
     // Mise à jour du niveau
     await DatabaseClient.query(
       "UPDATE user SET current_level = ? WHERE id_user = ?",
-      [newLevel, id_user]
+      [newLevel, id_user],
     );
 
     return { message: "Niveau mis à jour avec succès", newLevel };
@@ -77,11 +77,11 @@ class UserRepository {
   // 🔹 Mettre à jour un avatar dans la base de données
   async updateAvatar(
     id_user: number,
-    { name, grade, picture }: { name: string; grade: string; picture: string }
+    { name, grade, picture }: { name: string; grade: string; picture: string },
   ) {
     const [result] = await DatabaseClient.query<Result>(
       "UPDATE user SET name = ?, grade = ?, picture = ? WHERE id_user = ?",
-      [name, grade, picture, id_user]
+      [name, grade, picture, id_user],
     );
 
     if (result.affectedRows === 0) {
