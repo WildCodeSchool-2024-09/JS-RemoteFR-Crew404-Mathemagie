@@ -43,10 +43,9 @@ function Dashboard() {
       <div className="dashboard-container">
         <div className="profile-list">
           {children.map((user) => (
-            <>
+            <div key={user.id_user} className="profile-wrapper">
               <button
                 type="button"
-                key={user.id_user}
                 className="profile-card"
                 onClick={() => handleSelectProfile(user)}
                 onKeyUp={(e) => {
@@ -62,14 +61,14 @@ function Dashboard() {
                 />
                 <p className="profile-name">{user.name}</p>
               </button>
-              <Link
-                to={`/avatar/${user.id_user}`}
-                key={user.id_user}
+              <button
                 type="button"
+                className="modify-profile"
+                onClick={() => navigate(`/avatar/${user.id_user}`)}
               >
                 Modifier
-              </Link>
-            </>
+              </button>
+            </div>
           ))}
 
           {children.length < 5 && (
@@ -87,15 +86,17 @@ function Dashboard() {
             </button>
           )}
         </div>
-        <Link to="/contact">
-          <div className="contact-button-dash">
-            <button type="button">Nous contacter</button>
-            <BsFillEnvelopePlusFill size={40} />
-          </div>
-        </Link>
-        <button className="logout" type="button" onClick={handleLogout}>
-          <img src="/logout.png" alt="Déconnexion" className="Home" />
-        </button>
+
+        {/* Boutons en bas à droite */}
+        <div className="dashboard-actions">
+          <Link to="/contact" className="contact-button-dash">
+            <span>Nous contacter</span>
+            <BsFillEnvelopePlusFill size={35} />
+          </Link>
+          <button className="logout" type="button" onClick={handleLogout}>
+            <img src="/logout.png" alt="Déconnexion" className="logout-icon" />
+          </button>
+        </div>
       </div>
     </div>
   );
