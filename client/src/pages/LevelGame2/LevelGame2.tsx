@@ -9,10 +9,8 @@ function LevelGame2() {
   return (
     <section className="jeu-niveau">
       <h1 className="jeu-niveau-title">Choisis un niveau</h1>
-      <Link to="/car-game">
-        <button type="button" className="niveau-btn">
-          Niveau 1
-        </button>
+      <Link to={`/car-game/${avatar.name}`}>
+        <button type="button" className="niveau-btn">Niveau 1</button>
       </Link>
 
       <Link
