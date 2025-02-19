@@ -1,5 +1,7 @@
 import { useEffect, useState } from "react";
-import { useNavigate } from "react-router-dom";
+import { BsFillEnvelopePlusFill } from "react-icons/bs";
+import { Link, useNavigate } from "react-router-dom";
+import { useAuth } from "../../Context/AuthContext";
 import api from "../../services/api";
 import { errorToast } from "../../services/toasts";
 import "./DashBoard.css";
@@ -13,6 +15,7 @@ interface ChildProfile {
 function Dashboard() {
   const [children, setChildren] = useState<ChildProfile[]>([]);
   const navigate = useNavigate();
+  const { handleLogout } = useAuth();
 
   useEffect(() => {
     async function fetchUsers() {
@@ -40,24 +43,33 @@ function Dashboard() {
       <div className="dashboard-container">
         <div className="profile-list">
           {children.map((user) => (
-            <button
-              type="button"
-              key={user.id_user}
-              className="profile-card"
-              onClick={() => handleSelectProfile(user)}
-              onKeyUp={(e) => {
-                if (e.key === "Enter" || e.key === " ") {
-                  handleSelectProfile(user);
-                }
-              }}
-            >
-              <img
-                src={user.picture}
-                alt={user.name}
-                className="profile-avatar"
-              />
-              <p className="profile-name">{user.name}</p>
-            </button>
+            <>
+              <button
+                type="button"
+                key={user.id_user}
+                className="profile-card"
+                onClick={() => handleSelectProfile(user)}
+                onKeyUp={(e) => {
+                  if (e.key === "Enter" || e.key === " ") {
+                    handleSelectProfile(user);
+                  }
+                }}
+              >
+                <img
+                  src={user.picture}
+                  alt={user.name}
+                  className="profile-avatar"
+                />
+                <p className="profile-name">{user.name}</p>
+              </button>
+              <Link
+                to={`/avatar/${user.id_user}`}
+                key={user.id_user}
+                type="button"
+              >
+                Modifier
+              </Link>
+            </>
           ))}
 
           {children.length < 5 && (
@@ -75,6 +87,15 @@ function Dashboard() {
             </button>
           )}
         </div>
+        <Link to="/contact">
+          <div className="contact-button-dash">
+            <button type="button">Nous contacter</button>
+            <BsFillEnvelopePlusFill size={40} />
+          </div>
+        </Link>
+        <button className="logout" type="button" onClick={handleLogout}>
+          <img src="/logout.png" alt="Déconnexion" className="Home" />
+        </button>
       </div>
     </div>
   );

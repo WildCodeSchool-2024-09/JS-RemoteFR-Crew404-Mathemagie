@@ -14,13 +14,14 @@ import App from "./App";
 
 import AuthPage from "./pages/Auth/AuthPage";
 import Avatar from "./pages/Avatar/Avatar";
+import AvatarUpdate from "./pages/UpdateAvatar/UpdateAvatar";
 // Import additional components for new routes
 // Try creating these components in the "pages" folder
 
 import Bonus from "./pages/BonusGame/BonusGame";
 import CarGame from "./pages/CarGame/CarGame";
+import Contact from "./pages/Contact/Contact";
 import Dashboard from "./pages/DashBoard/DashBoard";
-import ForgotPassword from "./pages/ForgotPassword/ForgotPassword";
 import GameOne from "./pages/GameOne/GameOne";
 import GamesHome from "./pages/GamesHome/GamesHome";
 import LevelGame1 from "./pages/LevelGame1/LevelGame1";
@@ -70,16 +71,24 @@ const router = createBrowserRouter([
         element: <Avatar />,
       },
       {
+        path: "/avatar/:id",
+        element: <AvatarUpdate />,
+        loader: async ({ params }) => {
+          try {
+            const response = await api.get(`/api/avatar/${params.id}`);
+            return response.data;
+          } catch (error) {
+            console.error(error);
+          }
+        },
+      },
+      {
         path: "/login",
         element: <LoginForm />,
       },
       {
         path: "/sign-up",
         element: <SignUpForm />,
-      },
-      {
-        path: "/forgot-password",
-        element: <ForgotPassword />,
       },
       {
         path: "/authpage",
@@ -99,6 +108,10 @@ const router = createBrowserRouter([
           {
             path: "/dashboard",
             element: <Dashboard />,
+          },
+          {
+            path: "/contact",
+            element: <Contact />,
           },
           {
             path: "/random-equation/:name/",

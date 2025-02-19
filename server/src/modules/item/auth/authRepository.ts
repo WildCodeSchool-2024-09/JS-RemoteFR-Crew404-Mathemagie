@@ -3,6 +3,8 @@ import databaseClient from "../../../../database/client";
 import type { Result, Rows } from "../../../../database/client";
 
 type User = {
+  id_user: number;
+  id_parent: number | null;
   id: number;
   email: string;
   firstname: string;

@@ -7,4 +7,5 @@ export interface Avatar {
   day: string;
   month: string;
   year: string;
+  current_level?: number;
 }

@@ -1,11 +1,13 @@
 import { useEffect, useState } from "react";
+import { useAvatar } from "../../Context/AvatarContext";
 import questionsCarGame from "../../services/questionCarGame";
 import "./CarGame.css";
-
+import axios from "axios";
 import Confetti from "react-confetti";
 import { Link } from "react-router-dom";
 
 function CarGame() {
+  const { handleLevel, avatar } = useAvatar();
   const TOTAL_QUESTIONS = 10;
   const [questionIndex, setQuestionIndex] = useState(0);
   const [lives, setLives] = useState(6);
@@ -32,6 +34,23 @@ function CarGame() {
   };
 
   useEffect(() => {
+    const updateLvl = async (lvl: number) => {
+      try {
+        await axios.post(
+          `http://localhost:3310/api/users/${avatar.id_user}/level-up`,
+          {
+            newLevel: lvl, // Passage au niveau 2 si les conditions sont remplies
+          },
+          {
+            withCredentials: true,
+          },
+        );
+        handleLevel(lvl);
+      } catch (err) {
+        console.error(err);
+      }
+    };
+
     if (answered) {
       const timer = setTimeout(() => {
         if (questionIndex < TOTAL_QUESTIONS - 1 && lives > 0) {
@@ -40,12 +59,14 @@ function CarGame() {
           setFeedback(null);
           setSelectedAnswer(null);
         } else if (questionIndex === TOTAL_QUESTIONS - 1 && lives >= 0) {
-          // Fin du jeu
+          updateLvl(3).then(() => {
+            console.info("niveau mis à jour");
+          });
         }
       }, 2000);
       return () => clearTimeout(timer);
     }
-  }, [answered, questionIndex, lives]);
+  }, [answered, questionIndex, lives, avatar.id_user, handleLevel]);
 
   if (lives <= 0) {
     return (
@@ -59,7 +80,7 @@ function CarGame() {
         >
           Rejouer
         </button>
-        <Link to="/home" className="car-game-button">
+        <Link to="/dashboard" className="game-button">
           Retourner à l'accueil
         </Link>
       </div>

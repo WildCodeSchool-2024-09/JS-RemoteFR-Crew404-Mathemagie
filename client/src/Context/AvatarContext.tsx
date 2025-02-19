@@ -6,6 +6,7 @@ import type { Avatar } from "../types/types";
 const AvatarContext = createContext<{
   avatar: Avatar;
   handleAvatar: (avatar: Avatar) => void;
+  handleLevel: (new_level: number) => void;
 } | null>(null);
 
 // Créer un Provider pour partager l'état de l'avatar
@@ -18,6 +19,7 @@ export const AvatarProvider = ({ children }: { children: React.ReactNode }) => {
     day: "",
     month: "",
     year: "",
+    current_level: 1,
   });
 
   /**
@@ -26,9 +28,11 @@ export const AvatarProvider = ({ children }: { children: React.ReactNode }) => {
   const handleAvatar = (avatar: Avatar) => {
     setAvatar(avatar);
   };
-
+  const handleLevel = (current_level: number) => {
+    setAvatar({ ...avatar, current_level });
+  };
   return (
-    <AvatarContext.Provider value={{ avatar, handleAvatar }}>
+    <AvatarContext.Provider value={{ avatar, handleAvatar, handleLevel }}>
       {children}
     </AvatarContext.Provider>
   );
