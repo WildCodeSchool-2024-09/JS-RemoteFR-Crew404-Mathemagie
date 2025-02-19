@@ -161,10 +161,31 @@
   outline: 3px solid #f8d7ff;
 }
 
+
 /* ✅ Icone du bouton logout */
 .logout-icon {
   width: 24px;
   height: 24px;
+
+.profile-card:hover .profile-name {
+  color: white;
+}
+
+@media (min-width: 768px) {
+  .logout {
+    bottom: 2rem;
+    right: 2rem;
+    width: 180px;
+    height: 55px;
+  }
+
+  .contact-button-dash {
+    bottom: 2rem;
+    right: 14rem;
+    width: 180px;
+    height: 55px;
+  }
+
 }
 
 /* ✅ Mode Mobile */
