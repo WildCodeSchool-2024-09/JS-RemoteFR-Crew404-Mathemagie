@@ -75,12 +75,19 @@ function CarGame() {
         <p>Ton score final : {score}</p>
         <button
           type="button"
-          onClick={() => window.location.reload()}
+          onClick={() => {
+            setQuestionIndex(0);
+            setLives(6);
+            setScore(0);
+            setAnswered(false);
+            setFeedback(null);
+            setSelectedAnswer(null);
+          }}
           className="car-game-button"
         >
           Rejouer
         </button>
-        <Link to="/dashboard" className="game-button">
+        <Link to={`/gameshome/${avatar.id_user}`} className="game-button">
           Retourner à l'accueil
         </Link>
       </div>
@@ -95,24 +102,12 @@ function CarGame() {
         <p>
           Ton score : {score} / {TOTAL_QUESTIONS}
         </p>
-        <button
-          type="button"
-          onClick={() => {
-            window.location.href = "/euro-game";
-          }}
-          className="car-game-button"
-        >
+        <Link to={`/euro-game/${avatar.name}`} className="car-game-button">
           Passer au niveau 2
-        </button>
-        <button
-          type="button"
-          onClick={() => {
-            window.location.href = "/home";
-          }}
-          className="car-game-button"
-        >
+        </Link>
+        <Link to="/dashboard" className="car-game-button">
           Retourner à l'accueil
-        </button>
+        </Link>
       </div>
     );
   }
