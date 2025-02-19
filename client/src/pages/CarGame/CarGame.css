@@ -53,6 +53,10 @@
   cursor: pointer;
 }
 
+.answers button:hover {
+  color: white;
+}
+
 .timer {
   padding: 2px;
 }

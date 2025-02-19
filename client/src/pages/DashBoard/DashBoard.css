@@ -186,6 +186,10 @@
   outline: 3px solid #f8d7ff;
 }
 
+.profile-card:hover .profile-name {
+  color: white;
+}
+
 @media (min-width: 768px) {
   .logout {
     bottom: 2rem;

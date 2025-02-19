@@ -35,7 +35,6 @@ function App() {
               <img src="/home.png" alt="Page d'accueil" className="Home" />
             </button>
           </div>
-          <p> Tes points cumulés : </p>
 
           <Link to="/dashboard" className="lien-dashboard">
             <div className="icon-container">

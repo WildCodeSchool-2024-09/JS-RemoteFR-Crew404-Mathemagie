@@ -47,6 +47,7 @@ body {
   border: 2px solid #ccc;
   border-radius: 10px;
   transition: border-color 0.3s ease-in-out;
+  font-family: "Fredoka" serif;
 }
 
 .input-field:focus {

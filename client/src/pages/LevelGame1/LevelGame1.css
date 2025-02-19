@@ -29,7 +29,7 @@ body {
 .niveau-btn {
   padding: 1rem 2rem;
   font-size: 1.5rem;
-  font-family: "Fredoka", sans-serif;
+  font-family: "Fredoka", sans-serif !important;
   color: white;
   background-color: #5e60ce;
   border: none;

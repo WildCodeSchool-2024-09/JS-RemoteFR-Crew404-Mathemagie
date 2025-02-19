@@ -145,6 +145,24 @@ function Bonus() {
               </section>
             ))}
           </section>
+          <section className="controls">
+            <button
+              onClick={() =>
+                setCharacterPosition((pos) => Math.max(0, pos - 5))
+              }
+              type="button"
+            >
+              ⬅️
+            </button>
+            <button
+              onClick={() =>
+                setCharacterPosition((pos) => Math.min(100, pos + 5))
+              }
+              type="button"
+            >
+              ➡️
+            </button>
+          </section>
 
           <section className="score-bonus">Score : {score}</section>
         </section>
