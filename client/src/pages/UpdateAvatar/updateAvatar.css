@@ -41,42 +41,40 @@ body {
 
 .caroussel-images {
   display: flex;
-  flex-direction: column;
-  transition: transform 0.5s ease-in-out;
-  transform: translateX(calc(-100% * var(--current-index, 0)));
-  margin: 0 auto 50px;
-  padding-bottom: 50px;
-  object-fit: cover;
-  gap: 15px;
+  justify-content: center;
   align-items: center;
+  transition: transform 0.5s ease-in-out;
+  gap: 10px;
+  margin-bottom: 50px;
 }
 
 .animal {
-  width: 90px;
-  height: 100px;
+  width: 120px;
+  height: 160px;
   object-fit: contain;
-  opacity: 0.5;
-  transition: all 0.5s ease-in-out;
-  transform: scale(1);
+  transition: transform 0.5s ease-in-out, opacity 0.5s ease-in-out;
 }
 
 .animal.active {
-  width: 150px;
-  height: 200px;
+  width: 180px;
+  height: 240px;
+  transform: scale(1.2);
   opacity: 1;
-  transform: scale(1.5);
   z-index: 1;
 }
 
 .animal.inactive {
-  filter: blur(2px);
+  width: 120px;
+  height: 160px;
+  opacity: 0.5;
+  transform: scale(0.8);
 }
 
 .button-controls {
+  display: flex;
   justify-content: center;
-  justify-items: center;
   align-items: center;
-  margin-bottom: 1px;
+  gap: 10px;
 }
 
 .prev-button,
@@ -87,104 +85,8 @@ body {
   color: white;
   cursor: pointer;
   font-size: 17px;
-  padding: 15px 15px;
+  padding: 15px 20px;
   transition: all 0.2s ease-in-out;
-  margin-bottom: 20px;
-
-  font-size: 14px;
-}
-/* partie  questions page avatar */
-
-.pagetotal h2 {
-  font-family: "Poppins", serif;
-  font-size: 60px;
-  margin: 0;
-  color: #5e60ce;
-}
-
-.questions-creation {
-  border-radius: 10px;
-  background-color: white;
-  box-shadow: 0 20px 20px rgba(0, 0, 0, 0.1);
-  margin: 10%;
-  padding: 50px;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  justify-items: center;
-}
-
-label[for="grade"] {
-  font-family: "Fredoka", serif;
-  color: #5e60ce;
-  font-size: 18px;
-}
-
-.input-bulle {
-  background-color: white;
-  border: 1px solid #6c757d;
-  border-radius: 10px;
-  padding: 10px 15px;
-  font-family: "Fredoka", serif;
-  margin: 10px 0;
-  font-size: 16px;
-  line-height: 1.5;
-  width: 100%;
-  max-width: 400px;
-}
-
-.questions-creation p {
-  font-family: "Fredoka", serif;
-  color: #5e60ce;
-  font-size: 18px;
-}
-
-.anniv {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  gap: 10px; /* Espacement entre les éléments */
-  width: 70%;
-  max-width: 400px;
-  margin: 0 auto;
-}
-
-.input-bulle,
-.input-anniv {
-  border-radius: 10px;
-  font-family: "Fredoka", serif;
-  margin: 10px 0;
-  color: #6c757d;
-  text-align: center;
-  width: 100%;
-  text-align: center;
-  padding: 10px;
-  font-size: 16px;
-  display: flex;
-  flex-direction: row;
-}
-.input-bulle::placeholder {
-  text-align: center;
-  width: 100%;
-  display: block;
-}
-
-.validate-button {
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  background-color: #5e60ce;
-  border-radius: 30px;
-  font-family: "Fredoka", serif;
-  color: white;
-  cursor: pointer;
-  font-size: 17px;
-  padding: 15px 40px;
-  transition: all 0.2s ease-in-out;
-  margin: 20px auto 0 auto;
-  margin-bottom: 30px;
 }
 
 @media (min-width: 768px) {
@@ -200,27 +102,17 @@ label[for="grade"] {
     margin: 0 auto;
     width: 45%;
   }
-  .validate-button {
-    font-size: 20px;
-  }
 
   .animal {
     width: 150px;
   }
 
   .caroussel {
-    width: 45%;
+    width: 50%;
     margin-bottom: 50px;
   }
 
   .caroussel-images {
     padding-bottom: 1px;
-
-    display: flex;
-    flex-direction: row;
-  }
-
-  .anniv {
-    width: 100%;
   }
 }

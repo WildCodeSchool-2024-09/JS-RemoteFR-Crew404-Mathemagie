@@ -61,10 +61,10 @@ const getCurrentLevel: RequestHandler = async (req, res, next) => {
   }
 };
 
+// 🔹 Augmenter le niveau d'un utilisateur
 const levelUp: RequestHandler = async (req, res, next) => {
   try {
     const userId = Number(req.params.id);
-
     const { newLevel } = req.body;
 
     if (Number.isNaN(userId) || Number.isNaN(Number(newLevel))) {
@@ -73,7 +73,6 @@ const levelUp: RequestHandler = async (req, res, next) => {
     }
 
     await userRepository.updateLevel(userId, newLevel);
-
     const updatedUser = await userRepository.getCurrentLevel(userId);
 
     if (!updatedUser) {
@@ -90,4 +89,44 @@ const levelUp: RequestHandler = async (req, res, next) => {
   }
 };
 
-export default { addAvatar, getAvatar, getAllUsers, getCurrentLevel, levelUp };
+// 🔹 Mettre à jour l'avatar de l'utilisateur (carrousel)
+const updateAvatar: RequestHandler = async (req, res, next) => {
+  try {
+    const { name, grade, picture } = req.body;
+
+    // Vérifie si le user est connecté et a un token valide
+    if (!req.body.user) {
+      res.status(400).json({ message: "Utilisateur non identifié" });
+      return;
+    }
+
+    const userId = req.body.id_user;
+
+    if (!name || !grade || !picture) {
+      res.status(400).json({ message: "Données manquantes" });
+      return;
+    }
+
+    // Mise à jour des données de l'avatar dans la base de données
+    const updatedUser = await userRepository.updateAvatar(userId, {
+      name,
+      grade,
+      picture,
+    });
+
+    res
+      .status(200)
+      .json({ message: "Avatar mis à jour avec succès", updatedUser });
+  } catch (err) {
+    next(err);
+  }
+};
+
+export default {
+  addAvatar,
+  getAvatar,
+  getAllUsers,
+  getCurrentLevel,
+  levelUp,
+  updateAvatar,
+};

@@ -73,6 +73,23 @@ class UserRepository {
 
     return { message: "Niveau mis à jour avec succès", newLevel };
   }
+
+  // 🔹 Mettre à jour un avatar dans la base de données
+  async updateAvatar(
+    id_user: number,
+    { name, grade, picture }: { name: string; grade: string; picture: string },
+  ) {
+    const [result] = await DatabaseClient.query<Result>(
+      "UPDATE user SET name = ?, grade = ?, picture = ? WHERE id_user = ?",
+      [name, grade, picture, id_user],
+    );
+
+    if (result.affectedRows === 0) {
+      throw new Error(`Utilisateur avec l'ID ${id_user} non trouvé.`);
+    }
+
+    return { name, grade, picture, id_user };
+  }
 }
 
 export default new UserRepository();
