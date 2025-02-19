@@ -101,6 +101,10 @@ p {
   text-align: center;
 }
 
+.controls {
+  display: flex;
+}
+
 @media (min-width: 768px) {
   .game-bonus-over h2 {
     font-size: 36px;
@@ -129,5 +133,9 @@ p {
 
   .game-area {
     width: 75%;
+  }
+
+  .controls {
+    display: none;
   }
 }

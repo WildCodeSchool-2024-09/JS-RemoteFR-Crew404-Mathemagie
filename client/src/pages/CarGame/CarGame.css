@@ -42,6 +42,10 @@
   margin: 0 5px;
 }
 
+.answers button:hover {
+  color: white;
+}
+
 .car-game-container h1 {
   font-size: 1.1rem;
   color: #4059ad;
