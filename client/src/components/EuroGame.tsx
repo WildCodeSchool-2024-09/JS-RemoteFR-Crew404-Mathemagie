@@ -62,13 +62,17 @@ function EuroGame() {
 
   if (progress <= 0) {
     return (
-      <div className="game-container">
+      <div className="eurogame-container">
         <h1>Oh non ! Tu n'as pas terminé à temps.</h1>
         <p>Ton score final : {score}</p>
-        <button type="button" onClick={handleRestart} className="game-button">
+        <button
+          type="button"
+          onClick={handleRestart}
+          className="eurogame-button"
+        >
           Rejouer
         </button>
-        <Link to={`/gamehome/${avatar.id_user}`} className="game-button">
+        <Link to={`/gamehome/${avatar.id_user}`} className="eurogame-button">
           Retourner à l'accueil
         </Link>
       </div>
@@ -77,17 +81,21 @@ function EuroGame() {
 
   if (questionIndex === TOTAL_QUESTIONS - 1 && answered) {
     return (
-      <div className="game-container">
+      <div className="eurogame-container">
         <Confetti />
         <h1>Félicitations !</h1>
         <p>
           Ton score : {score} / {TOTAL_QUESTIONS}
         </p>
-        <button type="button" onClick={handleRestart} className="game-button">
+        <button
+          type="button"
+          onClick={handleRestart}
+          className="eurogame-button"
+        >
           Rejouer
         </button>
         <Link
-          className="game-button-primary"
+          className="eurogame-button-primary"
           type="button"
           to={`/gameshome/${avatar.id_user}`}
         >
@@ -98,12 +106,12 @@ function EuroGame() {
   }
 
   return (
-    <div className="car-game-container">
+    <div className="eurogame-main-container">
       <h1>Associez les objets au bon chiffre avant la fin du chrono</h1>
 
       {progress > 0 && (
         <div
-          className="progress-bar"
+          className="eurogame-progress-bar"
           style={{
             width: `${progress}%`,
             backgroundColor:
@@ -119,15 +127,15 @@ function EuroGame() {
         />
       )}
 
-      <div className="question" style={{ color: "#4059ad" }}>
+      <div className="eurogame-question" style={{ color: "#4059ad" }}>
         {currentQuestion.question}
         <img
           src={currentQuestion.image}
           alt="Question"
-          className="question-image"
+          className="eurogame-question-image"
         />
       </div>
-      <div className="answers">
+      <div className="eurogame-answers">
         {currentQuestion.options.map((num) => (
           <button
             key={num}
@@ -139,9 +147,9 @@ function EuroGame() {
           </button>
         ))}
       </div>
-      <div className="score-eurogame">Score : {score}</div>
+      <div className="eurogame-score">Score : {score}</div>
       {feedback && (
-        <div className={`feedback ${feedback}`}>
+        <div className={`eurogame-feedback ${feedback}`}>
           {feedback === "correct" ? "Bonne réponse !" : "Mauvaise réponse !"}
         </div>
       )}
