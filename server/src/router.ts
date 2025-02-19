@@ -32,6 +32,7 @@ import userActions from "./modules/user/userActions";
 
 router.post("/api/avatar", userActions.addAvatar);
 router.get("/api/users", userActions.getAllUsers);
+
 router.get("/api/avatar/:id", userActions.getAvatar);
 /**
  * sans middleware, je peux voir absolument tous les enfants inscrit sur la platforme
@@ -40,12 +41,16 @@ router.get("/api/avatar/:id", userActions.getAvatar);
 router.get(
   "/api/avatar/:id",
   childrenMiddleware.findChildren,
-  userActions.getAvatar,
+  userActions.getAvatar
 );
-
+router.put("/api/updateavatar/:id", userActions.updateAvatar);
 // gestion des niveaux des utilisateurs
 
 router.get("/api/users/:id", userActions.getCurrentLevel);
 router.post("/api/users/:id/level-up", userActions.levelUp);
+
+// gestion des niveaux des utilisateurs (enfants)
+
+
 
 export default router;
